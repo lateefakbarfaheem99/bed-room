@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Paytype Newslider Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the PayType EULA (End-user license
+ * agreement) that is bundled with this package in the file license.txt.
+ * You may not give, sell, distribute, sub-license, rent, lease or lend
+ * any portion of the Software or Documentation to anyone. 
+ *
+ * @category   Paytype
+ * @package    Paytype_Newslider
+ * @author     M.Rivas
+ * @copyright  Copyright (c) 2009 Paytype SL (http://magentomodules.paytype.com)
+ * @license    End-user license Agreement
+ */-->
+<config>
+    <modules>
+        <Paytype_Newslider>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Paytype_Newslider>
+    </modules>
+</config> 

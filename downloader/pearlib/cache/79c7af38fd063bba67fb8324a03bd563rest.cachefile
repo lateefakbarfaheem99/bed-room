@@ -1,0 +1,36 @@
+a:14:{s:7:"attribs";a:2:{s:5:"xmlns";s:36:"http://pear.php.net/dtd/rest.release";s:18:"xsi:schemaLocation";s:81:"http://pear.php.net/dtd/rest.release     http://pear.php.net/dtd/rest.release.xsd";}s:1:"p";a:2:{s:7:"attribs";a:1:{s:10:"xlink:href";s:40:"/Chiara_PEAR_Server_REST/p/beck_livechat";}s:8:"_content";s:13:"Beck_LiveChat";}s:1:"c";s:37:"connect.magentocommerce.com/community";s:1:"v";s:5:"1.6.0";s:2:"st";s:6:"stable";s:1:"l";s:8:"OSL v3.0";s:1:"m";s:12:"magentoadmin";s:1:"s";s:32:"A LiveChat in your Magento Store";s:1:"d";s:1645:"<h3>LiveChat</h3>
+<strong>This extension is free.</strong>
+Allow your customer to chat with your store's operators.
+<h3>Features</h3>
+<ul><li>Multi operators support</li>
+<li>Multi Store support</li>
+<li>Easy to adapt in any template</li>
+<li>A strong API allow third application to retrieve chat</li>
+<li>Multipe languages already supported</li>
+<li>Reporting</li>
+<li>Tracking : you know if a chat was ended by an order</li></ul>
+<h3>Improve you convert rate</h3>
+By providing tips online.
+Interact with your customer by sending them link to your product pages.
+<h3>Change in v1.6.0</h3>
+Some html entities are now converted for a correct displaying in LiveChat Operator Software
+<h3>Change in v1.5.9</h3>
+Added and updated somes translations
+<h3>Change in v1.5.8</h3>
+Added translations :
+Hebrew, Norwegian Bokmal, Polish
+Updated translations :
+German, Vietnamese, Spanish, Portugese, Danish
+<h3>Change in v1.5.8</h3>
+Improved : when a new operator is created there is some message who says that you must affect him to a store.
+The operator list allow you to see what store is affected for each operator.
+<h3>Change in v1.5.7</h3>
+Added an option to disabled displaying of LiveChat if no operator are present 
+Corrected : the page to delete operator’s store assignement don’t work 
+<h3>Change in v1.5.6</h3>
+Added layout for LiveChat in popup windows (available at url [...]/livechat/popup/ )
+<h3>Change in v1.5.5</h3>
+Removed a forgotten debug code
+<h3>Change in v1.5.4</h3>
+<ul><li>Corrected a bug that prevent to configure properly store affectation when some store group have the same name.</li>
+<li>Added german translation</li></ul>";s:2:"da";s:19:"2009-08-04 05:34:37";s:1:"n";s:4:"none";s:1:"f";s:6:"564279";s:1:"g";s:68:"http://connect.magentocommerce.com/community/get/Beck_LiveChat-1.6.0";s:1:"x";a:1:{s:7:"attribs";a:1:{s:10:"xlink:href";s:17:"package.1.6.0.xml";}}}

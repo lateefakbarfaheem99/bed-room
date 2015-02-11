@@ -1,0 +1,113 @@
+<?php
+/**
+ * Paytype Newslider Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the PayType EULA (End-user license
+ * agreement) that is bundled with this package in the file license.txt.
+ * You may not give, sell, distribute, sub-license, rent, lease or lend
+ * any portion of the Software or Documentation to anyone. 
+ *
+ * @category   Paytype
+ * @package    Paytype_Newslider
+ * @author     Paytype Team
+ * @copyright  Copyright (c) 2009 Paytype SL (http://magentomodules.paytype.com)
+ * @license    End-user license Agreement
+ */
+/**
+ * Fixed version! 20/sep/2009 20:57
+ * For default theme
+ */
+?>
+<?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
+
+			<?php if (Mage::getStoreConfig('admin/newslider/product_count')) $_products->setPageSize(Mage::getStoreConfig('admin/newslider/product_count')) ?>
+			<?php $ad=Mage::getStoreConfig('admin/newslider/showfirst_ad'); ?>
+
+			<?php $stoponmouseover=Mage::getStoreConfig('admin/newslider/stoponmouseover'); ?>			
+
+	<link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/newslider/newslider.css') ?>" type="text/css" media="screen" charset="utf-8">
+
+	<?php if ($stoponmouseover == 1): ?>	
+	<div id="my-glider" onmouseover="my_glider.stop();return false;" style="position:relative; width:<?php echo Mage::getStoreConfig('admin/newslider/boxwidth'); ?>px">
+	<?php else: ?>
+	<div id="my-glider" style="position:relative; width:<?php echo Mage::getStoreConfig('admin/newslider/boxwidth'); ?>px">
+	<?php endif; ?>	
+			<div style="float: left;  position:absolute;top:142px; left: 4px"><a href="#" onclick="my_glider.previous();return false;"><img style="opacity:0.2;filter:alpha(opacity=20)" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.2;this.filters.alpha.opacity=20" src="<?php echo $this->getSkinUrl('images/newslider/left.gif') ?>" border=0 title="<?php echo $this->__('Previous') ?>"></a></div>
+			<div style="float: right; position:absolute;top:142px; right:4px"><a href="#" onclick="my_glider.next();return false"><img style="opacity:0.2;filter:alpha(opacity=20)" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.2;this.filters.alpha.opacity=20" src="<?php echo $this->getSkinUrl('images/newslider/right.gif') ?>" border=0 title="<?php echo $this->__('Next') ?>"></a></div>
+
+		<div class="scroller" style="width:<?php echo Mage::getStoreConfig('admin/newslider/boxwidth'); ?>px; height:<?php echo Mage::getStoreConfig('admin/newslider/boxheight'); ?>px;">
+			<div class="content">
+
+			<?php if ($ad == 1): ?>			
+				<div class="section section0" id="section0" style="width:<?php echo Mage::getStoreConfig('admin/newslider/boxwidth'); ?>px; height:<?php echo Mage::getStoreConfig('admin/newslider/boxheight'); ?>px;">
+				<?php echo Mage::getStoreConfig('admin/newslider/showfirst_html'); ?>			
+				</div>
+			<?php endif; ?>			
+
+			<?php $i=0; $y=1; foreach ($_products->getItems() as $_product): ?>
+
+				<div class="section section<?php echo $y; ?>" id="section<?php echo ($i +1); ?>" style="width:<?php echo Mage::getStoreConfig('admin/newslider/boxwidth'); ?>px; height:<?php echo Mage::getStoreConfig('admin/newslider/boxheight'); ?>px;">
+					
+					<table align=center border=0 width=100%>
+						<td width=30%>
+
+						                    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(170) ?>" width="170" height="170" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" /></a>
+						</td>
+						<td width=70%>  
+								<table width=100%>
+								<td width=18%>
+								<?php echo $this->getPriceHtml($_product, true, '-new') ?>
+								</td>
+								<td width=30%>
+						                <?php if($_product->isSaleable()): ?>
+								    <?php // AddtoCart link for Default theme: ?>
+								    <button class="form-button" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><?php echo $this->__('Add to Cart') ?></span></button> 
+								    <?php // AddtoCart link for modern based themes: ?>
+					        	            <!-- <a href="<?php echo $this->getAddToCartUrl($_product) ?>"><img src="<?php echo $this->getSkinUrl('images/btn_add_to_cart.gif') ?>" alt="<?php echo $this->__('Add to Cart') ?>" title="<?php echo $this->__('Add to Cart') ?>" /></a> -->
+						                <?php else: ?>
+						                <div class="out-of-stock"><?php echo $this->__('Out of stock') ?></div>
+						                <?php endif; ?>
+						                <ul class="add-to">
+						                    <?php if ($this->helper('wishlist')->isAllow()) : ?>
+						                    <li><a href="<?php echo $this->getAddToWishlistUrl($_product) ?>" class="link-cart"><?php echo Mage::helper('catalog')->__('Add to Wishlist') ?></a></li>
+						                    <?php endif; ?>
+						                </ul>
+								</td>
+								<td width=62%>
+						                <p style="width: 95%"><a class="product-name" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>)"><?php echo $this->htmlEscape($_product->getName()) ?></a></p>
+						                <p><?php echo $this->getReviewsSummaryHtml($_product, 'short') ?></p>
+								</td>
+								</table>
+								<br>
+								    <?php if ($_product->getShortDescription()):?>
+							                <div class="short-description" style="width: 95%"><?php echo nl2br($_product->getShortDescription()) ?>
+									<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo $this->__('Learn More') ?></a> (<?php echo $this->__('New') ?>: <?php echo $this->formatDate($_product->getData('news_from_date')); ?>)
+									</div>
+							            <?php endif;?> 
+
+
+
+			
+						</td>
+					</table>
+				
+				</div>
+
+			<?php if ($y == 0) {$y=1;} else {$y=0;}?>
+
+			<?php $i++; endforeach; ?>
+
+			</div>
+		</div>			
+	</div>
+	 
+	<script type="text/javascript" charset="utf-8">
+
+        var my_glider = new Glider('my-glider', {duration:1, autoGlide:true, frequency:<?php echo Mage::getStoreConfig('admin/newslider/itemtime'); ?>, <?php if ($ad == 0) { echo "initialSection: 'section1'";} else { echo "initialSection: 'section0'";}?>});
+
+	</script>
+
+
+<?php endif; ?> 

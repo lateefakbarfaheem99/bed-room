@@ -1,0 +1,19 @@
+	<script type="text/javascript">
+		var fileLoadingImage = "<?php echo $this->getSkinUrl('gallery/images/loading.gif') ?>";		
+		var fileBottomNavCloseImage = "<?php echo $this->getSkinUrl('gallery/images/closelabel.gif') ?>";
+	</script>
+
+	<div class="gallery-container">
+		<ul>
+			<?php 
+				$collection = $this->getAlbums();
+				foreach ($collection as $item) { ?>
+				<li>
+					<a href="<?php echo $this->getUrlRewrite($item) ?>" alt="View Project"><?php echo $item->getTitle() ?></a><br>					
+					<a href="<?php echo $this->getUrlRewrite($item) ?>" alt="<?php echo $item->getTitle() ?>" ><img src="<?php echo $this->helper('gallery/image')->init($item->getFilename())->resize(175, 131) ?>"/></a>
+				
+					<?php echo $item->getDescription() ?>
+				</li>
+			<?php } ?>			
+		</ul>
+	</div>

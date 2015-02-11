@@ -1,0 +1,17 @@
+	<script type="text/javascript">
+		var fileLoadingImage = "<?php echo $this->getSkinUrl('gallery/images/loading.gif') ?>";		
+		var fileBottomNavCloseImage = "<?php echo $this->getSkinUrl('gallery/images/closelabel.gif') ?>";
+	</script>
+
+	<div style="width:245px; float:left;"><?php echo $this->getDescription() ?></div>
+	<div class="gallery-container album">		
+		<ul>
+			<?php $collection = $this->getPhotos();
+				foreach ($collection as $item) { ?>
+				<li>
+					<a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $item->getFilename() ?>" rel="lightbox[projects]" title="<?php echo $item->getTitle() ?>" ><img src="<?php echo $this->helper('gallery/image')->init($item->getFilename())->resize(175, 131) ?>" /></a>
+				</li>
+			<?php } ?>			
+		</ul>
+		<div style="clear:both; float:right"><a href="<?php echo $this->getUrl('gallery') ?>">Back to Album</a></div>
+	</div>

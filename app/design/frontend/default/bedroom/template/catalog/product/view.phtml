@@ -1,0 +1,341 @@
+<?php
+
+
+
+    $_helper = $this->helper('catalog/output');
+
+
+
+    $_product = $this->getProduct();
+
+
+
+?>
+<style>
+.validation-advice {
+  display: inline;
+}
+.product-options-bottom .price-box {
+	display:none !important;
+}
+div#product-options-wrapper.product-options dl.last dt label {
+	color: #2F2F2F;
+	display: block;
+	font-weight: 700;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 132px;
+}
+.product-options dd select {
+	margin-left: 60px;
+	width: 85%;
+}
+
+.more-views img {
+    margin: 6px;
+}
+/*
+
+html body.catalog-product-view div.wrapper div.page div.main-container div.main div.col-main div.product-view div.product-essential form#product_addtocart_form div.product-shop div.product-name span{
+
+	color: #000000;
+
+    float: right;
+
+    font-family: Verdana,Geneva,sans-serif;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    left: 15px;
+
+    position: relative;
+
+	}
+
+	
+
+	#qty {
+
+    border: 1px solid silver;
+
+    height: 15px;
+
+    left: 57px;
+
+    position: relative;
+
+    width: 55px !important;
+
+}
+
+
+
+html body.catalog-product-view div.wrapper div.page div.main-container div.main div.col-main div.product-view div.product-essential form#product_addtocart_form div.product-options-bottom div.add-to-cart input#sbttl{
+
+	   margin-bottom: 8px;
+
+    margin-right: 17px;
+
+    position: relative;
+
+	}
+
+	#addtocartitem {
+
+    left: 88px;
+
+    position: relative;
+
+}
+
+
+
+.addtocartt {
+
+    left: 62px;
+
+    position: relative;
+
+}
+
+
+
+html body.catalog-product-view div.wrapper div.page div.main-container div.main div.col-main div.product-view div.product-essential form#product_addtocart_form div.product-shop div.product-name span{
+
+	left: 0 !important;
+
+	float:none;
+
+	}*/
+	
+div.product-view div.product-essential form#product_addtocart_form div.product-options-bottom 
+{
+  padding: 15px 1px !important;
+}
+
+
+div.product-view div.product-essential form#product_addtocart_form div.product-options-bottom div.add-to-cart
+{
+	position: relative;
+right: 18px;
+width: 270px !important;
+}
+
+
+div.product-view div.product-essential form#product_addtocart_form div.product-options-bottom div.add-to-cart input#qty.input-text
+{
+	border: 1px solid silver;
+height: 15px;
+left: 77px !important;
+position: relative;
+width: 55px !important;
+}
+
+
+
+.breadcrumbs {
+    width: 569px !important;
+}
+.addthis_default_style{
+display: none;
+float: left;
+}
+#addtocartitem {
+  height: 71px !important;  
+}
+
+.more-views h4 {
+  width: 100px;
+}
+</style>
+<script type="text/javascript">
+
+
+
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+
+
+jQuery(function(){
+/*var fff=jQuery('.addthis_default_style').clone()
+jQuery('.addthis_default_style').remove();
+jQuery('.add-to-cart').append(fff);
+jQuery('.addthis_default_style').show()
+*/
+
+fr=jQuery('.more-views h4').length;
+if(fr==0){
+
+var fff=jQuery('.addthis_default_style').clone()
+
+jQuery('.addthis_default_style').remove();
+jQuery('.product-collateral').before(fff);
+jQuery('.addthis_default_style').show() 
+}
+else{
+var fff=jQuery('.addthis_default_style').clone()
+
+jQuery('.addthis_default_style').remove();
+jQuery('.more-views h4').before(fff);
+jQuery('.addthis_default_style').show() 
+}
+});
+</script>
+
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="product-view">
+  <div style="margin-left:3px;margin-top:15px;" class="product-essential">
+ 
+    <form action="<?php echo $this->getAddToCartUrl($_product) ?>"  method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+      <div class="no-display">
+        <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+        <input type="hidden" name="related_product" id="related-products-field" value="" />
+        <?php echo $this->getAddToCartUrl($_product) ?> </div>
+      <div class="product-shop" style="width:273px !important;position: relative;
+
+
+
+    right: 17px;">
+        <div class="product-name">
+          <h1 style="color:#BBBB25;font-weight: bold;"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+          <span style="font-family:Verdana, Geneva, sans-serif; font-size: 12px; font-weight: bold; color: #000000;">Price starting at:</span><span style="float: right; position: relative; right: -17px;font-family:Verdana, Geneva, sans-serif; font-size: 12px; font-weight: bold; color: #000000;">$<?php echo round($_product->getPrice(),2); ?></span>
+      <?php if($_product->getData('special_price')!=''){?>    <br />
+
+           <span style="font-family:Verdana, Geneva, sans-serif; font-size: 12px; font-weight: bold; color: red;">
+           Special Price:</span>
+           <span style="float: right; position: relative; right: -17px;font-family:Verdana, Geneva, sans-serif; font-size: 12px; font-weight: bold; color: red;">$<?php echo round($_product->getFinalPrice(),2); ?></span>
+           <?php } ?>
+        
+		  
+		
+           </div>
+        <?php echo $this->getReviewsSummaryHtml($_product, false, true)?> <?php echo $this->getChildHtml('alert_urls') ?> <?php echo $this->getChildHtml('extrahint') ?>
+        <?php 
+
+
+
+				$available = false;
+
+
+
+				if(!$_product->isGrouped()){
+
+
+
+					if ($_product->isSaleable()){
+
+
+
+						$available = true;
+
+
+
+					}
+
+
+
+				} else{
+
+
+
+					if($_product->isSaleable() && count($_associatedProducts)){
+
+
+
+						$available = true;
+
+
+
+					}
+
+
+
+				}
+
+
+
+			?>
+        <?php if($available): ?>
+        <p class="availability in-stock" style="visibility:hidden;font-family:Verdana, Geneva, sans-serif;font-size: 12px; font-weight: bold;"><?php echo $this->__('Availability:') ?> <span><?php echo $this->__('In stock') ?></span></p>
+        <?php else: ?>
+        <p style="visibility: hidden;" class="availability out-of-stock"><?php echo $this->__('Availability:') ?> <span><?php echo $this->__('Out of stock') ?></span></p>
+        <?php endif; ?>
+        <?php echo $this->getChildHtml('other');?> <?php echo $this->getChildHtml('simple_forum_product_detail');?> <?php echo $this->getChildHtml('product.info.tabs');?>
+        <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+        <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+        <?php endif;?>
+      </div>
+      <div class="product-img-box2" style="width:230px !important; padding:5px; margin:0px;"> <?php echo $this->getChildHtml('media') ?> </div>
+      <div class="clearer1"></div>
+      <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+      <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+      <?php endif;?>
+      <p class="gst-exclusive">
+        <?php //echo $this->__('All prices shown are exclusive of GST') ?>
+      </p>
+      <?php if (!$this->hasOptions()):?>
+      <div class="add-to-box" style="background-color:#fff !important;">
+        <?php if($_product->isSaleable()): ?>
+        <?php echo $this->getChildHtml('product_type_data') ?> <?php echo $this->getChildHtml('addtocart') ?>
+        <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+        <span class="or">
+        <?php //echo $this->__('OR') ?>
+        </span>
+        <?php endif; ?>
+        <?php endif; ?>
+        <?php echo $this->getChildHtml('addto') ?> </div>
+      <?php echo $this->getChildHtml('extra_buttons') ?>
+      <?php else:?>
+      <?php echo $this->getChildHtml('addto') ?>
+      <?php endif; ?>
+    </form>
+    <script type="text/javascript">
+
+
+
+    //<![CDATA[
+
+
+
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+
+
+
+            productAddToCartForm.submit = function(){
+
+
+
+                    if (this.validator.validate()) {
+
+
+
+                            this.form.submit();
+
+
+
+                    }
+
+
+
+            }.bind(productAddToCartForm);
+
+
+
+    //]]>
+
+
+
+    </script> 
+  </div>
+  <div class="product-collateral" style="margin-top:45px !important;"> <?php echo $this->getChildHtml('info_tabs') ?>
+    <?php //foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
+    <div class="box-collateral <?php echo "box-{$alias}"?>">
+      <?php if ($title = $this->getChildData($alias, 'title')):?>
+      <h2><?php echo $this->escapeHtml($title); ?></h2>
+      <?php endif;?>
+      <?php echo $html; ?> </div>
+    <?php //endforeach;?>
+    <?php //echo $this->getChildHtml('upsell_products') ?>
+    <?php echo $this->getChildHtml('product_additional_data') ?> </div>
+</div>

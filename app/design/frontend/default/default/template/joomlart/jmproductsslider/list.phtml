@@ -1,0 +1,75 @@
+<?php $divid = 'jm-contain-'.rand().rand().time();?>
+
+<?php if(!defined('JM_ADD_JQUERY')){?>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('joomlart/jmproductsslider/js/jquery.js') ?>"></script>
+<?php  define('JM_ADD_JQUERY', true); ?>
+<?php }?>
+
+<?php if(!defined('JM_ADD_SKIN_PRODUCTS_SILDER')){?>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('joomlart/jmproductsslider/js/jcarousellite_1.0.1.js') ?>"></script>
+<?php  define('JM_ADD_SKIN_PRODUCTS_SILDER', true); ?>
+<?php }?>
+
+<script type="text/javascript">
+	jQuery.noConflict();
+	  jQuery(document).ready(function($){
+	    $("#<?php echo $divid?>").jCarouselLite({
+			auto: <?php echo $configs['autorun']?>,
+			speed: 			<?php echo $configs['animationtime']?>,
+			pause:			<?php echo $configs['delaytime']?>,				
+			visible: 		<?php echo $configs['number_items']?>,
+			btnNext: ".jm-next",
+			btnPrev: ".jm-prev",
+			width: <?php echo $configs['number_items']*($configs['width']+45); ?>,
+			width_img: <?php echo $configs['width']+45; ?>	
+		});
+	  });
+
+	
+</script>
+
+<div class="jm-products-slider-listing">
+	<?php if(isset($configs['title']) && $configs['title']!=''){?>
+	<h2><?php echo $configs['title']?> </h2>
+	<?php }?>	
+
+  <div class="jm-products-slider-content clearfix"> 
+  
+  	<div class="jm-prev">
+		<img id="jm-slide-left-img" title="Left direction" onmouseout="this.src='<?php echo $this->getSkinUrl('joomlart/jmproductsslider/images/re-left.gif') ?>'" onmouseover="this.src='<?php echo $this->getSkinUrl('joomlart/jmproductsslider/images/re-left-hover.gif') ?>'" alt="Left direction" src="<?php echo $this->getSkinUrl('joomlart/jmproductsslider/images/re-left.gif') ?>"/>
+	</div>
+    <div id="<?php echo $divid?>" class="jm-slider">
+      <ul class="jm-slider-ul">
+      		<?php $_collectionSize = $listall->count() ?>
+			<?php if($_collectionSize){?>
+				<?php foreach ($listall->getItems() as $_product){ ?>
+        			<li class="jm-slider-li" style="float: left;width:<?php echo $configs['width']+ 45; ?>px;height:<?php echo $configs['height'] + 45; ?>px">
+        				<a title="<?php echo $this->htmlEscape($_product->getName()) ?>" href="<?php echo $_product->getProductUrl() ?>">
+									<?php echo $_product->getName() ?>
+        					<br />
+        					<img src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->resize($configs['width'], $configs['height'])->setWatermarkSize('30x10'); ?>" alt="<?php echo $this->htmlEscape($_product->getName()) ?>"/>
+        					</a>
+        					<?php if ($configs['show_price']) : ?>
+        					<br />
+        					<?php echo $this->getPriceHtml($_product,true) ?>
+        					<?php endif; ?>
+        					<?php if($configs['show_cart']){ ?>
+	        					<?php if($_product->isSaleable()){ ?>
+	        					<br />
+								<button class="form-button" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')">
+									<span><?php echo $this->helper("catalog")->__('Add to Cart') ?></span>
+								</button>
+								<?php } else { ?>
+								<div class="out-of-stock"><?php echo $this->helper("catalog")->__('Out of stock') ?></div>
+								<?php } ?>
+							<?php } ?>
+        			</li> 
+        		<?php }?>
+			<?php }?>	       
+      </ul>
+    </div>
+	<div class="jm-next">
+		<img id="jm-slide-right-img" title="Right direction" onmouseout="this.src='<?php echo $this->getSkinUrl('joomlart/jmproductsslider/images/re-right.gif') ?>'" onmouseover="this.src='<?php echo $this->getSkinUrl('joomlart/jmproductsslider/images/re-right-hover.gif') ?>'" alt="Right direction" src="http://template15.joomlart.com/ja_mesolite/modules/mod_ja_vmproductslide/ja_vmproductslide/img/re-right.gif"/>
+	</div>
+   </div>
+</div>

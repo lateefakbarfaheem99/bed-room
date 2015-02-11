@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <AsiaConnect_Gallery>
+            <active>true</active>
+            <codePool>local</codePool>
+        </AsiaConnect_Gallery>
+    </modules>
+</config> 

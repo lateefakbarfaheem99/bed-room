@@ -1,0 +1,1 @@
+[20-Jul-2011 07:22:42] PHP Fatal error:  Cannot use object of type PEAR_Error as array in /home/bedroom/public_html/downloader/pearlib/php/PEAR/REST/10.php on line 295

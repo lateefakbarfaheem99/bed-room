@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Thylak_Magesugar>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Thylak_Magesugar>
+    </modules>
+</config> 

@@ -1,0 +1,49 @@
+/* For gallery */
+.gallery-container ul{
+	padding:0 0 0 16px;
+	margin:0px;	
+}
+.gallery-container ul li{
+	list-style-type:none;
+	text-align:center;
+	line-height:36px;
+	float: left;
+	padding: 10px 10px;
+	height: 200px;
+}
+.gallery-container ul li a{
+	color:#000000;
+	text-decoration:underline;
+	font-weight:bold;
+}
+.gallery-container ul li a:hover{
+	color:#000000;
+	text-decoration:underline;
+	font-weight:bold;
+}
+.gallery-container img {
+	border:1px solid #CCCCCC;
+	height:131px;
+	margin-top:10px;
+	padding:5px;
+	width:175px;
+}
+.album ul li {
+	height: 160px;
+	float: left;
+}
+
+.new-albums ul li {
+	float: left;
+	padding: 5px;
+}
+
+.new-albums .view-all {
+	clear: both;
+	padding-right:5px;
+	text-align:right;
+}
+
+.new-albums img {
+	border:1px solid #CCCCCC;
+}

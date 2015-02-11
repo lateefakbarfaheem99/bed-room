@@ -1,0 +1,5 @@
+a:14:{s:7:"attribs";a:2:{s:5:"xmlns";s:36:"http://pear.php.net/dtd/rest.release";s:18:"xsi:schemaLocation";s:81:"http://pear.php.net/dtd/rest.release     http://pear.php.net/dtd/rest.release.xsd";}s:1:"p";a:2:{s:7:"attribs";a:1:{s:10:"xlink:href";s:44:"/Chiara_PEAR_Server_REST/p/magento_easy_tabs";}s:8:"_content";s:17:"magento_easy_tabs";}s:1:"c";s:37:"connect.magentocommerce.com/community";s:1:"v";s:3:"1.1";s:2:"st";s:6:"stable";s:1:"l";s:20:"Creative Commons Lic";s:1:"m";s:12:"magentoadmin";s:1:"s";s:34:"Magento Easy Tabs Community Module";s:1:"d";s:345:"This small extension will help to add informational tabs on product page. Installation and configuration will take approximately  5 minutes.
+1.Install extension using magento connect.
+2.Log out from admin and login again.
+3.Navigation to System > Configuration > Templates-Master > EasyTabs and enable extension for any store you need.
+4. Enjoy!";s:2:"da";s:19:"2010-03-29 03:43:24";s:1:"n";s:35:"Magento Easy Tabs  Community Module";s:1:"f";s:4:"9863";s:1:"g";s:70:"http://connect.magentocommerce.com/community/get/magento_easy_tabs-1.1";s:1:"x";a:1:{s:7:"attribs";a:1:{s:10:"xlink:href";s:15:"package.1.1.xml";}}}

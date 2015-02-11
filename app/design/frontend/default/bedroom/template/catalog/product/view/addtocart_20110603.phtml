@@ -1,0 +1,26 @@
+<?php 
+$_helper = $this->helper('catalog/output');
+$_product = $this->getProduct() 
+?>
+
+<?php if($_product->isSaleable()): ?>
+<table class="data-table grouped-items-table" id="super-product-table">
+	<?php if(!$_product->isGrouped()): ?>
+	<tr>
+		<th><?php echo $this->__('Product Name') ?></th>
+		<th><?php echo $this->__('SKU') ?></th>
+		<th class="a-right">Price</th><?php echo $this->__('Price') ?></th>
+		<th><?php echo $this->__('Qty') ?></th>
+	</tr>
+	<tr>
+		<td><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></td>
+		<td><?php echo $_product->getSku(); ?></td>
+		<td class="a-right"><?php echo Mage::helper('core')->currency($_product->getFinalPrice()) ?> <?php echo $_product->getData('uom')?></td>
+		<td><input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getMinimalQty($_product) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" /></td>
+	</tr>
+	<?php endif; ?>
+</table>
+<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="productAddToCartForm.submit()"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+<?php echo $this->getChildHtml('', true, true) ?>
+<?php endif; ?>
+<script type="text/javascript">decorateTable('super-product-table')</script>

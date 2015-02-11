@@ -1,0 +1,39 @@
+<style>
+
+.messages{left: 10px !important;
+    position: relative !important;
+    top: 5px !important;}
+</style>
+
+
+<div class="block block-subscribe" style="   border: 1px solid silver;
+    border-radius: 8px 8px 8px 8px;
+    color: #666666;
+    height: 151px;
+    margin: 0;
+    padding: 8px;
+    width: 551px;
+	background: none;
+	">
+    <div class="block-title" style="width: 100% !important">
+        <strong><span><?php echo $this->__('Sign up to receive news and special offers!') ?></span></strong>
+    </div>
+    <form action="http://staging.thebedroom.com.au/newsletter/subscriber/new/" method="post" id="newsletter-validate-detail">
+        <div class="block-content" style="width: 264px;">
+            <label for="newsletter"><?php echo $this->__('Enter your email below:') ?></label>
+            <div class="input-box">
+               <input type="text" name="email" id="newsletter" title="<?php echo $this->__('Enter your email below') ?>" class="input-text required-entry validate-email" />
+            </div>
+            <div class="actions" style="bottom: 34px;
+    float: right;
+    position: relative;">
+                <button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="button"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+    //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+    //]]>
+    </script>
+</div>

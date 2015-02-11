@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    		
+	<catalog_category_default>
+         <reference name="head">
+			<action method="addCss"><stylesheet>gallery/css/gallery.css</stylesheet></action>
+        </reference>
+			
+		<reference name="right">
+			 <block type="gallery/gallery" name="newalbum" template="gallery/newalbums.phtml" >
+			 <action method="setTotalAlbum"><total_album>4</total_album></action>
+			 </block>				 
+		</reference>
+	</catalog_category_default>
+	
+	<catalog_category_layered>
+         <reference name="head">
+			<action method="addCss"><stylesheet>gallery/css/gallery.css</stylesheet></action>
+        </reference>
+
+		<reference name="right">
+			 <block type="gallery/gallery" name="newalbum" template="gallery/newalbums.phtml" >
+			 <action method="setTotalAlbum"><total_album>4</total_album></action>
+			 </block>				 
+		</reference>
+	</catalog_category_layered>
+
+	<catalog_product_view>
+         <reference name="head">
+			<action method="addCss"><stylesheet>gallery/css/gallery.css</stylesheet></action>
+        </reference>
+
+		<reference name="right">
+			 <block type="gallery/gallery" name="newalbum" template="gallery/newalbums.phtml" >
+			 <action method="setTotalAlbum"><total_album>4</total_album></action>
+			 </block>				 
+		</reference>
+	</catalog_product_view>
+
+
+    <gallery_index_index>
+         <reference name="head">
+			<action method="addCss"><stylesheet>gallery/css/gallery.css</stylesheet></action>
+			<action method="addCss"><stylesheet>gallery/css/lightbox.css</stylesheet></action>
+			<action method="addItem"><type>skin_js</type><name>gallery/js/lightbox.js</name></action>
+        </reference>
+		
+		<reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        
+		<reference name="content">
+            <block type="gallery/gallery" name="gallery" template="gallery/gallery.phtml" />
+			<!--<block type="gallery/ajax" name="ajax" template="gallery/ajax.phtml" /> -->
+        </reference>				
+
+    </gallery_index_index>
+
+    <gallery_view_album>
+         <reference name="head">
+			<action method="addCss"><stylesheet>gallery/css/gallery.css</stylesheet></action>
+			<action method="addCss"><stylesheet>gallery/css/lightbox.css</stylesheet></action>
+			<action method="addItem"><type>skin_js</type><name>gallery/js/lightbox.js</name></action>
+        </reference>
+
+		<reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="gallery/gallery" name="gallery" template="gallery/album.phtml" />
+        </reference>
+    </gallery_view_album>
+</layout> 

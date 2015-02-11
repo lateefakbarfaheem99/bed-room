@@ -1,0 +1,22 @@
+.postWrapper{padding-bottom:25px;clear:both;}
+.postTitle{border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#DDD;margin-bottom:15px;}
+.postTitle h2{font-size:20px;font-weight:400;margin:0;padding:0;}
+.postTitle h3{font-size:10px;margin:0;padding:2px 0;}
+.commentWrapper{padding-bottom:15px;}
+.commentContent{padding-bottom:0;}
+.commentDetails{margin-bottom:5px;padding:0;}
+.postError{font-size:16px;}
+.tags{font-weight:700;padding-bottom:10px;}
+.tags UL LI{font-weight:400;display:inline;padding-right:6px;}
+.menu-tags,.menu-categories,.menu-recent{margin:5px 3px 15px 8px;}
+.blog .menu-tags UL LI{display:inline;margin-left:10px;padding:2px;}
+.tag-count-1{font-size:1em;}
+.tag-count-2{font-size:1.2em;}
+.tag-count-3{font-size:1.4em;}
+.tag-count-4{font-size:1.6em;}
+.tag-count-5{font-size:1.8em;}
+.postContent,.postBookmarks{padding-bottom:10px;}
+.postBookmarks h4,.tags h4{font-size:12px;font-weight:700;}
+.commentDetails h4.username,.tags UL,.postWrapper .poster{display:inline;}
+.blog .menu-categories UL LI,.blog .menu-recent UL LI{margin-left:10px;}
+.tag-count-6,.tag-count-7,.tag-count-8,.tag-count-9,.tag-count-10{font-size:2em;}

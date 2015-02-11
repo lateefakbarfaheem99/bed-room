@@ -1,0 +1,17 @@
+div.scroller { 
+	overflow: hidden;
+	border:1px solid #cccccc;
+	}
+	div.scroller div.section {
+		overflow:hidden;
+		float:left;
+		padding:1em;		
+		}
+	div.scroller div.content {
+		width: 10000px;
+		}
+
+	div.section1 {
+		background:#f8f8f8;
+		color:#000000;
+		}

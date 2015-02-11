@@ -1,0 +1,35 @@
+div.scroller { 
+	overflow: hidden;
+	border:1px solid #cccccc;
+	width: 200px;
+	}
+	div.scroller div.section {
+		overflow:hidden;
+		float:left;
+		padding:1em;		
+		}
+	div.scroller div.content {
+		width: 10000px;
+		}
+
+	div.section1 {
+		background:#f8f8f8;
+		color:#000000;
+		}
+.slideContent {}
+.slideContent img {
+	margin: 0 10px 0 0;
+    width: 170px;
+    float: left;
+    border: 1px solid #eee;
+	}
+.slideContent txt {
+    width: 200px;
+    height: 33px;
+    float: left;
+	}
+.slideContent a.product-name {
+    margin: 0; padding: 0 0 1em 0; font-size: 18px; line-height: 1.3em; font-weight: normal; color: ##333333; text-decoration: none;
+	}	
+.slideContent .short-description { font-size: 0.9em; }	
+	

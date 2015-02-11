@@ -1,0 +1,38 @@
+<?php 
+$_helper = $this->helper('catalog/output');
+$_product = $this->getProduct() 
+?>
+<table class="data-table grouped-items-table" id="super-product-table">
+	<thead>
+		<tr>
+			<th><?php echo $this->__('SKU') ?></th>
+			<th><?php echo $this->__('Product Name') ?></th>
+			<th class="a-right price"><?php echo $this->__('Price') ?></th>
+			<th class="a-left uom"><?php echo $this->__('UOM') ?></th>
+			<?php if ($_product->isSaleable()): ?>
+			<th class="a-center"><?php echo $this->__('Qty') ?></th>
+			<?php endif; ?>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><?php echo $_product->getSku(); ?></td>
+			<td><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></td>
+			<td class="a-right">
+				<?php echo $this->getPriceHtml($_product, true) ?>
+				<?php echo $this->getTierPriceHtml($_product) ?>
+			</td>
+			<td class="a-left">
+				<span class="uom"><?php echo ucwords($_product->getData('uom')) ?></span>
+			</td>			
+			<td class="a-center">
+				<?php if ($_product->isSaleable()) : ?>
+					<input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getMinimalQty($_product) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+	            <?php else: ?>
+	                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+	            <?php endif; ?>					
+			</td>
+		</tr>
+	</tbody>
+</table>
+<script type="text/javascript">decorateTable('super-product-table')</script>

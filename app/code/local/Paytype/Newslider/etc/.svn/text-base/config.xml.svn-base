@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Paytype Newslider Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the PayType EULA (End-user license
+ * agreement) that is bundled with this package in the file license.txt.
+ * You may not give, sell, distribute, sub-license, rent, lease or lend
+ * any portion of the Software or Documentation to anyone. 
+ *
+ * @category   Paytype
+ * @package    Paytype_Newslider
+ * @author     M.Rivas
+ * @copyright  Copyright (c) 2009 Paytype SL (http://magentomodules.paytype.com)
+ * @license    End-user license Agreement
+ */-->
+<config>
+    <modules>
+        <Paytype_Newslider>
+            <version>0.1.0</version>
+        </Paytype_Newslider>
+    </modules>
+    <global>
+            <blocks>
+            <catalog>
+                <rewrite>
+                    <product_list>Paytype_Newslider_Block_Newslider</product_list>
+                </rewrite>
+            </catalog>
+        </blocks>
+        <helpers>
+            <newslider>
+                <class>Paytype_Newslider_Helper</class>
+            </newslider>
+        </helpers>
+    </global>
+    <frontend>
+        <routers>
+            <newslider>
+                <use>standard</use>
+                <args>
+                    <module>Paytype_Newslider</module>
+                    <frontName>newslider</frontName>
+                </args>
+            </newslider>
+        </routers>
+        <layout>
+            <updates>
+                <newslider module="Paytype_Newslider">
+                    <file>newslider.xml</file>
+	        </newslider>
+            </updates>
+        </layout> 
+    </frontend>
+    <default>
+        <admin>
+            <newslider>
+                <product_count>5</product_count>
+                <showfirst_ad>0</showfirst_ad>
+                <showfirst_html>
+Here, if you enabled the above field, you can add HTML code to show as first item (for example to insert a banner). 
+
+By the way, remember refresh all cache and add the block on CMS (Homepage for example):
+                 
+{{block type="catalog/product_new" name="home.catalog.product.new" template="paytype/newslider/newslider.phtml"}}
+                </showfirst_html>
+                <boxwidth>650</boxwidth>
+                <boxheight>190</boxheight>
+                <itemtime>10</itemtime>
+                <stoponmouseover>0</stoponmouseover>
+            </newslider>
+        </admin>
+    </default>
+</config> 

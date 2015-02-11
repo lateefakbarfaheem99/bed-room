@@ -1,0 +1,26 @@
+.vertnav-container{margin:0}
+.vertnav-container h4 {
+	background:url(../images/product-categories.png) 0 0 no-repeat;
+	width:145px;
+	height:28px;
+	text-indent:-9999px;
+	margin:0 0 3px 0;
+}
+#vertnav li {
+	margin-bottom:6px;
+}
+#vertnav li li {
+	margin-bottom:2px;
+}
+#vertnav li ul {
+	margin-top:2px;
+}
+#vertnav li .vertnav-cat{display:block;width:145px;}
+#vertnav li a{color:#fff;text-decoration:none;display:block;margin:0; font-size:11px; font-weight:bold; background-color:#bbbb25; text-transform:uppercase; padding:3px 7px;}
+#vertnav li a:hover{}
+#vertnav li.inactive .vertnav-cat{}
+#vertnav .level0 .vertnav-cat a{display:block;width:131px;}
+#vertnav .level1 .vertnav-cat a{width:131px;display:block; color:#333; background-color:#f1f1d3; text-transform:capitalize; font-weight:normal;}
+#vertnav .level2 .vertnav-cat a{width:131px;display:block;}
+#vertnav .level3 .vertnav-cat a{width:131px;display:block;}
+#vertnav li.parent .vertnav-cat,#vertnav li.active .vertnav-cat{}

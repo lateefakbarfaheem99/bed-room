@@ -1,0 +1,23 @@
+/********************** Tabs */
+.product-view .tabs { margin: 22px 0px; overflow:hidden; border-bottom:1px solid #496778;  zoom: 1;font-size:11px !important;}
+.product-view .tabs li                { background-color: #F1F1D3;
+    border-color: #FFFFFF;
+    border-left: 1px solid #FFFFFF;
+    float: left;
+    font-weight: bold; }
+.product-view .tabs li.first          { border-left:0; background-color: #F1F1D3;font-weight: bold;}
+.product-view .tabs li.last           { border-right:0; background-color: #F1F1D3;font-weight: bold;padding: 11px; }
+.product-view .tabs a                 { display:block; padding:6px 10px; color:#444; text-decoration: none;}
+.product-view .tabs a:hover           {  text-decoration:none; color:#BBBB25; ; text-decoration: none;}
+.product-view .tabs li.active a,
+<!--.product-view .tabs li.active a:hover { background:#496778;  font-weight:bold; color:#fff; }-->
+.product-view .tabs a:visited
+{
+background-color:#BBBB25;
+}
+#product_tabs_tags_tabbed_contents.input-box input	{ width: 300px; }
+#product_tabs_tags_tabbed_contents .input-box	{ width: 300px; float:left; margin-right: 10px;}
+#product_tabs_related_tabbed_contents li	{ float:left; margin-right: 10px;}
+#product_tabs_related_tabbed_contents ol	{ clear: both;}
+.product-collateral:after { content:"."; display:block; clear:both; font-size:0; line-height:0; height:0; overflow:hidden; zoom: 1}
+.product-collateral{background-color:#FFF !important;}

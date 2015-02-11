@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Indies ANZ eGate Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so you can be sent a copy immediately.
+ *
+ * @category   Indies
+ * @package    Indies_Anz
+ * @author     Indies Services
+
+ */
+-->
+<config>
+    <modules>
+        <Indies_Anz>
+            <version>0.1.0</version>
+            <depends>
+                <Mage_Payment />
+            </depends>
+        </Indies_Anz>
+    </modules>
+	<frontend>
+        <routers>
+            <anz>
+                <use>standard</use>
+                <args>
+                    <module>Indies_Anz</module>
+                    <frontName>anz</frontName>
+                </args>
+            </anz>
+        </routers>  
+    </frontend>
+    <global>
+    	<models>
+    		<anz>
+	    		<class>Indies_Anz_Model</class>
+	    	</anz>
+    	</models>
+    	<helpers>
+    		<anz>
+    			<class>Indies_Anz_Helper</class>
+    		</anz>
+    	</helpers>
+        <resources>
+            <anz_setup>
+                <setup>
+                    <module>Indies_Anz</module>
+                </setup>
+                <connection>
+                    <use>directory_setup</use>
+                </connection>
+            </anz_setup>
+            <anz_write>
+                <connection>
+                    <use>local_write</use>
+                </connection>
+            </anz_write>
+            <anz_read>
+                <connection>
+                    <use>local_read</use>
+                </connection>
+            </anz_read>
+        </resources>
+    </global>
+	<default>
+        <payment>
+            <anz_egate>
+            	<active>0</active>
+            	<model>anz/egate</model>
+				<secure_hash></secure_hash>
+            	<merchant_id></merchant_id>
+            	<access_code></access_code>
+<!--            	<username></username>
+            	<password></password>-->
+            	<title>Server - Hostepd Anz</title>
+				<submit_url>https://migs.mastercard.com.au/vpcpay</submit_url>
+            	<allowspecific>0</allowspecific>
+            	<test>1</test>
+            	<cctypes>AE,VI,MC</cctypes>
+            	<payment_action>authorize_capture</payment_action>
+            </anz_egate>
+        </payment>
+    </default>
+</config>

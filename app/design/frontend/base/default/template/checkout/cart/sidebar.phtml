@@ -1,0 +1,130 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Shoping cart sidebar
+ *
+ * @see Mage_Checkout_Block_Cart_Sidebar
+ */
+
+?>
+<?php if ($this->getIsNeedToDisplaySideBar()):?>
+<div class="block block-cart" style="width:192px !important;">
+    <?php $_cartQty = $this->getSummaryCount() ?>
+    
+   <!-- <div class="block-title">
+        <strong><span style="color:#D2256A !important; font-size:14px;"><?php //echo $this->__('SHOPPING BASKET') ?></span></strong>
+    </div><br/>-->
+    
+    <div class="" id="ShoppingBasket">
+       <div id="shopp_text_img"></div>
+        <div id="shopp_basket_img">
+         <div class="text_shopping">
+        
+    <?php if ($_cartQty>0): ?>
+        <div class="">
+        
+       <!-- <strong><span style="color:#D2256A !important; font-size:14px;"><?php //echo $this->__('SHOPPING BASKET') ?></span></strong>
+        <br/>-->
+        
+            <?php if ($_cartQty==1): ?>
+                <p class="existItems"><?php echo $this->__('You have<br/> <a href="%s"><span id="numItems">1</span><span style="color:#000;font-weight:bold;">item</span></a><br/> in your Basket.', $this->getUrl('checkout/cart')) ?></p>
+            <?php else: ?>
+            
+                <p class="existItems"><?php echo $this->__('You have<br/> <a href="%s"><span id="numItems">%s </span><span style="color:#000;font-weight:bold;">items</span></a><br/> in your Basket.', $this->getUrl('checkout/cart'), $_cartQty) ?></p>
+            <?php endif ?>
+            
+            <p class="subtotal2" style="background-color:#FFF;text-align:left; padding-left:9px;">
+                <span class="label" style="background-color:#FFF;"><?php echo $this->__('Cart Subtotal:') ?></span> <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?>
+                <?php if ($_subtotalInclTax = $this->getSubtotalInclTax()): ?>
+                    <br />(<?php //echo Mage::helper('checkout')->formatPrice($_subtotalInclTax) ?> <?php echo Mage::helper('tax')->getIncExcText(true) ?>)
+                <?php endif; ?>
+            </p>
+        </div>
+    <?php endif ?>
+    <?php if($_cartQty && $this->isPossibleOnepageCheckout()): ?>
+    <div class="actions" style=" border:none !important; background-image:none !important;background-color: #fff !important;">
+        <?php //echo $this->getChildHtml('extra_actions') ?>
+        <p title="<?php echo $this->__('Checkout') ?>" onclick="setLocation('<?php echo  $this->getUrl('checkout/cart') ?>')" id="GO" style="background-color:#FFF;text-align:left;">Proceed to Checkout&nbsp;<span id="GoToBasket"></span></p>
+    </div>
+    <?php endif ?>
+    <?php $_items = $this->getRecentItems() ?>
+    <?php if(count($_items)): ?>
+       <?php //echo $this->__('Recently added item(s)') ?></p>
+        <p onclick="setLocation('<?php echo  $this->getUrl('checkout/cart') ?>')" id="GO">Proceed to Checkout&nbsp;<span id="GoToBasket"></span></p>
+        <?php foreach($_items as $_item): ?>
+            <?php //echo $this->getItemHtml($_item) ?>
+        <?php endforeach; ?>
+       
+        <script type="text/javascript">decorateList('cart-sidebar', 'none-recursive')</script>
+    <?php else: ?>
+    
+        <p id="emptyItems"><?php echo $this->__('You have<br/><span id="numItems">0</span>items<br/> in your Basket.<br/>', $this->getUrl('checkout/cart'), $_cartQty) ?></p>
+        <p onclick="setLocation('<?php echo  $this->getUrl('checkout/cart') ?>')" id="GO">Proceed to Checkout&nbsp;<span id="GoToBasket"></span></p>
+        <br/><br/>
+ 
+        
+    <?php endif ?>
+    
+      
+       </div> <!--class="text_shopping">-->
+      </div>  <!--id="shopp_basket_img"-->
+      <div id="we_accept"></div>
+      
+      <div id="joinNow">
+      
+      
+<div id="join_now">
+	<div id="join_bg">
+   	  <div style=" float:left;">
+    	<a href="http://bedroom.bizarsoftware.com.au/subscribe-newsletter"><div id="envelop"></div></a>
+        <div id="join"><a href="http://bedroom.bizarsoftware.com.au/subscribe-newsletter"></a></div>
+      </div>
+        <div id="join_text"><strong>Between the Sheets</strong><br/>Be the first to know about new products, specials and other bedroom news!
+        </div>
+    </div>
+</div>
+      
+
+      </div>
+      
+    </div>   <!-- id="ShoppingBasket"-->
+</div> 
+<?php endif;?>
+
+<style>
+
+
+
+
+
+</style>
+
+
+
+
+
+</style>

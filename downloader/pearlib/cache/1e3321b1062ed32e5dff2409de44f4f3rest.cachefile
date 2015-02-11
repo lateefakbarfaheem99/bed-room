@@ -1,0 +1,11 @@
+a:9:{s:7:"attribs";a:2:{s:5:"xmlns";s:36:"http://pear.php.net/dtd/rest.package";s:18:"xsi:schemaLocation";s:80:"http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd";}s:1:"n";s:19:"Sync_with_Sugar_Crm";s:1:"c";s:37:"connect.magentocommerce.com/community";s:2:"ca";a:2:{s:7:"attribs";a:1:{s:10:"xlink:href";s:34:"/Chiara_PEAR_Server_REST/c/Default";}s:8:"_content";s:7:"Default";}s:1:"l";s:27:"Open Software License (OSL)";s:2:"lu";s:42:"http://opensource.org/licenses/osl-3.0.php";s:1:"s";s:100:"Extension post real time leads from magento to sugar crm automatically.
+info: www.magentoexperts.org";s:1:"d";s:1257:"<p>This extension would post real time leads from magento to sugar crm automatically. This extension also has the capability to transfer abandoned shopping carts from Magento to sugar crm as opportunities which would allow your sales team to track the opportunity and convert to a sale. We also have a feature where once an opportunity is converted to a sale in sugar crm, it can create an order in magento.</p>
+<p><strong>The extension is live now and good enough for you guys to Test!!. This extension can be installed for 15 days as a trial subscription. After 15 days, the extension will expire and we would need a payment. The cost will be 400$ for an one year subscription. We guarantee 15 days technical support by email and you can always email at info@thylaksoft.com for any issues. So please go ahead and use this extension and start synchronizing your leads to your sugar crm !! </strong></p>
+<p>More info and demo available at:</p>
+<p>http://www.magentoexperts.org/Sync_with_Sugar_Crm/magento2sugarcrm</p>
+<p><strong>Thanks</strong></p>
+<p><strong>Thylaksoft team.</strong></p>
+<p><strong>www.thylaksoft.com</strong></p>
+<p><strong>m: info@thylaksoft.com</strong></p>
+<p><strong>ph: 302-355-0449<br /></strong></p>
+<p><strong><br /></strong></p>";s:1:"r";a:1:{s:7:"attribs";a:1:{s:10:"xlink:href";s:46:"/Chiara_PEAR_Server_REST/r/Sync_with_Sugar_Crm";}}}

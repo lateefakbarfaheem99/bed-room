@@ -1,0 +1,41 @@
+a:9:{s:7:"attribs";a:2:{s:5:"xmlns";s:36:"http://pear.php.net/dtd/rest.package";s:18:"xsi:schemaLocation";s:80:"http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd";}s:1:"n";s:7:"Banners";s:1:"c";s:37:"connect.magentocommerce.com/community";s:2:"ca";a:2:{s:7:"attribs";a:1:{s:10:"xlink:href";s:34:"/Chiara_PEAR_Server_REST/c/Default";}s:8:"_content";s:7:"Default";}s:1:"l";s:32:"GNU General Public License (GPL)";s:2:"lu";s:50:"http://www.opensource.org/licenses/gpl-license.php";s:1:"s";s:99:"Simple Banners is an easy to use Banners extension that enables you to create sliding flash banners";s:1:"d";s:4606:"<p><a href="http://www.fmeextensions.com/">Free Magento Extensions</a> presents <strong><a href="http://www.fmeextensions.com/free-stuff/extensions/banners.html">Simple Banner Extension</a>. Simple Banners</strong> is an easy to use Banners extension that enables you to create sliding banners powered by Flash Front End Display. Administrator can add different banners / images to be displayed and has a very large number of options from Banner width, Banner height, Banner autoplay, Banner image resize to fit, transition speed, show play pause on Banner and many more options for customizing the banner display.</p>
+<p>The salient features of Simple Banners are:</p>
+<ol>
+<li>Easy to Manage with Magento Backend Admin management </li>
+<li>Front end is Flash Flash Enabled for Sliding and blur effect.</li>
+<li>Easy to Customize</li>
+<li>Easy to Install; Easy to upgrade; Just copy to use </li>
+<li>Banner Block (A banner can be displayed anywhere within a CMS page by putting a block in it.)</li>
+<li>When Adding or Editing a banner you have the following Options: Banner Title</li>
+<li>Banner Configuration including General Setting, Text Setting, Transition Setting, Show Hide Setting</li>
+</ol>
+<p>Simple Banners will help you:</p>
+<ol>
+<li>Manage your banners campaigns</li>
+<li>Target specific customers groups</li>
+<li>Display your payments and security icons</li>
+<li>Display scheduled events information and holidays related content</li>
+<li>Display special hours content info</li>
+</ol>
+<p>-----------------------------------------------------------------------------------------------------------------------------------</p>
+<p><strong>Version 1.4.0</strong> (Installer set the default values for Banner in this version)<br /> Support Magento Version: 1.3.*</p>
+<p>Banner is a flexible solution that allow to manage banners in the  easiest way. <br /> You can add multiple Banners link banners to products, categories, cms pages, external!</p>
+<p><strong>NOTE: Please download the Latest release 1.4.0 from Releases  section!</strong></p>
+<p><span style="font-size: small;"><strong><span style="color: #ff0000;">NOTE:If on Success full install you get DB error or Error say table not  exists please download the script from given below link and run that on  your database via PHPMyAdmin !</span></strong></span></p>
+<p><span style="color: #ff0000;"><strong><a href="http://usol360.com/products/download/Banners.sql">http://usol360.com/products/download/Banners.sql</a></strong></span></p>
+<p>1) 12 Different Flash Effects to display Banners</p>
+<p>2) Easy Manage able from Magento admin panel!</p>
+<p>3) Ability to show a slider of images on magento pages.</p>
+<p>Goto--&gt;Configration--&gt;Banner--&gt;Banners Configuration and set your desired settings!</p>
+<p>To Display the Banners copy those files &amp; folder to your shop theme and enjoy!</p>
+<p>app\design\frontend\default\default\template\banners<br />app\design\frontend\default\default\layout\banners.xml</p>
+<p>Include Banner!<br />{{block type="banners/banners" name="banners"  template="banners/banners.phtml"}}</p>
+<p>Enjoy if you have any issues please contact us Via email kamran.malik@unitedsol.net!</p>
+<p><strong>NOTE: Thanks to all user who used this extension we got some replies about issue to display banners on front end we made some changes in frontend layer please download the latest version 1.4.0 and i hope that works for all!</strong></p>
+<p><strong>Demo</strong></p>
+<p><a href="http://demo.free-magentoextensions.com/">Free Magento Extensions</a></p>
+<p>Please email us to access the admin panel info!</p>
+<p>Browser through other Extensions by <a href="http://www.fmeextensions.com/extensions.html">Free Magento Extensions</a></p>
+<p><strong>Revisions!</strong></p>
+<p>1.4.0 Includes the store functionality now you can create banners for multi stores!</p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input name="cmd" type="hidden" value="_donations" /> <input name="business" type="hidden" value="zeeshankhalid@gmail.com" /> <input name="lc" type="hidden" value="US" /> <input name="item_name" type="hidden" value="Unitedsol" /> <input name="no_note" type="hidden" value="0" /> <input name="currency_code" type="hidden" value="USD" /> <input name="bn" type="hidden" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest" /> <input alt="PayPal - The safer, easier way to pay online!" name="submit" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" type="image" /> <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" border="0" alt="" width="1" height="1" /> </form>";s:1:"r";a:1:{s:7:"attribs";a:1:{s:10:"xlink:href";s:34:"/Chiara_PEAR_Server_REST/r/Banners";}}}

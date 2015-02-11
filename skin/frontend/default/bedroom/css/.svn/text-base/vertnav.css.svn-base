@@ -1,0 +1,10 @@
+.vertnav-container{margin:0 0 15px;}
+#vertnav li .vertnav-cat{display:block;border-bottom:1px dotted gray;width:170px;padding:3px;}
+#vertnav li a{color:#666;text-decoration:none;display:block;margin:0;padding:2px;}
+#vertnav li a:hover{color:#666;background-color:#383838;}
+#vertnav li.inactive .vertnav-cat{font-weight:400;}
+#vertnav .level0 .vertnav-cat a{display:block;width:168px;}
+#vertnav .level1 .vertnav-cat a{padding-left:10px;width:160px;display:block;}
+#vertnav .level2 .vertnav-cat a{padding-left:20px;width:150px;display:block;}
+#vertnav .level3 .vertnav-cat a{padding-left:30px;width:140px;display:block;}
+#vertnav li.parent .vertnav-cat,#vertnav li.active .vertnav-cat{font-weight:700;}

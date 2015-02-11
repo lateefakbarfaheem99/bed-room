@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+	<default>
+		<reference name="left">
+			<block type="cms/block" name="left_side_bar" as="left_side_bar" after="-">
+				<action method="setBlockId"><block_id>left_side_bar</block_id></action>
+			</block>
+		</reference>
+        	<reference name="right">
+                	<block type="cms/block" name="right_side_bar" as="right_side_bar" after="-">
+                        	<action method="setBlockId"><block_id>right_side_bar</block_id></action>
+                	</block>
+        	</reference>
+
+		<!--remove name="right.permanent.callout"/>
+		<remove name="left.permanent.callout"/-->
+		<remove name="newalbum"/>
+	</default>
+</layout>

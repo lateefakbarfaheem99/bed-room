@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Paytype Newslider Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the PayType EULA (End-user license
+ * agreement) that is bundled with this package in the file license.txt.
+ * You may not give, sell, distribute, sub-license, rent, lease or lend
+ * any portion of the Software or Documentation to anyone. 
+ *
+ * @category   Paytype
+ * @package    Paytype_Newslider
+ * @author     M.Rivas
+ * @copyright  Copyright (c) 2009 Paytype SL (http://magentomodules.paytype.com)
+ * @license    End-user license Agreement
+ */-->
+<config>
+    <sections>
+        <admin>
+            <groups>
+                <newslider translate="label">
+                    <label>Newslider Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <product_count translate="label">
+                            <label>Max number of products to show</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </product_count>
+                        <showfirst_ad translate="label">
+                            <label>Show the following HTML block first?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </showfirst_ad>
+                        <showfirst_html translate="label">
+                            <label>HTML block as first item</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </showfirst_html>
+                        <boxwidth translate="label">
+                            <label>Box Width (pixels)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </boxwidth>
+                        <boxheight translate="label">
+                            <label>Box Height (pixels)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </boxheight>
+                        <itemtime translate="label">
+                            <label>Time per item (secs)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </itemtime>
+                        <stoponmouseover translate="label">
+                            <label>Stop sliding on mouse over</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </stoponmouseover>                        
+                    </fields>
+                </newslider>
+            </groups>
+        </admin>
+    </sections>
+</config> 
+
