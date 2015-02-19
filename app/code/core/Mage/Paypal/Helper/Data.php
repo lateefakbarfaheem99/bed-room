@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Mage
  * @package     Mage_Paypal
- * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright  Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 /**
@@ -30,120 +30,21 @@
 class Mage_Paypal_Helper_Data extends Mage_Core_Helper_Abstract
 {
     /**
+     * US country code
+     */
+    const US_COUNTRY = 'US';
+
+    /**
+     * Config path for merchant country
+     */
+    const MERCHANT_COUNTRY_CONFIG_PATH = 'paypal/general/merchant_country';
+
+    /**
      * Cache for shouldAskToCreateBillingAgreement()
      *
      * @var bool
      */
     protected static $_shouldAskToCreateBillingAgreement = null;
-
-    /**
-     * Get line items and totals from sales quote or order
-     *
-     * PayPal calculates grand total by this formula:
-     * sum(item_base_price * qty) + subtotal + shipping + shipping_discount
-     * where subtotal doesn't include anything, shipping_discount is negative
-     * the items discount should go as separate cart line item with negative amount
-     * the shipping_discount is outlined in PayPal API docs, but ignored for some reason. Hence commented out.
-     *
-     * @param Mage_Sales_Model_Order $salesEntity
-     * @return array (array of $items, array of totals, $discountTotal, $shippingTotal)
-     */
-    public function prepareLineItems(Mage_Core_Model_Abstract $salesEntity, $discountTotalAsItem = true, $shippingTotalAsItem = false)
-    {
-        $items = array();
-        foreach ($salesEntity->getAllItems() as $item) {
-            if (!$item->getParentItem()) {
-                $items[] = new Varien_Object($this->_prepareLineItemFields($salesEntity, $item));
-            }
-        }
-        $additionalItems = new Varien_Object(array('items'=>array()));
-        Mage::dispatchEvent('paypal_prepare_line_items', array('sales_entity'=>$salesEntity, 'additional'=>$additionalItems));
-        $additionalAmount   = 0;
-        $discountAmount     = 0; // this amount always includes the shipping discount
-        foreach ($additionalItems->getItems() as $item) {
-            if ($item['amount'] > 0) {
-                $additionalAmount += $item['amount'];
-                $items[] = $item;
-            } else {
-                $discountAmount += abs($item['amount']);
-            }
-        }
-        $shippingDescription = '';
-        if ($salesEntity instanceof Mage_Sales_Model_Order) {
-            $discountAmount += abs($salesEntity->getBaseDiscountAmount());
-            $shippingDescription = $salesEntity->getShippingDescription();
-            $totals = array(
-                'subtotal' => $salesEntity->getBaseSubtotal() - $discountAmount,
-                'tax'      => $salesEntity->getBaseTaxAmount(),
-                'shipping' => $salesEntity->getBaseShippingAmount(),
-                'discount' => $discountAmount,
-//                'shipping_discount' => -1 * abs($salesEntity->getBaseShippingDiscountAmount()),
-            );
-        } else {
-            $address = $salesEntity->getIsVirtual() ? $salesEntity->getBillingAddress() : $salesEntity->getShippingAddress();
-            $discountAmount += abs($address->getBaseDiscountAmount());
-            $shippingDescription = $address->getShippingDescription();
-            $totals = array (
-                'subtotal' => $salesEntity->getBaseSubtotal() - $discountAmount,
-                'tax'      => $address->getBaseTaxAmount(),
-                'shipping' => $address->getBaseShippingAmount(),
-                'discount' => $discountAmount,
-//                'shipping_discount' => -1 * abs($address->getBaseShippingDiscountAmount()),
-            );
-        }
-
-        // discount total as line item (negative)
-        if ($discountTotalAsItem && $discountAmount) {
-            $items[] = new Varien_Object(array(
-                'name'   => Mage::helper('paypal')->__('Discount'),
-                'qty'    => 1,
-                'amount' => -1.00 * $discountAmount,
-            ));
-        }
-        // shipping total as line item
-        if ($shippingTotalAsItem && (!$salesEntity->getIsVirtual()) && (float)$totals['shipping']) {
-            $items[] = new Varien_Object(array(
-                'id'     => Mage::helper('paypal')->__('Shipping'),
-                'name'   => $shippingDescription,
-                'qty'    => 1,
-                'amount' => (float)$totals['shipping'],
-            ));
-        }
-
-        $hiddenTax = (float) $salesEntity->getBaseHiddenTaxAmount();
-        if ($hiddenTax) {
-            $items[] = new Varien_Object(array(
-                'name'   => Mage::helper('paypal')->__('Discount Tax'),
-                'qty'    => 1,
-                'amount' => (float)$hiddenTax,
-            ));
-        }
-
-        return array($items, $totals, $discountAmount, $totals['shipping']);
-    }
-
-    /**
-     * Check whether cart line items are eligible for exporting to PayPal API
-     *
-     * Requires data returned by self::prepareLineItems()
-     *
-     * @param array $items
-     * @param array $totals
-     * @param float $referenceAmount
-     * @return bool
-     */
-    public function areCartLineItemsValid($items, $totals, $referenceAmount)
-    {
-        $sum = 0;
-        foreach ($items as $i) {
-            $sum = $sum + $i['qty'] * $i['amount'];
-        }
-        /**
-         * numbers are intentionally converted to strings because of possible comparison error
-         * see http://php.net/float
-         */
-        return sprintf('%.4F', ($sum + $totals['shipping'] + $totals['tax'])) == sprintf('%.4F', $referenceAmount);
-    }
 
     /**
      * Check whether customer should be asked confirmation whether to sign a billing agreement
@@ -166,42 +67,66 @@ class Mage_Paypal_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /**
-     * @deprecated after 1.4.0.1
+     * Return backend config for element like JSON
+     *
+     * @param Varien_Data_Form_Element_Abstract $element
+     * @return string
      */
-    public function doLineItemsMatchAmount(Mage_Core_Model_Abstract $salesEntity, $orderAmount)
-    {
-        return false;
+    public function getElementBackendConfig(Varien_Data_Form_Element_Abstract $element) {
+        $config = $element->getFieldConfig()->backend_congif;
+        if (!$config) {
+            return false;
+        }
+        $config = $config->asCanonicalArray();
+        if (isset($config['enable_for_countries'])) {
+            $config['enable_for_countries'] = explode(',', str_replace(' ', '', $config['enable_for_countries']));
+        }
+        if (isset($config['disable_for_countries'])) {
+            $config['disable_for_countries'] = explode(',', str_replace(' ', '', $config['disable_for_countries']));
+        }
+        return Mage::helper('core')->jsonEncode($config);
     }
 
     /**
-     * Get one line item key-value array
+     * Get selected merchant country code in system configuration
      *
-     * @param Mage_Core_Model_Abstract $salesEntity
-     * @param Varien_Object $item
-     * @return array
+     * @return string
      */
-    protected function _prepareLineItemFields(Mage_Core_Model_Abstract $salesEntity, Varien_Object $item)
+    public function getConfigurationCountryCode()
     {
-        if ($salesEntity instanceof Mage_Sales_Model_Order) {
-            $qty = $item->getQtyOrdered();
-            $amount = $item->getBasePrice();
-            // TODO: nominal item for order
-        } else {
-            $qty = $item->getTotalQty();
-            $amount = $item->isNominal() ? 0 : $item->getBaseCalculationPrice();
+        $requestParam = Mage_Paypal_Block_Adminhtml_System_Config_Field_Country::REQUEST_PARAM_COUNTRY;
+        $countryCode  = Mage::app()->getRequest()->getParam($requestParam);
+        if (is_null($countryCode) || preg_match('/^[a-zA-Z]{2}$/', $countryCode) == 0) {
+            $countryCode = (string)Mage::getSingleton('adminhtml/config_data')
+                ->getConfigDataValue(self::MERCHANT_COUNTRY_CONFIG_PATH);
         }
-        // workaround in case if item subtotal precision is not compatible with PayPal (.2)
-        $subAggregatedLabel = '';
-        if ((float)$amount - round((float)$amount, 2)) {
-            $amount = $amount * $qty;
-            $subAggregatedLabel = ' x' . $qty;
-            $qty = 1;
+        if (empty($countryCode)) {
+            $countryCode = Mage::helper('core')->getDefaultCountry();
         }
-        return array(
-            'id'     => $item->getSku(),
-            'name'   => $item->getName() . $subAggregatedLabel,
-            'qty'    => $qty,
-            'amount' => (float)$amount,
-        );
+        return $countryCode;
+    }
+
+    /**
+     * Get HTML representation of transaction id
+     *
+     * @param string $methodCode
+     * @param string $txnId
+     * @return string
+     */
+    public function getHtmlTransactionId($methodCode, $txnId)
+    {
+        if (in_array($methodCode, array(
+            Mage_Paypal_Model_Config::METHOD_WPP_DIRECT,
+            Mage_Paypal_Model_Config::METHOD_WPP_EXPRESS,
+            Mage_Paypal_Model_Config::METHOD_HOSTEDPRO,
+            Mage_Paypal_Model_Config::METHOD_WPS,
+        ))) {
+            /** @var Mage_Paypal_Model_Config $config */
+            $config = Mage::getModel('paypal/config')->setMethod($methodCode);
+            $url = 'https://www.' . ($config->sandboxFlag ? 'sandbox.' : '')
+                . 'paypal.com/cgi-bin/webscr?cmd=_view-a-trans&id=' . $txnId;
+            return '<a target="_blank" href="' . $url . '">' . $txnId . '</a>';
+        }
+        return $txnId;
     }
 }

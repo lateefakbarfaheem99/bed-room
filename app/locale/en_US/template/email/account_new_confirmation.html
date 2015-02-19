@@ -1,7 +1,8 @@
 <!--@subject Account confirmation for {{var customer.name}} @-->
 <!--@vars
 {"store url=\"\"":"Store Url",
-"skin url=\"images/logo_email.gif\" _area='frontend'":"Email Logo Image",
+"var logo_url":"Email Logo Image Url",
+"var logo_alt":"Email Logo Image Alt",
 "store url=\"customer/account/\"":"Customer Account Url",
 "htmlescape var=$customer.name":"Customer Name",
 "var customer.email":"Customer Email",
@@ -10,42 +11,42 @@
 @-->
 
 <!--@styles
-body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
 @-->
 
-<div style="font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;">
-    <table cellspacing="0" cellpadding="0" border="0" width="98%" style="margin-top:10px; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; margin-bottom:10px;">
-        <tr>
-            <td align="center" valign="top">
-                <!-- [ header starts here] -->
-                <table cellspacing="0" cellpadding="0" border="0" width="650">
-                    <tr>
-                        <td valign="top">
-                            <a href="{{store url=""}}"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="{{var store.getFrontendName()}}"  style="margin-bottom:10px;" border="0"/></a></td>
-                    </tr>
-                </table>
+{{template config_path="design/email/header"}}
+{{inlinecss file="email-inline.css"}}
 
-                <!-- [ middle starts here] -->
-                <table cellspacing="0" cellpadding="0" border="0" width="650">
-                    <tr>
-                        <td valign="top">
-                            <p><strong>Dear {{htmlescape var=$customer.name}}</strong>, <br/> Welcome to Demo Store.</p>
+<table cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td>
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td class="action-content">
+                        <h1>{{htmlescape var=$customer.name}},</h1>
+                        <p>Your email {{var customer.email}} must be confirmed before using it to log in to our store.</p>
+                        <p class="highlighted-text">
+                            Use the following values when prompted to log in:<br/>
+                            <strong>Email:</strong> {{var customer.email}}<br/>
+                            <strong>Password:</strong> {{htmlescape var=$customer.password}}
+                        </p>
+                        <p>Click here to confirm your email and instantly log in (the link is valid only once):</p>
+                        <table cellspacing="0" cellpadding="0" class="action-button" >
+                            <tr>
+                                <td>
+                                    <a href="{{store url="customer/account/confirm/" _query_id=$customer.id _query_key=$customer.confirmation _query_back_url=$back_url}}"><span>Confirm Account</span></a>
+                                </td>
+                            </tr>
+                        </table>
+                        <p>
+                            If you have any questions, please feel free to contact us at
+                            <a href="mailto:{{var store_email}}">{{var store_email}}</a>
+                            {{depend store_phone}} or by phone at <a href="tel:{{var phone}}">{{var store_phone}}</a>{{/depend}}.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
 
-                            <p>Your e-mail {{var customer.email}} must be confirmed before using it to log in to our store.</p>
-
-                            <p>To confirm the e-mail and instantly log in, please, use <a href="{{store url="customer/account/confirm/" _query_id=$customer.id _query_key=$customer.confirmation _query_back_url=$back_url}}" style="color:#1E7EC8;">this confirmation link</a>. This link is valid only once.</p>
-
-                            <p style="border:1px solid #BEBCB7; padding:13px 18px; background:#F8F7F5; ">
-                                Use the following values when prompted to log in:<br/>
-                                E-mail: {{var customer.email}}<br/>
-                                Password: {{htmlescape var=$customer.password}}<p>
-
-                            <p>If you have any questions about your account or any other matter, please feel free to contact us at <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#1E7EC8;">{{config path='trans_email/ident_support/email'}}</a> or by phone at {{config path='general/store_information/phone'}}.</p>
-                        </td>
-                    </tr>
-                </table>
-
-            </td>
-        </tr>
-    </table>
-</div>
+{{template config_path="design/email/footer"}}

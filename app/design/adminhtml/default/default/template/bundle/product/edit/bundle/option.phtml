@@ -10,17 +10,17 @@
  * http://opensource.org/licenses/afl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    design
  * @package     default_default
- * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
@@ -42,7 +42,7 @@ optionTemplate = '<div id="<?php echo $this->getFieldId() ?>_{{index}}"  class="
                 '<th class="opt-title"><?php echo Mage::helper('bundle')->__('Store View Title') ?>  <span class="required">*</span></th>' +
                 <?php endif; ?>
                 '<th class="opt-type"><?php echo Mage::helper('bundle')->__('Input Type') ?></th>' +
-                '<th class="opt-req"><?php echo Mage::helper('bundle')->__('Is Required') ?></th>' +
+                '<th class="opt-req"><?php echo $this->jsQuoteEscape(Mage::helper('bundle')->__('Is Required')) ?></th>' +
                 '<th class="opt-order"><?php echo Mage::helper('bundle')->__('Position') ?></th>' +
                 '<th>&nbsp;</th>' +
             '</tr>' +
@@ -212,6 +212,7 @@ bOption = new Bundle.Option(optionTemplate);
 optionIndex = bOption.add(<?php echo $_option->toJson() ?>);
 <?php if ($_option->getSelections()):?>
     <?php foreach ($_option->getSelections() as $_selection): ?>
+    <?php $_selection->setName($this->escapeHtml($_selection->getName())); ?>
 bSelection.addRow(optionIndex, <?php echo $_selection->toJson() ?>);
     <?php endforeach; ?>
 <?php endif; ?>

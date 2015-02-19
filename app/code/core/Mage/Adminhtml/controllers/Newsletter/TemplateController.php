@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Mage
  * @package     Mage_Adminhtml
- * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright  Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 /**
  * Manage Newsletter Template Controller
@@ -33,12 +33,33 @@
 class Mage_Adminhtml_Newsletter_TemplateController extends Mage_Adminhtml_Controller_Action
 {
     /**
+     * Check is allowed access
+     *
+     * @return bool
+     */
+    protected function _isAllowed ()
+    {
+        return Mage::getSingleton('admin/session')
+            ->isAllowed('newsletter/template');
+    }
+
+    /**
+     * Set title of page
+     *
+     * @return Mage_Adminhtml_Newsletter_TemplateController
+     */
+    protected function _setTitle()
+    {
+        return $this->_title($this->__('Newsletter'))->_title($this->__('Newsletter Templates'));
+    }
+
+    /**
      * View Templates list
      *
      */
     public function indexAction ()
     {
-        $this->_title($this->__('Newsletter'))->_title($this->__('Newsletter Templates'));
+        $this->_setTitle();
 
         if ($this->getRequest()->getQuery('ajax')) {
             $this->_forward('grid');
@@ -64,7 +85,7 @@ class Mage_Adminhtml_Newsletter_TemplateController extends Mage_Adminhtml_Contro
     }
 
     /**
-     * Create new Nesletter Template
+     * Create new Newsletter Template
      *
      */
     public function newAction ()
@@ -78,7 +99,7 @@ class Mage_Adminhtml_Newsletter_TemplateController extends Mage_Adminhtml_Contro
      */
     public function editAction ()
     {
-        $this->_title($this->__('Newsletter'))->_title($this->__('Newsletter Templates'));
+        $this->_setTitle();
 
         $model = Mage::getModel('newsletter/template');
         if ($id = $this->getRequest()->getParam('id')) {
@@ -116,7 +137,17 @@ class Mage_Adminhtml_Newsletter_TemplateController extends Mage_Adminhtml_Contro
     }
 
     /**
-     * Save Nesletter Template
+     * Drop Newsletter Template
+     *
+     */
+    public function dropAction ()
+    {
+        $this->loadLayout('newsletter_template_preview');
+        $this->renderLayout();
+    }
+
+    /**
+     * Save Newsletter Template
      *
      */
     public function saveAction ()
@@ -194,18 +225,19 @@ class Mage_Adminhtml_Newsletter_TemplateController extends Mage_Adminhtml_Contro
      */
     public function previewAction ()
     {
-        $this->loadLayout('preview');
-        $this->renderLayout();
-    }
+        $this->_setTitle();
+        $this->loadLayout();
 
-    /**
-     * Check is allowed access
-     *
-     * @return bool
-     */
-    protected function _isAllowed ()
-    {
-        return Mage::getSingleton('admin/session')
-            ->isAllowed('newsletter/template');
+        $data = $this->getRequest()->getParams();
+        if (empty($data) || !isset($data['id'])) {
+            $this->_forward('noRoute');
+            return $this;
+        }
+
+        // set default value for selected store
+        $data['preview_store_id'] = Mage::app()->getAnyStoreView()->getId();
+
+        $this->getLayout()->getBlock('preview_form')->setFormData($data);
+        $this->renderLayout();
     }
 }

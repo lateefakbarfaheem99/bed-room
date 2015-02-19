@@ -10,17 +10,17 @@
  * http://opensource.org/licenses/afl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    design
  * @package     default_default
- * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
@@ -50,7 +50,7 @@ $numColumns = sizeof($this->getColumns());
 
         <div id="<?php echo $this->getId() ?>">
     <?php else: ?>
-        <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+        <?php echo $this->getMessagesBlock()->toHtml() ?>
     <?php endif; ?>
 <?php if($this->getPagerVisibility() || $this->getExportTypes() || $this->getFilterVisibility()): ?>
     <table cellspacing="0" class="actions">
@@ -120,9 +120,6 @@ $numColumns = sizeof($this->getColumns());
     <table cellspacing="0" class="data" id="<?php echo $this->getId() ?>_table">
         <?php foreach ($this->getColumns() as $_column): ?>
         <col <?php echo $_column->getHtmlProperty() ?> />
-        <?php if ($_column->getEditable() && !$_column->getEditOnly()) : ?>
-        <col <?php echo $_column->getHtmlProperty() ?> />
-        <?php endif ?>
         <?php endforeach; ?>
         <?php if ($this->getHeadersVisibility() || $this->getFilterVisibility()): ?>
             <thead>
@@ -197,7 +194,7 @@ $numColumns = sizeof($this->getColumns());
         <?php endforeach; ?>
         <?php elseif ($this->getEmptyText()): ?>
             <tr>
-                <td class="empty-text <?php echo $this->getEmptyTextClass() ?>" colspan="100"><?php echo $this->getEmptyText() ?></td>
+                <td class="empty-text <?php echo $this->getEmptyTextClass() ?>" colspan="<?php echo $numColumns ?>"><?php echo $this->getEmptyText() ?></td>
             </tr>
         <?php endif; ?>
         </tbody>
@@ -224,6 +221,7 @@ $numColumns = sizeof($this->getColumns());
     <?php if($this->getMassactionBlock()->isAvailable()): ?>
     <?php echo $this->getMassactionBlock()->getJavaScript() ?>
     <?php endif ?>
+    <?php echo $this->getAdditionalJavaScript(); ?>
 //]]>
 </script>
 <?php endif; ?>

@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Mage
  * @package     Mage_Dataflow
- * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright  Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 
@@ -68,7 +68,7 @@ class Mage_Dataflow_Model_Convert_Parser_Xml_Excel extends Mage_Dataflow_Model_C
             return $this;
         }
 
-        if (!is_callable(array($adapter, $adapterMethod))) {
+        if (!method_exists($adapter, $adapterMethod)) {
             $message = Mage::helper('dataflow')->__('Method "%s" was not defined in adapter %s.', $adapterMethod, $adapterName);
             $this->addException($message, Mage_Dataflow_Model_Convert_Exception::FATAL);
             return $this;
@@ -303,9 +303,9 @@ class Mage_Dataflow_Model_Convert_Parser_Xml_Excel extends Mage_Dataflow_Model_C
         foreach ($xmlElement->Row->children() as $cell) {
             if (is_null($this->_parseFieldNames)) {
                 $xmlData[(string)$cell->Data] = (string)$cell->Data;
-            }
-            else {
-                if (($attributes = $cell->attributes('urn:schemas-microsoft-com:office:spreadsheet')) && isset($attributes['Index'])) {
+            } else {
+                $attributes = $cell->attributes('urn:schemas-microsoft-com:office:spreadsheet');
+                if ($attributes && isset($attributes['Index'])) {
                     $cellIndex = $attributes['Index'] - 1;
                 }
                 $xmlData[$cellIndex] = (string)$cell->Data;
@@ -343,7 +343,7 @@ class Mage_Dataflow_Model_Convert_Parser_Xml_Excel extends Mage_Dataflow_Model_C
         $fieldList = $this->getBatchModel()->getFieldList();
         $batchExportIds = $batchExport->getIdCollection();
 
-        if (!$batchExportIds) {
+        if (!is_array($batchExportIds)) {
             return $this;
         }
 
@@ -462,7 +462,7 @@ class Mage_Dataflow_Model_Convert_Parser_Xml_Excel extends Mage_Dataflow_Model_C
      */
     protected function _getXmlString(array $fields = array())
     {
-        $xmlHeader = '<'.'?xml version="1.0"?'.'>' . "\n";
+        $xmlHeader = '<?xml version="1.0"?>' . "\n";
         $xmlRegexp = '/^<cell><row>(.*)?<\/row><\/cell>\s?$/ms';
 
         if (is_null($this->_xmlElement)) {
@@ -476,15 +476,15 @@ class Mage_Dataflow_Model_Convert_Parser_Xml_Excel extends Mage_Dataflow_Model_C
             $this->_xmlElement->row = htmlspecialchars($value);
             $value = str_replace($xmlHeader, '', $this->_xmlElement->asXML());
             $value = preg_replace($xmlRegexp, '\\1', $value);
-            $dataType = "String";
             if (is_numeric($value)) {
-                $dataType = "Number";
+                $value = trim($value);
+                $dataType = 'Number';
+            } else {
+                $dataType = 'String';
             }
-            $value = str_replace("\r\n", '&#10;', $value);
-            $value = str_replace("\r", '&#10;', $value);
-            $value = str_replace("\n", '&#10;', $value);
+            $value = str_replace(array("\r\n", "\r", "\n"), '&#10;', $value);
 
-            $xmlData[] = '<Cell><Data ss:Type="'.$dataType.'">'.$value.'</Data></Cell>';
+            $xmlData[] = '<Cell><Data ss:Type="' . $dataType . '">' . $value . '</Data></Cell>';
         }
         $xmlData[] = '</Row>';
 

@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Mage
  * @package     Mage_Adminhtml
- * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright  Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 
@@ -127,10 +127,10 @@ class Mage_Adminhtml_Block_Catalog_Product_Attribute_Edit_Tab_Main extends Mage_
         $fieldset = $form->addFieldset('front_fieldset', array('legend'=>Mage::helper('catalog')->__('Frontend Properties')));
 
         $fieldset->addField('is_searchable', 'select', array(
-            'name' => 'is_searchable',
-            'label' => Mage::helper('catalog')->__('Use in Quick Search'),
-            'title' => Mage::helper('catalog')->__('Use in Quick Search'),
-            'values' => $yesnoSource,
+            'name'     => 'is_searchable',
+            'label'    => Mage::helper('catalog')->__('Use in Quick Search'),
+            'title'    => Mage::helper('catalog')->__('Use in Quick Search'),
+            'values'   => $yesnoSource,
         ));
 
         $fieldset->addField('is_visible_in_advanced_search', 'select', array(
@@ -239,6 +239,11 @@ class Mage_Adminhtml_Block_Catalog_Product_Attribute_Edit_Tab_Main extends Mage_
             ->addFieldDependence('html_allowed_on_front', 'wysiwyg_enabled', '0')
         );
 
+        Mage::dispatchEvent('adminhtml_catalog_product_attribute_edit_prepare_form', array(
+            'form'      => $form,
+            'attribute' => $attributeObject
+        ));
+
         return $this;
     }
 
@@ -250,7 +255,7 @@ class Mage_Adminhtml_Block_Catalog_Product_Attribute_Edit_Tab_Main extends Mage_
     protected function _getAdditionalElementTypes()
     {
         return array(
-            'apply' => Mage::getConfig()->getBlockClassName('adminhtml/catalog_product_helper_form_apply')
+            'apply'         => Mage::getConfig()->getBlockClassName('adminhtml/catalog_product_helper_form_apply'),
         );
     }
 }

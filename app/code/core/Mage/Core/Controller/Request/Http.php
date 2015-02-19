@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Mage
  * @package     Mage_Core
- * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright  Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 
@@ -35,6 +35,8 @@
 class Mage_Core_Controller_Request_Http extends Zend_Controller_Request_Http
 {
     const XML_NODE_DIRECT_FRONT_NAMES = 'global/request/direct_front_name';
+    const DEFAULT_HTTP_PORT = 80;
+    const DEFAULT_HTTPS_PORT = 443;
 
     /**
      * ORIGINAL_PATH_INFO
@@ -51,10 +53,11 @@ class Mage_Core_Controller_Request_Http extends Zend_Controller_Request_Http
      */
     protected $_rewritedPathInfo= null;
     protected $_requestedRouteName = null;
+    protected $_routingInfo = array();
 
     protected $_route;
 
-    protected $_directFrontNames = array();
+    protected $_directFrontNames = null;
     protected $_controllerModule = null;
 
     /**
@@ -71,15 +74,6 @@ class Mage_Core_Controller_Request_Http extends Zend_Controller_Request_Http
      * @var array
      */
     protected $_beforeForwardInfo = array();
-
-    public function __construct($uri = null)
-    {
-        parent::__construct($uri);
-        $names = Mage::getConfig()->getNode(self::XML_NODE_DIRECT_FRONT_NAMES);
-        if ($names) {
-            $this->_directFrontNames = $names->asArray();
-        }
-    }
 
     /**
      * Returns ORIGINAL_PATH_INFO.
@@ -224,6 +218,14 @@ class Mage_Core_Controller_Request_Http extends Zend_Controller_Request_Http
      */
     public function getDirectFrontNames()
     {
+        if (is_null($this->_directFrontNames)) {
+            $names = Mage::getConfig()->getNode(self::XML_NODE_DIRECT_FRONT_NAMES);
+            if ($names) {
+                $this->_directFrontNames = $names->asArray();
+            } else {
+                return array();
+            }
+        }
         return $this->_directFrontNames;
     }
 
@@ -250,9 +252,13 @@ class Mage_Core_Controller_Request_Http extends Zend_Controller_Request_Http
         return $path;
     }
 
-    public function getBaseUrl()
+    /**
+     * @param bool $raw
+     * @return string
+     */
+    public function getBaseUrl($raw = false)
     {
-        $url = parent::getBaseUrl();
+        $url = parent::getBaseUrl($raw);
         $url = str_replace('\\', '/', $url);
         return $url;
     }
@@ -295,7 +301,7 @@ class Mage_Core_Controller_Request_Http extends Zend_Controller_Request_Http
     /**
      * Set a member of the $_POST superglobal
      *
-     * @param striing|array $key
+     * @param string|array $key
      * @param mixed $value
      *
      * @return Mage_Core_Controller_Request_Http
@@ -362,12 +368,45 @@ class Mage_Core_Controller_Request_Http extends Zend_Controller_Request_Http
     }
 
     /**
+     * Retrieve an alias
+     *
+     * Retrieve the actual key represented by the alias $name.
+     *
+     * @param string $name
+     * @return string|null Returns null when no alias exists
+     */
+    public function getAlias($name)
+    {
+        $aliases = $this->getAliases();
+        if (isset($aliases[$name])) {
+            return $aliases[$name];
+        }
+        return null;
+    }
+
+    /**
+     * Retrieve the list of all aliases
+     *
+     * @return array
+     */
+    public function getAliases()
+    {
+        if (isset($this->_routingInfo['aliases'])) {
+            return $this->_routingInfo['aliases'];
+        }
+        return parent::getAliases();
+    }
+
+    /**
      * Get route name used in request (ignore rewrite)
      *
      * @return string
      */
     public function getRequestedRouteName()
     {
+        if (isset($this->_routingInfo['requested_route'])) {
+            return $this->_routingInfo['requested_route'];
+        }
         if ($this->_requestedRouteName === null) {
             if ($this->_rewritedPathInfo !== null && isset($this->_rewritedPathInfo[0])) {
                 $fronName = $this->_rewritedPathInfo[0];
@@ -388,6 +427,9 @@ class Mage_Core_Controller_Request_Http extends Zend_Controller_Request_Http
      */
     public function getRequestedControllerName()
     {
+        if (isset($this->_routingInfo['requested_controller'])) {
+            return $this->_routingInfo['requested_controller'];
+        }
         if (($this->_rewritedPathInfo !== null) && isset($this->_rewritedPathInfo[1])) {
             return $this->_rewritedPathInfo[1];
         }
@@ -401,10 +443,27 @@ class Mage_Core_Controller_Request_Http extends Zend_Controller_Request_Http
      */
     public function getRequestedActionName()
     {
+        if (isset($this->_routingInfo['requested_action'])) {
+            return $this->_routingInfo['requested_action'];
+        }
         if (($this->_rewritedPathInfo !== null) && isset($this->_rewritedPathInfo[2])) {
             return $this->_rewritedPathInfo[2];
         }
         return $this->getActionName();
+    }
+
+    /**
+     * Set routing info data
+     *
+     * @param array $data
+     * @return Mage_Core_Controller_Request_Http
+     */
+    public function setRoutingInfo($data)
+    {
+        if (is_array($data)) {
+            $this->_routingInfo = $data;
+        }
+        return $this;
     }
 
     /**
@@ -458,5 +517,21 @@ class Mage_Core_Controller_Request_Http extends Zend_Controller_Request_Http
             $this->_isStraight = $flag;
         }
         return $this->_isStraight;
+    }
+
+    /**
+     * Check is Request from AJAX
+     *
+     * @return boolean
+     */
+    public function isAjax()
+    {
+        if ($this->isXmlHttpRequest()) {
+            return true;
+        }
+        if ($this->getParam('ajax') || $this->getParam('isAjax')) {
+            return true;
+        }
+        return false;
     }
 }

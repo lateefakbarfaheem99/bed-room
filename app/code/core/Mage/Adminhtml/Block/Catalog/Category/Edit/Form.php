@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Mage
  * @package     Mage_Adminhtml
- * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright  Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 /**
@@ -48,34 +48,40 @@ class Mage_Adminhtml_Block_Catalog_Category_Edit_Form extends Mage_Adminhtml_Blo
 
     protected function _prepareLayout()
     {
+        $category = $this->getCategory();
+        $categoryId = (int) $category->getId(); // 0 when we create category, otherwise some value for editing category
+
         $this->setChild('tabs',
             $this->getLayout()->createBlock('adminhtml/catalog_category_tabs', 'tabs')
         );
 
-        if (!$this->getCategory()->isReadonly()) {
+        // Save button
+        if (!$category->isReadonly()) {
             $this->setChild('save_button',
                 $this->getLayout()->createBlock('adminhtml/widget_button')
                     ->setData(array(
                         'label'     => Mage::helper('catalog')->__('Save Category'),
-                        'onclick'   => "categorySubmit('".$this->getSaveUrl()."',true)",
+                        'onclick'   => "categorySubmit('" . $this->getSaveUrl() . "', true)",
                         'class' => 'save'
                     ))
             );
         }
-        if (!in_array($this->getCategory()->getId(), $this->getRootIds()) &&
-            $this->getCategory()->isDeleteable()) {
+
+        // Delete button
+        if (!in_array($categoryId, $this->getRootIds()) && $category->isDeleteable()) {
             $this->setChild('delete_button',
                 $this->getLayout()->createBlock('adminhtml/widget_button')
                     ->setData(array(
                         'label'     => Mage::helper('catalog')->__('Delete Category'),
-                        'onclick'   => "categoryDelete('".$this->getUrl('*/*/delete', array('_current'=>true))."',true)",
+                        'onclick'   => "categoryDelete('" . $this->getUrl('*/*/delete', array('_current' => true)) . "', true, {$categoryId})",
                         'class' => 'delete'
                     ))
             );
         }
 
-        if (!$this->getCategory()->isReadonly()) {
-            $resetPath = $this->getCategory()->getId() ? '*/*/edit' : '*/*/add';
+        // Reset button
+        if (!$category->isReadonly()) {
+            $resetPath = $categoryId ? '*/*/edit' : '*/*/add';
             $this->setChild('reset_button',
                 $this->getLayout()->createBlock('adminhtml/widget_button')
                     ->setData(array(
@@ -178,7 +184,16 @@ class Mage_Adminhtml_Block_Catalog_Category_Edit_Form extends Mage_Adminhtml_Blo
     public function getHeader()
     {
         if ($this->hasStoreRootCategory()) {
-            return $this->getCategoryId() ? $this->getCategoryName() : Mage::helper('catalog')->__('New Category');
+            if ($this->getCategoryId()) {
+                return $this->getCategoryName();
+            } else {
+                $parentId = (int) $this->getRequest()->getParam('parent');
+                if ($parentId && ($parentId != Mage_Catalog_Model_Category::TREE_ROOT_ID)) {
+                    return Mage::helper('catalog')->__('New Subcategory');
+                } else {
+                    return Mage::helper('catalog')->__('New Root Category');
+                }
+            }
         }
         return Mage::helper('catalog')->__('Set Root Category for Store');
     }

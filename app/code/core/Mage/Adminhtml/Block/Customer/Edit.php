@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Mage
  * @package     Mage_Adminhtml
- * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright  Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 /**
@@ -75,11 +75,23 @@ class Mage_Adminhtml_Block_Customer_Edit extends Mage_Adminhtml_Block_Widget_For
     public function getHeaderText()
     {
         if (Mage::registry('current_customer')->getId()) {
-            return $this->htmlEscape(Mage::registry('current_customer')->getName());
+            return $this->escapeHtml(Mage::registry('current_customer')->getName());
         }
         else {
             return Mage::helper('customer')->__('New Customer');
         }
+    }
+
+    /**
+     * Prepare form html. Add block for configurable product modification interface
+     *
+     * @return string
+     */
+    public function getFormHtml()
+    {
+        $html = parent::getFormHtml();
+        $html .= $this->getLayout()->createBlock('adminhtml/catalog_product_composite_configure')->toHtml();
+        return $html;
     }
 
     public function getValidationUrl()
@@ -93,7 +105,7 @@ class Mage_Adminhtml_Block_Customer_Edit extends Mage_Adminhtml_Block_Widget_For
             $this->_addButton('save_and_continue', array(
                 'label'     => Mage::helper('customer')->__('Save and Continue Edit'),
                 'onclick'   => 'saveAndContinueEdit(\''.$this->_getSaveAndContinueUrl().'\')',
-                'class' => 'save'
+                'class'     => 'save'
             ), 10);
         }
 

@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Mage
  * @package     Mage_Adminhtml
- * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright  Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 /**
@@ -39,6 +39,10 @@ class Mage_Adminhtml_Sales_Order_CreditmemoController extends Mage_Adminhtml_Con
     protected function _getItemData()
     {
         $data = $this->getRequest()->getParam('creditmemo');
+        if (!$data) {
+            $data = Mage::getSingleton('adminhtml/session')->getFormData(true);
+        }
+
         if (isset($data['items'])) {
             $qtys = $data['items'];
         } else {
@@ -281,7 +285,11 @@ class Mage_Adminhtml_Sales_Order_CreditmemoController extends Mage_Adminhtml_Con
 
                 $comment = '';
                 if (!empty($data['comment_text'])) {
-                    $creditmemo->addComment($data['comment_text'], isset($data['comment_customer_notify']));
+                    $creditmemo->addComment(
+                        $data['comment_text'],
+                        isset($data['comment_customer_notify']),
+                        isset($data['is_visible_on_front'])
+                    );
                     if (isset($data['comment_customer_notify'])) {
                         $comment = $data['comment_text'];
                     }
@@ -312,9 +320,10 @@ class Mage_Adminhtml_Sales_Order_CreditmemoController extends Mage_Adminhtml_Con
             }
         } catch (Mage_Core_Exception $e) {
             $this->_getSession()->addError($e->getMessage());
+            Mage::getSingleton('adminhtml/session')->setFormData($data);
         } catch (Exception $e) {
             Mage::logException($e);
-            $this->_getSession()->addError($this->__('Cannot save the cedit memo.'));
+            $this->_getSession()->addError($this->__('Cannot save the credit memo.'));
         }
         $this->_redirect('*/*/new', array('_current' => true));
     }
@@ -324,7 +333,8 @@ class Mage_Adminhtml_Sales_Order_CreditmemoController extends Mage_Adminhtml_Con
      */
     public function cancelAction()
     {
-        if ($creditmemo = $this->_initCreditmemo()) {
+        $creditmemo = $this->_initCreditmemo();
+        if ($creditmemo) {
             try {
                 $creditmemo->cancel();
                 $this->_saveCreditmemo($creditmemo);
@@ -345,7 +355,8 @@ class Mage_Adminhtml_Sales_Order_CreditmemoController extends Mage_Adminhtml_Con
      */
     public function voidAction()
     {
-        if ($invoice = $this->_initCreditmemo()) {
+        $creditmemo = $this->_initCreditmemo();
+        if ($creditmemo) {
             try {
                 $creditmemo->void();
                 $this->_saveCreditmemo($creditmemo);
@@ -376,9 +387,12 @@ class Mage_Adminhtml_Sales_Order_CreditmemoController extends Mage_Adminhtml_Con
                 Mage::throwException($this->__('The Comment Text field cannot be empty.'));
             }
             $creditmemo = $this->_initCreditmemo();
-            $creditmemo->addComment($data['comment'], isset($data['is_customer_notified']));
-            $creditmemo->_hasDataChanges = true;
-            $creditmemo->save();
+            $creditmemo->addComment(
+                $data['comment'],
+                isset($data['is_customer_notified']),
+                isset($data['is_visible_on_front'])
+            );
+            $creditmemo->getCommentsCollection()->save();
             $creditmemo->sendUpdateEmail(!empty($data['is_customer_notified']), $data['comment']);
 
             $this->loadLayout();
@@ -429,5 +443,14 @@ class Mage_Adminhtml_Sales_Order_CreditmemoController extends Mage_Adminhtml_Con
             }
             return false;
         }
+    }
+
+    /**
+     * Create pdf for current creditmemo
+     */
+    public function printAction()
+    {
+        $this->_initCreditmemo();
+        parent::printAction();
     }
 }

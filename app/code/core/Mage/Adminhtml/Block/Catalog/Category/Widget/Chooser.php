@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Mage
  * @package     Mage_Adminhtml
- * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright  Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 /**
@@ -77,7 +77,8 @@ class Mage_Adminhtml_Block_Catalog_Category_Widget_Chooser extends Mage_Adminhtm
     public function prepareElementHtml(Varien_Data_Form_Element_Abstract $element)
     {
         $uniqId = Mage::helper('core')->uniqHash($element->getId());
-        $sourceUrl = $this->getUrl('*/catalog_category_widget/chooser', array('uniq_id' => $uniqId, 'use_massaction' => false));
+        $sourceUrl = $this->getUrl('*/catalog_category_widget/chooser',
+            array('uniq_id' => $uniqId, 'use_massaction' => false));
 
         $chooser = $this->getLayout()->createBlock('widget/adminhtml_widget_chooser')
             ->setElement($element)
@@ -89,9 +90,12 @@ class Mage_Adminhtml_Block_Catalog_Category_Widget_Chooser extends Mage_Adminhtm
 
         if ($element->getValue()) {
             $value = explode('/', $element->getValue());
-            $categoryId = isset($value[1]) ? $value[1] : false;
+            $categoryId = false;
+            if (isset($value[0]) && isset($value[1]) && $value[0] == 'category') {
+                $categoryId = $value[1];
+            }
             if ($categoryId) {
-                $label = Mage::getSingleton('catalog/category')->load($categoryId)->getName();
+                $label = $this->_getModelAttributeByEntityId('catalog/category', 'name', $categoryId);
                 $chooser->setLabel($label);
             }
         }
@@ -100,6 +104,27 @@ class Mage_Adminhtml_Block_Catalog_Category_Widget_Chooser extends Mage_Adminhtm
         return $element;
     }
 
+    /**
+     * Retrieve model attribute value
+     *
+     * @param string $modelType Model Type
+     * @param string $attributeName Attribute Name
+     * @param string $entityId Form Entity ID
+     * @return string
+     */
+    protected function _getModelAttributeByEntityId($modelType, $attributeName, $entityId)
+    {
+        $result = '';
+        $model = Mage::getModel($modelType)
+            ->getCollection()
+            ->addAttributeToSelect($attributeName)
+            ->addAttributeToFilter('entity_id', $entityId)
+            ->getFirstItem();
+        if ($model) {
+            $result = $model->getData($attributeName);
+        }
+        return $result;
+    }
     /**
      * Category Tree node onClick listener js function
      *
@@ -169,7 +194,7 @@ class Mage_Adminhtml_Block_Catalog_Category_Widget_Chooser extends Mage_Adminhtm
         return $this->getUrl('*/catalog_category_widget/categoriesJson', array(
             '_current'=>true,
             'uniq_id' => $this->getId(),
-            'use_massaction' => $this->getUseMassaction()
+            'use_massaction' => $this->getUseMassaction(),
         ));
     }
 }

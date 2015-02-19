@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Mage
  * @package     Mage_Tax
- * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright  Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 class Mage_Tax_Model_Sales_Pdf_Grandtotal extends Mage_Sales_Model_Order_Pdf_Total_Default
@@ -45,27 +45,31 @@ class Mage_Tax_Model_Sales_Pdf_Grandtotal extends Mage_Sales_Model_Order_Pdf_Tot
             return parent::getTotalsForDisplay();
         }
         $amount = $this->getOrder()->formatPriceTxt($this->getAmount());
-        $amountExclTax = $this->getAmount()-$this->getSource()->getTaxAmount();
+        $amountExclTax = $this->getAmount() - $this->getSource()->getTaxAmount();
+        $amountExclTax = ($amountExclTax > 0) ? $amountExclTax : 0;
         $amountExclTax = $this->getOrder()->formatPriceTxt($amountExclTax);
         $tax = $this->getOrder()->formatPriceTxt($this->getSource()->getTaxAmount());
         $fontSize = $this->getFontSize() ? $this->getFontSize() : 7;
 
-        $totals = array(
-            array(
-                'amount'    => $this->getAmountPrefix().$amountExclTax,
-                'label'     => Mage::helper('tax')->__('Grand Total (Excl. Tax)') . ':',
-                'font_size' => $fontSize
-            ),
-            array(
-                'amount'    => $this->getAmountPrefix().$tax,
-                'label'     => Mage::helper('tax')->__('Tax') . ':',
-                'font_size' => $fontSize
-            ),
-            array(
-                'amount'    => $this->getAmountPrefix().$amount,
-                'label'     => Mage::helper('tax')->__('Grand Total (Incl. Tax)') . ':',
-                'font_size' => $fontSize
-            ),
+        $totals = array(array(
+            'amount'    => $this->getAmountPrefix().$amountExclTax,
+            'label'     => Mage::helper('tax')->__('Grand Total (Excl. Tax)') . ':',
+            'font_size' => $fontSize
+        ));
+
+        if ($config->displaySalesFullSummary($store)) {
+           $totals = array_merge($totals, $this->getFullTaxInfo());
+        }
+
+        $totals[] = array(
+            'amount'    => $this->getAmountPrefix().$tax,
+            'label'     => Mage::helper('tax')->__('Tax') . ':',
+            'font_size' => $fontSize
+        );
+        $totals[] = array(
+            'amount'    => $this->getAmountPrefix().$amount,
+            'label'     => Mage::helper('tax')->__('Grand Total (Incl. Tax)') . ':',
+            'font_size' => $fontSize
         );
         return $totals;
     }

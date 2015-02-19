@@ -10,61 +10,28 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Mage
  * @package     Mage_Cms
- * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright  Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
+
 
 /**
  * CMS block model
  *
- * @category   Mage
- * @package    Mage_Cms
+ * @category    Mage
+ * @package     Mage_Cms
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-
-class Mage_Cms_Model_Mysql4_Block_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract
+class Mage_Cms_Model_Mysql4_Block_Collection extends Mage_Cms_Model_Resource_Block_Collection
 {
-
-    protected function _construct()
-    {
-        $this->_init('cms/block');
-    }
-
-    public function toOptionArray()
-    {
-        return $this->_toOptionArray('block_id', 'title');
-    }
-
-    /**
-     * Add Filter by store
-     *
-     * @param int|Mage_Core_Model_Store $store
-     * @return Mage_Cms_Model_Mysql4_Page_Collection
-     */
-    public function addStoreFilter($store, $withAdmin = true)
-    {
-        if ($store instanceof Mage_Core_Model_Store) {
-            $store = array($store->getId());
-        }
-
-        $this->getSelect()->join(
-            array('store_table' => $this->getTable('cms/block_store')),
-            'main_table.block_id = store_table.block_id',
-            array()
-        )
-        ->where('store_table.store_id in (?)', ($withAdmin ? array(0, $store) : $store))
-        ->group('main_table.block_id');
-
-        return $this;
-    }
 }

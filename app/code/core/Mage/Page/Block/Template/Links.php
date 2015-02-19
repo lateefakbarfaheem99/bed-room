@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Mage
  * @package     Mage_Page
- * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright  Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 
@@ -34,13 +34,19 @@
  */
 class Mage_Page_Block_Template_Links extends Mage_Core_Block_Template
 {
-
     /**
      * All links
      *
      * @var array
      */
     protected $_links = array();
+
+    /**
+     * Cache key info
+     *
+     * @var null|array
+     */
+    protected $_cacheKeyInfo = null;
 
     /**
      * Set default template
@@ -92,20 +98,58 @@ class Mage_Page_Block_Template_Links extends Mage_Core_Block_Template
             'after_text'    => $afterText,
         ));
 
+        $this->_addIntoPosition($link, $position);
+
+        return $this;
+    }
+
+    /**
+     * Add link into collection
+     *
+     * @param Varien_Object $link
+     * @param int $position
+     * @return Mage_Page_Block_Template_Links
+     */
+    protected function _addIntoPosition($link, $position)
+    {
+        $this->_links[$this->_getNewPosition($position)] = $link;
+
         if (intval($position) > 0) {
-            while (isset($this->_links[$position])) {
-                $position++;
-            }
-            $this->_links[$position] = $link;
             ksort($this->_links);
-        } else {
-            $position = 0;
-            foreach ($this->_links as $k=>$v) {
-                $position = $k;
-            }
-            $this->_links[$position+10] = $link;
         }
 
+        return $this;
+    }
+
+    /**
+     * Add block to link list
+     *
+     * @param string $blockName
+     * @return Mage_Page_Block_Template_Links
+     */
+    public function addLinkBlock($blockName)
+    {
+        $block = $this->getLayout()->getBlock($blockName);
+        if ($block) {
+            $position = (int)$block->getPosition();
+            $this->_addIntoPosition($block, $position);
+        }
+        return $this;
+    }
+
+    /**
+     * Remove Link block by blockName
+     *
+     * @param string $blockName
+     * @return Mage_Page_Block_Template_Links
+     */
+    public function removeLinkBlock($blockName)
+    {
+        foreach ($this->_links as $key => $link) {
+            if ($link instanceof Mage_Core_Block_Abstract && $link->getNameInLayout() == $blockName) {
+                unset($this->_links[$key]);
+            }
+        }
         return $this;
     }
 
@@ -124,6 +168,32 @@ class Mage_Page_Block_Template_Links extends Mage_Core_Block_Template
         }
 
         return $this;
+    }
+
+    /**
+     * Get cache key informative items
+     * Provide string array key to share specific info item with FPC placeholder
+     *
+     * @return array
+     */
+    public function getCacheKeyInfo()
+    {
+        if (is_null($this->_cacheKeyInfo)) {
+            $links = array();
+            if (!empty($this->_links)) {
+                foreach ($this->_links as $position => $link) {
+                    if ($link instanceof Varien_Object) {
+                        $links[$position] = $link->getData();
+                    }
+                }
+            }
+            $this->_cacheKeyInfo = parent::getCacheKeyInfo() + array(
+                'links' => base64_encode(serialize($links)),
+                'name' => $this->getNameInLayout()
+            );
+        }
+
+        return $this->_cacheKeyInfo;
     }
 
     /**
@@ -162,4 +232,40 @@ class Mage_Page_Block_Template_Links extends Mage_Core_Block_Template
         return parent::_beforeToHtml();
     }
 
+    /**
+     * Return new link position in list
+     *
+     * @param int $position
+     * @return int
+     */
+    protected function _getNewPosition($position = 0)
+    {
+        if (intval($position) > 0) {
+            while (isset($this->_links[$position])) {
+                $position++;
+            }
+        } else {
+            $position = 0;
+            foreach ($this->_links as $k=>$v) {
+                $position = $k;
+            }
+            $position += 10;
+        }
+        return $position;
+    }
+
+    /**
+     * Get tags array for saving cache
+     *
+     * @return array
+     */
+    public function getCacheTags()
+    {
+        if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+            $this->addModelTags(Mage::getSingleton('customer/session')->getCustomer());
+        }
+
+        return parent::getCacheTags();
+    }
 }
+

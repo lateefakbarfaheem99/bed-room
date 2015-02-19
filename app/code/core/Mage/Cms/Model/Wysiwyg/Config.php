@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Mage
  * @package     Mage_Cms
- * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright  Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 /**
@@ -34,11 +34,29 @@
 class Mage_Cms_Model_Wysiwyg_Config extends Varien_Object
 {
     /**
-     * Wysiwyg behaviour
+     * Wysiwyg behaviour: enabled
      */
     const WYSIWYG_ENABLED = 'enabled';
+
+    /**
+     * Wysiwyg behaviour: hidden
+     */
     const WYSIWYG_HIDDEN = 'hidden';
+
+    /**
+     * Wysiwyg behaviour: disabled
+     */
     const WYSIWYG_DISABLED = 'disabled';
+
+    /**
+     * constant for image directory
+     */
+    const IMAGE_DIRECTORY = 'wysiwyg';
+
+    /**
+     * Path to skin image placeholder file
+     */
+    const WYSIWYG_SKIN_IMAGE_PLACEHOLDER_FILE = 'images/wysiwyg/skin_image.png';
 
     /**
      * Return Wysiwyg config as Varien_Object
@@ -53,7 +71,7 @@ class Mage_Cms_Model_Wysiwyg_Config extends Varien_Object
      * files_browser_*:         Files Browser (media, images) settings
      * encode_directives:       Encode template directives with JS or not
      *
-     * @param $data Varien_Object constructor params to override default config values
+     * @param $data array       constructor params to override default config values
      * @return Varien_Object
      */
     public function getConfig($data = array())
@@ -68,18 +86,28 @@ class Mage_Cms_Model_Wysiwyg_Config extends Varien_Object
             'add_widgets'                   => true,
             'no_display'                    => false,
             'translator'                    => Mage::helper('cms'),
-            'files_browser_window_url'      => Mage::getSingleton('adminhtml/url')->getUrl('*/cms_wysiwyg_images/index'),
-            'files_browser_window_width'    => (int) Mage::getConfig()->getNode('adminhtml/cms/browser/window_width'),
-            'files_browser_window_height'   => (int) Mage::getConfig()->getNode('adminhtml/cms/browser/window_height'),
             'encode_directives'             => true,
             'directives_url'                => Mage::getSingleton('adminhtml/url')->getUrl('*/cms_wysiwyg/directive'),
-            'popup_css'                     => Mage::getBaseUrl('js').'mage/adminhtml/wysiwyg/tiny_mce/themes/advanced/skins/default/dialog.css',
-            'content_css'                   => Mage::getBaseUrl('js').'mage/adminhtml/wysiwyg/tiny_mce/themes/advanced/skins/default/content.css',
+            'popup_css'                     =>
+                Mage::getBaseUrl('js').'mage/adminhtml/wysiwyg/tiny_mce/themes/advanced/skins/default/dialog.css',
+            'content_css'                   =>
+                Mage::getBaseUrl('js').'mage/adminhtml/wysiwyg/tiny_mce/themes/advanced/skins/default/content.css',
             'width'                         => '100%',
             'plugins'                       => array()
         ));
 
         $config->setData('directives_url_quoted', preg_quote($config->getData('directives_url')));
+
+        if (Mage::getSingleton('admin/session')->isAllowed('cms/media_gallery')) {
+            $config->addData(array(
+                'add_images'               => true,
+                'files_browser_window_url' => Mage::getSingleton('adminhtml/url')->getUrl('*/cms_wysiwyg_images/index'),
+                'files_browser_window_width'
+                    => (int) Mage::getConfig()->getNode('adminhtml/cms/browser/window_width'),
+                'files_browser_window_height'
+                    => (int) Mage::getConfig()->getNode('adminhtml/cms/browser/window_height'),
+            ));
+        }
 
         if (is_array($data)) {
             $config->addData($data);
@@ -91,15 +119,26 @@ class Mage_Cms_Model_Wysiwyg_Config extends Varien_Object
     }
 
     /**
-     * Return URL for skin images placeholder
+     * Return the URL for skin image placeholder
      *
      * @return string
      */
-    public function getSkinImagePlaceholderUrl() 
+    public function getSkinImagePlaceholderUrl()
     {
-        return Mage::getDesign()->getSkinUrl('images/wysiwyg/skin_image.png');
+        return Mage::getDesign()->getSkinUrl(self::WYSIWYG_SKIN_IMAGE_PLACEHOLDER_FILE);
     }
-    
+
+    /**
+     * Return the path to the skin image placeholder
+     *
+     * @return string
+     */
+    public function getSkinImagePlaceholderPath()
+    {
+        return Mage::getModel('core/design_package')->getSkinBaseDir(array('_area' => 'adminhtml')) . DS .
+            self::WYSIWYG_SKIN_IMAGE_PLACEHOLDER_FILE;
+    }
+
     /**
      * Check whether Wysiwyg is enabled or not
      *
@@ -107,7 +146,13 @@ class Mage_Cms_Model_Wysiwyg_Config extends Varien_Object
      */
     public function isEnabled()
     {
-        return in_array(Mage::getStoreConfig('cms/wysiwyg/enabled'), array(self::WYSIWYG_ENABLED, self::WYSIWYG_HIDDEN));
+        $storeId = $this->getStoreId();
+        if (!is_null($storeId)) {
+            $wysiwygState = Mage::getStoreConfig('cms/wysiwyg/enabled', $storeId);
+        } else {
+            $wysiwygState = Mage::getStoreConfig('cms/wysiwyg/enabled');
+        }
+        return in_array($wysiwygState, array(self::WYSIWYG_ENABLED, self::WYSIWYG_HIDDEN));
     }
 
     /**

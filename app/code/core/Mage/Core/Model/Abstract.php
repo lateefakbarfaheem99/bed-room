@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Mage
  * @package     Mage_Core
- * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright  Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 
@@ -283,6 +283,18 @@ abstract class Mage_Core_Model_Abstract extends Varien_Object
     }
 
     /**
+     * Check whether model has changed data.
+     * Can be overloaded in child classes to perform advanced check whether model needs to be saved
+     * e.g. usign resouceModel->hasDataChanged() or any other technique
+     *
+     * @return boolean
+     */
+    protected function _hasModelChanged()
+    {
+        return $this->hasDataChanges();
+    }
+
+    /**
      * Save object data
      *
      * @return Mage_Core_Model_Abstract
@@ -295,7 +307,7 @@ abstract class Mage_Core_Model_Abstract extends Varien_Object
         if ($this->isDeleted()) {
             return $this->delete();
         }
-        if (!$this->hasDataChanges()) {
+        if (!$this->_hasModelChanged()) {
             return $this;
         }
         $this->_getResource()->beginTransaction();
@@ -410,7 +422,7 @@ abstract class Mage_Core_Model_Abstract extends Varien_Object
     /**
      * Get cahce tags associated with object id
      *
-     * @return array
+     * @return array|bool
      */
     public function getCacheIdTags()
     {
@@ -544,4 +556,38 @@ abstract class Mage_Core_Model_Abstract extends Varien_Object
     {
         return $this->_getData('entity_id');
     }
+
+    /**
+     * Clearing object for correct deleting by garbage collector
+     *
+     * @return Mage_Core_Model_Abstract
+     */
+    final public function clearInstance()
+    {
+        $this->_clearReferences();
+        Mage::dispatchEvent($this->_eventPrefix.'_clear', $this->_getEventData());
+        $this->_clearData();
+        return $this;
+    }
+
+    /**
+     * Clearing cyclic references
+     *
+     * @return Mage_Core_Model_Abstract
+     */
+    protected function _clearReferences()
+    {
+        return $this;
+    }
+
+    /**
+     * Clearing object's data
+     *
+     * @return Mage_Core_Model_Abstract
+     */
+    protected function _clearData()
+    {
+        return $this;
+    }
+
 }

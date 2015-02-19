@@ -15,9 +15,9 @@
  * @category   Zend
  * @package    Zend_Cache
  * @subpackage Zend_Cache_Frontend
- * @copyright  Copyright (c) 2005-2009 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Page.php 18951 2009-11-12 16:26:19Z alexander $
+ * @version    $Id$
  */
 
 
@@ -30,7 +30,7 @@
 /**
  * @package    Zend_Cache
  * @subpackage Zend_Cache_Frontend
- * @copyright  Copyright (c) 2005-2009 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Cache_Frontend_Page extends Zend_Cache_Core
@@ -243,9 +243,11 @@ class Zend_Cache_Frontend_Page extends Zend_Cache_Core
     {
         $this->_cancel = false;
         $lastMatchingRegexp = null;
-        foreach ($this->_specificOptions['regexps'] as $regexp => $conf) {
-            if (preg_match("`$regexp`", $_SERVER['REQUEST_URI'])) {
-                $lastMatchingRegexp = $regexp;
+        if (isset($_SERVER['REQUEST_URI'])) {
+            foreach ($this->_specificOptions['regexps'] as $regexp => $conf) {
+                if (preg_match("`$regexp`", $_SERVER['REQUEST_URI'])) {
+                    $lastMatchingRegexp = $regexp;
+                }
             }
         }
         $this->_activeOptions = $this->_specificOptions['default_options'];
