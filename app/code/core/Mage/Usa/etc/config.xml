@@ -229,6 +229,7 @@
                 <handling_type>F</handling_type>
                 <handling_action>O</handling_action>
                 <shipment_days>Mon,Tue,Wed,Thu,Fri</shipment_days>
+                <content_type>D</content_type>
             </dhlint>
         </carriers>
     </default>
