@@ -16,9 +16,9 @@ Thumbs.db
 
 # Redis module                 #
 ################################
-/lib/Credis
-/app/code/community/Cm/RedisSession
-/app/etc/modules/Cm_RedisSession.xml
+#/lib/Credis
+#/app/code/community/Cm/RedisSession
+#/app/etc/modules/Cm_RedisSession.xml
 
 # Magento Configurations       #
 ################################
@@ -112,3 +112,5 @@ Thumbs.db
 
 robots.txt
 .htaccess
+
+.svn
