@@ -318,6 +318,7 @@ var MenuManager = {
      * @returns {boolean}
      */
     useSmallScreenBehavior: function() {
+		return true;
         return Modernizr.mq("screen and (max-width:" + bp.medium + "px)");
     },
 

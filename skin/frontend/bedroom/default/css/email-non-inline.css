@@ -1,3 +1,36 @@
+/*
+// ----------------------------------------------
+// Usage example:
+// For IE set $mq-support to false.
+// Set the fixed value.
+// Then use mixins to test whether styles should be applied.
+// ----------------------------------------------
+
+$mq-support: false;
+$mq-fixed-value: 1024;
+
+// Renders at fixed value
+@include bp (min-width, 300px) { 
+    div { color:#000; }
+}
+
+// Doesn't render without MQ support
+@include bp (min-width, 1200px) { 
+    div { color:#FFF; }
+}
+
+// Doesn't render without MQ support
+@include bp (max-width, 300px) { 
+    div { color:#444; }
+}
+
+// Renders at fixed value
+@include bp (max-width, 1200px) { 
+    div { color:#888; }
+}
+
+// ----------------------------------------------
+*/
 /* Font Styles */
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,500,700);
 /* Media Queries */
@@ -69,7 +102,7 @@
   }
 
   .store-info {
-    border-top: 1px dashed #c3ced4;
+    border-top: 1px dashed #C3CED4;
   }
 
   .method-info {
@@ -86,7 +119,7 @@
 .method-info h6,
 .address-details h6,
 .closing-text {
-  color: #3696c2 !important;
+  color: #3696C2 !important;
 }
 
 td.order-details h3,
@@ -141,6 +174,6 @@ table.google-plus:hover td {
   }
 }
 .product-name a:hover {
-  color: #3399cc !important;
+  color: #3399CC !important;
   text-decoration: none !important;
 }

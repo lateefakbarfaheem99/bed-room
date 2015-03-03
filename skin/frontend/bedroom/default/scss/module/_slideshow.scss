@@ -32,14 +32,14 @@
     display: block;
     width: 100%;
     margin: $gap 0;
-    border: 1px solid $c-module-border-light;
+	height: 273px;
+	overflow: hidden;
 
     .slideshow {
         width: 100%;
         padding: 0;
         position: relative;
         margin: 0;
-        border: 10px solid #FFFFFF;
         & > li {
             position: absolute;
             top: 0;
@@ -75,7 +75,7 @@
 
     span {
         font-family: arial;
-        width: 44px;
+        width: 20px;
         height: 44px;
         display: inline-block;
         color: #DDDDDD;
@@ -91,17 +91,23 @@
             top: 50%;
             margin-left: (-$pager-size/2);
             margin-top: (-$pager-size/2);
-            border-radius: 1px;
-            background-color: #FFFFFF;
+            border-radius: 50%;
+            background-color: #cccccc;
             position: relative;
+			border: 2px solid;
+			
+			-moz-box-shadow: inset 0 0 2px rgba(0, 0, 1, 0.75);
+			-webkit-box-shadow: inset 0 0 2px rgba(0, 0, 1, 0.75);
+			box-shadow: inset 0 0 2px rgba(0, 0, 1, 0.75);
+			
         }
 
         &:hover:before {
-            background-color: $c-button-hover;
+            background-color: #636363;
         }
 
         &.cycle-pager-active:before {
-            background-color: $c-button-active;
+            background-color: #636363;
         }
     }
 
@@ -117,7 +123,7 @@
     width: 15%;
     max-width: 80px;
     height: 100%;
-    opacity: 0.6;
+    opacity: 0;
     z-index: 110;
     cursor: pointer;
     @include not-selectable();
@@ -135,7 +141,7 @@
     }
 
     &:hover {
-        opacity: 1;
+        opacity: .8;
     }
 
     &.disabled {
@@ -155,7 +161,7 @@
     }
 
     &:hover:before {
-        border-color: transparent $c-button-hover transparent transparent;
+        border-color: transparent #FFFFFF transparent transparent;
     }
 }
 
@@ -170,7 +176,7 @@
     }
 
     &:hover:before {
-        border-color: transparent transparent transparent $c-button-hover;
+        border-color: transparent transparent transparent #FFFFFF;
     }
 }
 

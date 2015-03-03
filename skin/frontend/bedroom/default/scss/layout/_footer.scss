@@ -39,7 +39,7 @@
 .footer {
     clear: both;
     width: 100%;
-    border-top: 1px solid $c-module-border;
+    border-top: none;
     padding-top: $trim;
 
     @include bp(max-width, $bp-xsmall) {
@@ -189,7 +189,7 @@
     }
 
     address {
-        border-top: 1px solid $c-module-border;
+        border-top: none;
         text-align: center;
         width: 100%;
         font-size: $f-size-xxs;
@@ -246,3 +246,101 @@
         }
     }
 }
+
+.footer-wrap {
+	background-color: #eaeaea;
+	@include filter-gradient(#eaeaea, #ffffff, vertical);
+	@include background-image(linear-gradient(top,  #eaeaea 0%,#ffffff 100%));
+	min-height: 250px
+}
+
+.footer-links {
+    font-size: 14px;
+    text-transform: uppercase;
+	margin-bottom: 10px;
+	
+	li {
+		margin-bottom: 5px;
+	}
+	
+	h4 {
+		color: #009FD6;
+		font-weight: 700;
+		margin: 0 !important;
+	}
+	
+	a {
+		color: #000;
+		font-weight: 400;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+.footer-nav {
+    display: table;
+    margin: 0 auto 2em;
+    width: 100%;
+
+	.footer-nav-column {
+		display: table-cell;
+		padding-right: 10px;
+		width: 25%;
+	}
+}
+
+.address {
+    color: #666;
+    font-size: 14px;
+    font-weight: 400;
+	float: left;
+}
+
+.site-by-wq {
+    display: block;
+    font-size: 12px;
+    position: relative;
+    text-align: right;
+    top: -7px;
+    font-size: 12px;
+    text-align: right;
+	width: 135px;
+	float: right;
+}
+
+.site-by-wq a {
+    background: url(../images/WQ_logo_Fist_192x192.png?20150212095156) no-repeat scroll right top / 30px auto rgba(0, 0, 0, 0);
+    color: #666;
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    padding-right: 40px;
+}
+
+.site-by-wq a {
+    color: #666;
+    line-height: 30px;
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+.site-by-wq a:hover span {
+    color: #f8981d;
+}
+
+@media (max-width: 991px) {
+	.site-by-wq,
+	.address {
+		display: block;
+		float: none;
+		margin: 0 auto;
+	}
+	
+	.site-by-wq {
+		top: 10px;
+	}
+}
+
+

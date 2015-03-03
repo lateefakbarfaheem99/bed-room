@@ -36,9 +36,127 @@ body {
     min-width: 320px;
     min-height: 100%;
     margin: 0 auto;
-    background: #FFFFFF;
 }
 
 .wrapper:after {
     @include clearfix;
 }
+
+.button, .cart-table .product-cart-actions .button, #co-shipping-method-form .buttons-set .button, .footer .button,
+.cart .buttons-set .button, .cart-table .button, .sidebar .actions .button, .button.button-secondary {
+    background-color: #DF2771;
+	color: #fff;
+    font-size: 10px;
+	padding: 5px 15px;
+	&:hover {
+		background: #b31856;
+	}
+}
+
+.product-info .actions {
+	border-top: 1px solid #ddd;
+}
+
+.button.btn-cart {
+	float: left;
+}
+
+.add-to-links {
+	width: 50px;
+	float: right;
+	li {
+		float: right;
+	}
+}
+
+.link-compare {
+	width: 15px;
+	height: 12px; 
+	display: block;
+	text-indent: -9999px;
+	background: url(../images/ic-carts.png) 0 -100px;
+}
+
+.block-title {
+	background: #7f717a;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+	padding: 5px 15px !important;
+	span,
+	small {
+    	color: #FFF !important;
+	}
+}
+
+#compare-items .btn-remove:after,
+.actions a {
+	color: #df2772;
+}  
+
+#compare-items .btn-remove:hover,
+#compare-items .btn-remove:hover:after {
+	background: #df2772;
+	color: #fff;
+	border-color: #df2772;
+}
+
+.product-shop .page-title h1, 
+.product-shop .page-title h2, 
+.product-shop .product-name h1, 
+.product-shop .product-name .h1 {
+	text-transform: none;
+	font-weight: 400;
+	margin-bottom: 0 !important;
+	padding-bottom: 0 !important;
+}
+
+.availability.in-stock {
+	color: #888;
+}
+
+.product-essential .block.block-related .block-title,
+.more-views {
+	background: none !important ;
+    padding: 0 !important;
+    text-transform: none !important;
+	
+	h2 {
+		color: #009FD6;
+		margin: 20px 0 0;
+		text-transform: none;
+	}
+}
+
+.product-options-bottom .add-to-links {
+	display: none;
+}
+
+@media (max-width: 770px) {
+
+	.col-main .nav-primary {
+		display: none !important;
+	}
+	
+	a.skip-link {
+		background: #f4f4f4 !important;
+		border-color: #ccc !important;
+	}
+	
+	.col-left.sidebar #header-nav {
+		margin: 0 -30px 30px;
+		padding: 0;
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+

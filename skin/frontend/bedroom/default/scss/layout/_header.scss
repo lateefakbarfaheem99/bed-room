@@ -41,9 +41,25 @@
 
 }
 
-.header-language-container,
-.page-header {
-    font-family: $f-stack-special;
+.telephone {
+    font-size: 22px;
+    font-weight: 500;
+	background: url(../images/phone-icon.png) no-repeat 0 0;
+	padding-left: 35px;
+}
+
+.skip-cart,
+.skip-link,
+.skip-cart {
+	color: #000 !important;
+	background: none !important;
+	&:hover {
+		color: #3399cc !important;
+	}
+}
+
+.skip-link .label {
+	text-transform: none !important;
 }
 
 /* ============================================ *
@@ -51,10 +67,11 @@
  * ============================================ */
 
 .header-language-background {
-    padding: $gap;
-    background-color: $c-action;
-    text-transform: uppercase;
-
+    padding: 8px 10px;
+    background-color: #e58bc7;
+	@include filter-gradient(#e58bc7, #e596cb, vertical);
+	@include background-image(linear-gradient(top,  #e58bc7 0%,#e596cb 100%));
+ 
     .header-language-container {
         max-width: $max-content-width;
         margin-left: auto;
@@ -102,7 +119,7 @@
 
 .header-language-background,
 .header-language-background a {
-    color: $c-text-white;
+    color: $c-black;
 }
 
 @include bp(max-width, $bp-medium) {

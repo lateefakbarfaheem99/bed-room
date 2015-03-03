@@ -72,10 +72,11 @@ p.product-name {
 
 .products-grid .product-name,
 .products-list .product-name {
-    text-transform: uppercase;
+    text-transform: none;
     margin-bottom: 5px;
-    font-size: $f-size;
+    font-size: 13px;
     font-family: $f-stack-special;
+	min-height: 40px;
 
     a {
         font-weight: 500;
@@ -99,7 +100,8 @@ $product-column-spacing: 20px;
 .products-grid > li {
     position: relative;
     margin-bottom: $product-column-spacing;
-    text-align: center;
+    text-align: left;
+	list-style: none !important;
 
     &:after {
         @include clearfix;
@@ -122,9 +124,9 @@ $product-column-spacing: 20px;
 
 .widget-new-products {
     .products-grid .product-image {
-        width: 75%;
+        width: 100%;
         margin-bottom: 15px;
-        margin-left: 10%;
+        margin-left: 0;
     }
 }
 
@@ -329,7 +331,8 @@ $productsGridActionHeight: 85px;
         margin-top: 0;
     }
     .price-box .price {
-        font-size: $f-size-xxl;
+        font-size: 24px;
+		font-weight: 300;
     }
     .action {
         margin: $element-spacing 0;
@@ -600,3 +603,20 @@ $productsGridActionHeight: 85px;
     text-align: right;
     margin-bottom: $element-spacing;
 }
+
+.old-price {
+	margin: 0 !important;
+	display: block !important;
+		.price {
+			font-size: 14px;
+		}
+}
+
+.special-price {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+
+
+

@@ -98,7 +98,7 @@
 @include bp(min-width, $bp-medium + 1) {
     .nav-primary {
         display: block;
-        margin-top: 15px;
+        margin-top: 0;
     }
 
 }
@@ -142,15 +142,28 @@ $nav-primary-height: 30px;
  * Small Viewports - Accordion Style Menu
  * ============================================ */
 
-@include bp(max-width, $bp-medium) {
 
     .nav-primary {
 
         // Increase clickable area of anchors for small viewports
         a.level0,
         a {
-            line-height: $nav-primary-height + 5px;
+            line-height: normal;
+			background-color: #a9dbe9;
+			color:  $c-black;
+			font-size: 14px;
+			font-weight: 700;
+			text-transform: uppercase;
+			padding: 6px 15px;
+			margin-top: 3px;
+			&:hover {
+				background-color: #92cfe0;
+			}
         }
+		
+		.level0.menu-active a {
+			color: $c-black;
+		}
 
         // Hide all sub-menus
         li.level0 ul {
@@ -159,17 +172,31 @@ $nav-primary-height: 30px;
 
         // Indent sub-menus
         li.level0 li {
-            padding: 0 0 0 25px;
+            padding: 0;
+			&.view-all a { padding-top: 5px; }
+			&.last a { padding-bottom: 10px; }
         }
 
         li.level1 a {
-            padding: 0 15px 0 25px;
-        }
+            background-color: #eaf6fa;
+			border: medium none;
+			font-weight: normal;
+			margin-top: 0;
+			padding: 2px 15px;
+			text-transform: none;
+        	&:hover {
+				color: $c-blue;
+			}
+		}
+		
+		li.level1.active a {
+			font-weight: bold;
+		}
 
         li.parent > a:after {
             @include triangle(right, 5px, #ccc);
             top: 50%;
-            left: 10px;
+            left: 5px;
             right: auto;
             margin-top: -5px;
         }
@@ -179,9 +206,9 @@ $nav-primary-height: 30px;
         li.parent.menu-active > a:after {
             @include triangle(down, 5px, #ccc);
             top: 50%;
-            left: 10px;
+            left: 3px;
             right: auto;
-            margin-top: -5px;
+            margin-top: -3px;
         }
 
         li.menu-active > a,
@@ -189,87 +216,18 @@ $nav-primary-height: 30px;
             color: $c-action;
         }
     }
+	
+.nav-primary li.level0 > a:after,
+.nav-primary li.level0.menu-active > a:after {
+	border: none;
 }
 
-/* ============================================ *
- * Large Viewports - Dropdown Menu
- * ============================================ */
+.nav-primary .level1 .last a {
+	padding-bottom: 0 !important;
+}
 
-@include bp(min-width, $bp-medium + 1) {
-
-    .nav-primary {
-
-        a.level0 {
-            padding: 0 25px;
-        }
-
-        li.level0,
-        a.level0 {
-            display: inline-block;
-        }
-
-        li:last-child > a {
-            border-bottom: none;
-        }
-
-        a:hover,
-        li:hover > a {
-            color: $c-action;
-        }
-
-        .menu-active {
-            z-index: 200;
-        }
-
-        /* Default styles for 1+ drop-down menus */
-        li.level0 ul {
-            @include menu;
-            position: absolute;
-            left: 0;
-            top: $nav-primary-height; /* Height of ".nav-primary a.level0" */
-            z-index: 10;
-            width: 250px;
-            padding-left: $box-spacing;
-            padding-right: $box-spacing;
-            display: none; /* Hide until displayed. */
-        }
-
-        /* Level 2+ */
-        li.level1 ul {
-            left: 60px;
-            top: 15px;
-        }
-
-        /* Class for js to add briefly to evaluate element positioning. */
-        li.level0 ul.level0.position-test {
-            display: block;
-        }
-
-        /* Correct menus that will hang off the page (class added by js) */
-        li.level0 ul.level0.spill {
-            right: 0;
-            left: auto;
-
-            // Sub-menu drop down to the left
-            li.level1 ul {
-                left: auto;
-                right: 50px;
-                top: 20px;
-            }
-        }
-
-        /* Level 1+ */
-        li.level0 li.parent > a {
-            position: relative;
-
-            &:after {
-                @include triangle(right, 4px, #ccc);
-                right: 5px;
-                top: 50%;
-                margin-top: -3px;
-            }
-        }
-    }
+.nav-primary .level0.first a {
+	margin-top: 0;
 }
 
 .nav-primary li.menu-active {
@@ -277,3 +235,60 @@ $nav-primary-height: 30px;
         display: block;
     }
 }
+
+.nav-title {
+	line-height: normal;
+	background-color: #009fd6;
+	color:  #fff;
+	font-size: 14px;
+	font-weight: 700;
+	text-transform: uppercase;
+	padding: 6px 15px;
+	margin: 0 0 3px;
+}
+
+.nav-primary-wrap {
+    display: table;
+    width: 100%;
+}
+
+.col-main {	
+	.nav-primary {
+		display: table-row;
+		margin-top: 0;
+		width: 100% !important;
+	}
+	
+	.nav-primary li {
+		border-right: 10px solid transparent;
+		display: table-cell;
+		position: relative;
+		text-align: center;
+		width: 20%;
+		
+		&:last-child {
+			border-right: none;
+		}
+		
+		a {
+			background-color: #ffbce9;
+			color: black;
+			font-size: 14px;
+			font-weight: 700;
+			line-height: normal;
+			margin-top: 0;
+			padding: 5px 5px;
+			&:hover {
+				background-color: #dca2c9;
+			}
+		}
+	}
+}
+
+
+
+/* Removing The Dotted Outline */
+a {outline: 0;}
+object, embed {outline: 0;}
+input::-moz-focus-inner {border: 0;}
+:-moz-any-link:focus {outline: none;} 

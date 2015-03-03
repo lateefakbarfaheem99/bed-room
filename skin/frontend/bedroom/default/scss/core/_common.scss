@@ -579,9 +579,10 @@ a.button:hover {
 
 .breadcrumbs li {
     float: left;
-    font-size: $f-size-xs;
+    font-size: 11px;
     font-family: $f-stack-special;
-    text-transform: uppercase;
+    text-transform: none;
+	color: #736c71;
 }
 
 .breadcrumbs a {
@@ -600,7 +601,7 @@ a.button:hover {
 
 .breadcrumbs span {
     float: left;
-    padding: 0 7px;
+    padding: 0 2px;
 }
 
 @include bp(max-width, $bp-medium) {
@@ -1187,7 +1188,8 @@ a.button:hover {
 
 .price-box .price {
     color: $c-text-primary;
-    font-size: $f-size-xl;
+    font-size: 24px;
+	font-weight: 300;
 }
 
 .price-box .price,
@@ -1501,7 +1503,7 @@ span.weee {
 }
 
 .std ul li {
-    margin-left: 2em;
+    margin-left: 0;
 }
 
 .std .note {
@@ -1691,7 +1693,7 @@ $toolbar-icon-padding-offset: 8px;
     width: 25px;
     height: 30px;
     padding: 0;
-    color: $c-action;
+    color: #f21ca1;
     font-family: $f-stack-sans;
 }
 
@@ -1720,7 +1722,7 @@ $toolbar-icon-padding-offset: 8px;
 
 .pages .next {
     &:before {
-        @include triangle(right, 4px, $c-action);
+        @include triangle(right, 4px, #f21ca1);
         top: 50%;
         margin-top: -3px;
         left: 50%;
@@ -1733,7 +1735,7 @@ $toolbar-icon-padding-offset: 8px;
 
 .pages .previous {
     &:before {
-        @include triangle(left, 4px, $c-action);
+        @include triangle(left, 4px, #f21ca1);
         top: 50%;
         margin-top: -3px;
         left: 50%;
