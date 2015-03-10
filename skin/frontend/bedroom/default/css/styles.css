@@ -3168,7 +3168,7 @@ body {
   background-color: #DF2771;
   color: #fff;
   font-size: 10px;
-  padding: 5px 15px;
+  padding: 5px 15px !important;
 }
 .button:hover, .cart-table .product-cart-actions .button:hover, #co-shipping-method-form .buttons-set .button:hover, .footer .button:hover,
 .cart .buttons-set .button:hover, .cart-table .button:hover, .sidebar .actions .button:hover, .button.button-secondary:hover {
@@ -3191,12 +3191,27 @@ body {
   float: right;
 }
 
-.link-compare {
+/*.link-compare {
   width: 15px;
   height: 12px;
   display: block;
   text-indent: -9999px;
   background: url(../images/ic-carts.png) 0 -100px;
+}*/
+.cms-index-index .std ul {
+  list-style: none;
+}
+.link-compare, .link-wishlist {
+  color: gray !important;
+}
+.new-product:before {
+  display: block !important;
+  content: "";
+  width: 50px;
+  height: 50px;
+  background: transparent url('../images/icon_new_product.png') no-repeat !important;
+  left: 75% !important;
+  top: 1% !important;
 }
 
 .block-title {
