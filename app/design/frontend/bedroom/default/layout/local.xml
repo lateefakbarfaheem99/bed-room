@@ -1,5 +1,8 @@
 <layout version="0.1.0">
     <default>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/font-awesome.css</stylesheet></action>
+        </reference>
         <reference name="header">
             <action method="unsetChild"><name>topMenu</name></action>
         </reference>
