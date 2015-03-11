@@ -3168,7 +3168,7 @@ body {
   background-color: #DF2771;
   color: #fff;
   font-size: 10px;
-  padding: 5px 15px;
+  padding: 5px 15px !important;
 }
 .button:hover, .cart-table .product-cart-actions .button:hover, #co-shipping-method-form .buttons-set .button:hover, .footer .button:hover,
 .cart .buttons-set .button:hover, .cart-table .button:hover, .sidebar .actions .button:hover, .button.button-secondary:hover {
@@ -3198,7 +3198,6 @@ body {
   text-indent: -9999px;
   background: url(../images/ic-carts.png) 0 -100px;
 }
-
 .block-title {
   background: #7f717a;
   color: #FFF;
