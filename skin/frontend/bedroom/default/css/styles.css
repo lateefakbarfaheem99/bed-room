@@ -3252,7 +3252,7 @@ body {
 }
 
 .product-options-bottom .add-to-links {
-  display: none;
+  display: block;
 }
 
 @media (max-width: 770px) {
