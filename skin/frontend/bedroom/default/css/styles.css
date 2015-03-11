@@ -3191,27 +3191,12 @@ body {
   float: right;
 }
 
-/*.link-compare {
+.link-compare {
   width: 15px;
   height: 12px;
   display: block;
   text-indent: -9999px;
   background: url(../images/ic-carts.png) 0 -100px;
-}*/
-.cms-index-index .std ul {
-  list-style: none;
-}
-.link-compare, .link-wishlist {
-  color: gray !important;
-}
-.new-product:before {
-  display: block !important;
-  content: "";
-  width: 50px;
-  height: 50px;
-  background: transparent url('../images/icon_new_product.png') no-repeat !important;
-  left: 75% !important;
-  top: 1% !important;
 }
 
 .block-title {
