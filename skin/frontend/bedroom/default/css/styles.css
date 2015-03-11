@@ -10867,3 +10867,8 @@ div.calendar table td.button {
   color: inherit;
   text-transform: none;
 }
+
+.links {
+  float: right;
+  margin-left: 50px;
+}
