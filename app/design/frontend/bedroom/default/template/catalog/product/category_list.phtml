@@ -36,10 +36,25 @@
         <?php $i=0; ?>
         <ul class="products-grid products-grid--max-<?php echo $_columnCount; ?>-col-widget">
             <?php foreach ($_products->getItems() as $_product): ?>
+            <?php
+                $new_date_from = $_product->getData('news_from_date');
+                $new_date_to = $_product->getData('news_to_date');
+                $today = date('Y-m-d');
+                $isNewProduct = false;
+                if(($new_date_from == '') && ($new_date_to != '') && ($new_date_to > $today)) {
+                    $isNewProduct = true;
+                }
+                if(($new_date_from != '') && ($new_date_to == '') && ($new_date_from < $today)) {
+                    $isNewProduct = true;
+                }
+                if(($new_date_from != '') && ($new_date_to != '') && ($new_date_from < $today) && ($new_date_to > $today)) {
+                    $isNewProduct = true;
+                }
+            ?>
             <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
                 <?php $_imgSize = 210; ?>
                 <?php // The image size is locked at 210 for this for display purposes. CSS has it at 75% which should equate to 278px?>
-                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>" class="product-image new-product">
+                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>" class="product-image <?php if($isNewProduct): ?>new-product<?php endif; ?>">
                     <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(210) ?>" alt="<?php echo $this->stripTags($_product->getName(), null, true) ?>" />
                 </a>
                 <div class="product-info">
