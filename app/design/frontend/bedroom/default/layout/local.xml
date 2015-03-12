@@ -2,6 +2,7 @@
     <default>
         <reference name="header">
             <action method="unsetChild"><name>topMenu</name></action>
+            <block type="page/template_links" name="top.links1" as="topLinks1"/>
         </reference>
         <reference name="left">
             <action method="insert">
@@ -43,4 +44,15 @@
             </action>
         </reference>
     </contacts_contacts_index>
+
+    <customer_logged_in>
+        <reference name="top.links1">
+            <action method="addLink" translate="label title" module="customer"><label>Log Out</label><url helper="customer/getLogoutUrl"/><title>Log Out</title><prepare/><urlParams/><position>100</position></action>
+        </reference>
+    </customer_logged_in>
+    <customer_logged_out>
+        <reference name="top.links1">
+            <action method="addLink" translate="label title" module="customer"><label>Log In</label><url helper="customer/getLoginUrl"/><title>Log In</title><prepare/><urlParams/><position>100</position></action>
+        </reference>
+    </customer_logged_out>
 </layout>
