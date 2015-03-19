@@ -3191,12 +3191,18 @@ body {
   float: right;
 }
 
-.link-compare {
+/*.link-compare {
   width: 15px;
   height: 12px;
   display: block;
   text-indent: -9999px;
   background: url(../images/ic-carts.png) 0 -100px;
+}*/
+.cms-index-index .std ul {
+  list-style: none;
+}
+.link-compare, .link-wishlist {
+  color: gray !important;
 }
 .block-title {
   background: #7f717a;
