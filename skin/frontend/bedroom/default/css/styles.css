@@ -1,37 +1,4 @@
-/*
-// ----------------------------------------------
-// Usage example:
-// For IE set $mq-support to false.
-// Set the fixed value.
-// Then use mixins to test whether styles should be applied.
-// ----------------------------------------------
-
-$mq-support: false;
-$mq-fixed-value: 1024;
-
-// Renders at fixed value
-@include bp (min-width, 300px) { 
-    div { color:#000; }
-}
-
-// Doesn't render without MQ support
-@include bp (min-width, 1200px) { 
-    div { color:#FFF; }
-}
-
-// Doesn't render without MQ support
-@include bp (max-width, 300px) { 
-    div { color:#444; }
-}
-
-// Renders at fixed value
-@include bp (max-width, 1200px) { 
-    div { color:#888; }
-}
-
-// ----------------------------------------------
-*/
-/*! normalize.css v2.0.1 | MIT License | git.io/normalize */
+/* normalize.css v2.0.1 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
    ========================================================================== */
@@ -386,22 +353,22 @@ table {
 *,
 *:before,
 *:after {
-  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 html {
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   /* Prevent tap highlight on iOS/Android */
   -webkit-text-size-adjust: 100%;
   /* Prevent automatic scaling on iOS */
 }
 
 body {
-  background: #FFFFFF url(../images/bg-body.png) repeat-x 0 0;
+  background: white url(../images/bg-body.png) repeat-x 0 0;
   color: #000000;
   line-height: 1;
 }
@@ -478,12 +445,15 @@ input[type="search"] {
 @-ms-viewport {
   width: device-width;
 }
+
 @-o-viewport {
   width: device-width;
 }
+
 @viewport {
   width: device-width;
 }
+
 a, button {
   -ms-touch-action: manipulation;
   touch-action: manipulation;
@@ -496,13 +466,13 @@ select,
 table,
 textarea {
   font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
-  color: #000000;
+  color: black;
   font-size: 14px;
   line-height: 1.5;
 }
 
 a {
-  color: #3399CC;
+  color: #3399cc;
   text-decoration: none;
 }
 
@@ -529,7 +499,7 @@ ul {
 h1, .h1 {
   margin: 0;
   margin-bottom: 0.7em;
-  color: #3399CC;
+  color: #3399cc;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 28px;
   font-weight: 400;
@@ -542,7 +512,7 @@ h1, .h1 {
 h2, .h2 {
   margin: 0;
   margin-bottom: 0.5em;
-  color: #000000;
+  color: black;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 24px;
   font-weight: 400;
@@ -555,7 +525,7 @@ h2, .h2 {
 h3, .h3 {
   margin: 0;
   margin-bottom: 10px;
-  color: #000000;
+  color: black;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
@@ -568,7 +538,7 @@ h3, .h3 {
 h4, .h4 {
   margin: 0;
   margin-bottom: 10px;
-  color: #000000;
+  color: black;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 14px;
   font-weight: bold;
@@ -581,7 +551,7 @@ h4, .h4 {
 h5, .h5 {
   margin: 0;
   margin-bottom: 10px;
-  color: #000000;
+  color: black;
   font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 13px;
   font-weight: bold;
@@ -594,7 +564,7 @@ h5, .h5 {
 h6, .h6 {
   margin: 0;
   margin-bottom: 5px;
-  color: #000000;
+  color: black;
   font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 12px;
   font-weight: bold;
@@ -622,16 +592,16 @@ h6, .h6 {
 }
 
 .availability.in-stock {
-  color: #11B400;
+  color: #11b400;
 }
 
 .availability.available-soon,
 .availability.out-of-stock {
-  color: #DF280A;
+  color: #df280a;
 }
 
 .availability-only {
-  color: #DF280A;
+  color: #df280a;
   margin-bottom: 10px;
 }
 
@@ -646,7 +616,7 @@ h6, .h6 {
   font-size: 24px;
   font-weight: 600;
   color: #009FD6 !important;
-  border-bottom: 1px solid #EDEDED;
+  border-bottom: 1px solid #ededed;
   padding-bottom: 3px;
   margin-bottom: 15px;
   text-transform: uppercase;
@@ -668,14 +638,14 @@ h6, .h6 {
   position: relative;
   padding: 10px 0 0;
   margin-bottom: 5px;
-  border-top: 1px solid #CCCCCC;
+  border-top: 1px solid #cccccc;
 }
 .block-title h2,
 .block-title h3,
 .block-title strong {
   margin: 0;
   margin-bottom: 10px;
-  color: #000000;
+  color: black;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 14px;
   font-weight: bold;
@@ -683,7 +653,7 @@ h6, .h6 {
   line-height: 1.4;
   text-rendering: optimizeSpeed;
   text-transform: uppercase;
-  color: #3399CC;
+  color: #3399cc;
   margin-bottom: 0;
   text-transform: uppercase;
   font-weight: 600;
@@ -691,7 +661,7 @@ h6, .h6 {
 .block-title small {
   font-size: 100%;
   font-weight: normal;
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 
 body:not(.customer-account) .block:first-child .block-title {
@@ -755,7 +725,7 @@ body:not(.customer-account) .block:first-child .block-title {
   .sidebar .block:not(.block-layered-nav) .block-title > strong {
     margin: 0;
     margin-bottom: 10px;
-    color: #000000;
+    color: black;
     font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
     font-size: 14px;
     font-weight: bold;
@@ -773,9 +743,9 @@ body:not(.customer-account) .block:first-child .block-title {
     padding: 7px 10px 7px 24px;
     border-width: 1px;
     border-style: solid;
-    border-color: #CCCCCC;
+    border-color: #cccccc;
     position: relative;
-    background-color: #F4F4F4;
+    background-color: #f4f4f4;
     display: block;
     width: 100%;
     cursor: pointer;
@@ -789,7 +759,7 @@ body:not(.customer-account) .block:first-child .block-title {
     display: block;
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
-    border-left: 4px solid #3399CC;
+    border-left: 4px solid #3399cc;
     border-right: none;
     left: 10px;
     top: 50%;
@@ -801,7 +771,7 @@ body:not(.customer-account) .block:first-child .block-title {
   .sidebar .block:not(.block-layered-nav) .block-title.active > strong {
     margin: 0;
     margin-bottom: 10px;
-    color: #000000;
+    color: black;
     font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
     font-size: 14px;
     font-weight: bold;
@@ -819,9 +789,9 @@ body:not(.customer-account) .block:first-child .block-title {
     padding: 7px 10px 7px 24px;
     border-width: 1px;
     border-style: solid;
-    border-color: #CCCCCC;
+    border-color: #cccccc;
     position: relative;
-    background-color: #F4F4F4;
+    background-color: #f4f4f4;
   }
   .sidebar .block:not(.block-layered-nav) .block-title.active > strong:after {
     content: '';
@@ -831,7 +801,7 @@ body:not(.customer-account) .block:first-child .block-title {
     display: block;
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
-    border-top: 4px solid #3399CC;
+    border-top: 4px solid #3399cc;
     border-bottom: none;
     left: 10px;
     top: 50%;
@@ -845,10 +815,10 @@ body:not(.customer-account) .block:first-child .block-title {
     margin-top: 0;
     border-width: 0 1px;
     border-style: solid;
-    border-color: #CCCCCC;
+    border-color: #cccccc;
   }
   .sidebar .block:last-of-type {
-    border-bottom: 1px solid #CCCCCC;
+    border-bottom: 1px solid #cccccc;
   }
 }
 /* -------------------------------------------- *
@@ -868,15 +838,15 @@ body:not(.customer-account) .block:first-child .block-title {
 .block-account li strong,
 .block-cms-menu li strong {
   font-weight: 400;
-  color: #3399CC;
+  color: #3399cc;
 }
 .block-account li a,
 .block-cms-menu li a {
-  color: #000000;
+  color: black;
 }
 .block-account li a:hover,
 .block-cms-menu li a:hover {
-  color: #3399CC;
+  color: #3399cc;
 }
 
 /* ============================================ *
@@ -887,8 +857,8 @@ body:not(.customer-account) .block:first-child .block-title {
 .cart-table .button,
 .sidebar .actions .button,
 .button.button-secondary {
-  background: #DDDDDD;
-  color: #000000;
+  background: #dddddd;
+  color: black;
   padding: 7px 15px;
 }
 .cart .buttons-set .button:hover,
@@ -903,13 +873,13 @@ body:not(.customer-account) .block:first-child .block-title {
 .sidebar .actions .button:active,
 .button.button-secondary:active {
   background: #c4c4c4;
-  color: #000000;
+  color: black;
 }
 .cart .buttons-set .button:focus,
 .cart-table .button:focus,
 .sidebar .actions .button:focus,
 .button.button-secondary:focus {
-  color: #000000;
+  color: black;
   background: #c4c4c4;
   outline: none;
 }
@@ -923,7 +893,7 @@ body:not(.customer-account) .block:first-child .block-title {
 .cart-table .product-cart-actions .button,
 #co-shipping-method-form .buttons-set .button,
 .footer .button {
-  background: #3399CC;
+  background: #3399cc;
   display: inline-block;
   padding: 7px 15px;
   border: 0;
@@ -1001,7 +971,7 @@ a.button:hover {
   text-decoration: underline;
   text-transform: uppercase;
   display: inline-block;
-  color: #3399CC;
+  color: #3399cc;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 .button2 span:hover,
@@ -1091,7 +1061,7 @@ a.button:hover {
   clear: both;
   margin: 10px 0 0;
   padding-top: 10px;
-  border-top: 1px solid #EDEDED;
+  border-top: 1px solid #ededed;
   text-align: right;
 }
 .buttons-set p.required {
@@ -1156,15 +1126,15 @@ a.button:hover {
 
 .breadcrumbs a {
   float: left;
-  color: #000000;
+  color: black;
 }
 
 .breadcrumbs a:hover {
-  color: #3399CC;
+  color: #3399cc;
 }
 
 .breadcrumbs strong {
-  color: #000000;
+  color: black;
   font-weight: normal;
 }
 
@@ -1186,7 +1156,7 @@ a.button:hover {
   display: inline-block;
   width: 20px;
   height: 20px;
-  border: 1px solid #EDEDED;
+  border: 1px solid #ededed;
   text-align: center;
   /* Hide text */
   font: 0/0 a;
@@ -1196,13 +1166,13 @@ a.button:hover {
 }
 .btn-remove:hover,
 .btn-previous:hover {
-  background-color: #3399CC;
-  border-color: #3399CC;
+  background-color: #3399cc;
+  border-color: #3399cc;
 }
 
 .btn-remove:after {
   content: 'X';
-  color: #3399CC;
+  color: #3399cc;
   height: 20px;
   line-height: 20px;
   width: 100%;
@@ -1237,7 +1207,7 @@ a.button:hover {
   display: block;
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent;
-  border-right: 4px solid #3399CC;
+  border-right: 4px solid #3399cc;
   border-left: none;
   position: absolute;
   top: 50%;
@@ -1253,7 +1223,7 @@ a.button:hover {
   display: block;
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent;
-  border-right: 4px solid #FFFFFF;
+  border-right: 4px solid white;
   border-left: none;
 }
 
@@ -1280,8 +1250,8 @@ a.button:hover {
   max-height: 125px;
   margin-bottom: 10px;
   padding: 10px;
-  border: 1px solid #CCCCCC;
-  background: #F4F4F4;
+  border: 1px solid #cccccc;
+  background: #f4f4f4;
 }
 
 /* -------------------------------------------- *
@@ -1512,7 +1482,7 @@ a.button:hover {
  */
 .global-site-notice {
   background: #676157;
-  color: #E6E6E6;
+  color: #e6e6e6;
   font-size: 11px;
 }
 .global-site-notice .notice-inner {
@@ -1537,7 +1507,7 @@ a.button:hover {
  * Promotional Message Banner
  */
 .promo-msg {
-  color: #3399CC;
+  color: #3399cc;
   text-align: center;
   margin: 10px;
   text-transform: uppercase;
@@ -1557,16 +1527,16 @@ a.button:hover {
  * Messages
  */
 .success {
-  color: #11B400;
+  color: #11b400;
 }
 
 .error {
-  color: #DF280A;
+  color: #df280a;
   font-weight: bold;
 }
 
 .notice {
-  color: #E26703;
+  color: #e26703;
   font-weight: bold;
 }
 
@@ -1581,7 +1551,7 @@ a.button:hover {
   position: relative;
   margin-bottom: 5px;
   padding: 7px 10px 7px 20px;
-  background: #F4F4F4;
+  background: #f4f4f4;
   font-size: 15px;
 }
 
@@ -1592,9 +1562,9 @@ a.button:hover {
 }
 
 .messages .error-msg li {
-  color: #000000;
-  border-left: 5px solid #DF280A;
-  background-color: #FAEBE7;
+  color: black;
+  border-left: 5px solid #df280a;
+  background-color: #faebe7;
 }
 
 .messages .error-msg li:before {
@@ -1605,14 +1575,14 @@ a.button:hover {
   display: block;
   border-top: 6px solid transparent;
   border-bottom: 6px solid transparent;
-  border-left: 6px solid #DF280A;
+  border-left: 6px solid #df280a;
   border-right: none;
 }
 
 .messages .notice-msg li {
-  color: #000000;
-  border-left: 5px solid #E26703;
-  background-color: #F9EBE6;
+  color: black;
+  border-left: 5px solid #e26703;
+  background-color: #f9ebe6;
 }
 
 .messages .notice-msg li:before {
@@ -1623,14 +1593,14 @@ a.button:hover {
   display: block;
   border-top: 6px solid transparent;
   border-bottom: 6px solid transparent;
-  border-left: 6px solid #E26703;
+  border-left: 6px solid #e26703;
   border-right: none;
 }
 
 .messages .success-msg li {
-  color: #000000;
-  border-left: 5px solid #11B400;
-  background-color: #EFF5EA;
+  color: black;
+  border-left: 5px solid #11b400;
+  background-color: #eff5ea;
 }
 
 .messages .success-msg li:before {
@@ -1641,7 +1611,7 @@ a.button:hover {
   display: block;
   border-top: 6px solid transparent;
   border-bottom: 6px solid transparent;
-  border-left: 6px solid #11B400;
+  border-left: 6px solid #11b400;
   border-right: none;
 }
 
@@ -1696,8 +1666,8 @@ a.button:hover {
   max-width: 100%;
   margin: 5px 15px 15px;
   padding: 15px;
-  border: 1px solid #CCCCCC;
-  background: #F4F4F4;
+  border: 1px solid #cccccc;
+  background: #f4f4f4;
 }
 
 .payment-methods .form-list:before {
@@ -1708,7 +1678,7 @@ a.button:hover {
   display: block;
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
-  border-bottom: 10px solid #CCCCCC;
+  border-bottom: 10px solid #cccccc;
   border-top: none;
   top: -11px;
   left: 30px;
@@ -1722,7 +1692,7 @@ a.button:hover {
   display: block;
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
-  border-bottom: 10px solid #F4F4F4;
+  border-bottom: 10px solid #f4f4f4;
   border-top: none;
   top: -10px;
   left: 30px;
@@ -1763,11 +1733,11 @@ a.button:hover {
 }
 
 .price-notice {
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 
 .price-box .price {
-  color: #3399CC;
+  color: #3399cc;
   font-size: 24px;
   font-weight: 300;
 }
@@ -1778,19 +1748,19 @@ a.button:hover {
 }
 
 .price-box .price-label {
-  color: #A0A0A0;
+  color: #a0a0a0;
   white-space: nowrap;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 
 .price-box .minimal-price-link {
   padding-left: 1em;
-  color: #3399CC;
+  color: #3399cc;
   display: block;
   /* We want this to show on its own line, otherwise the layout looks funky */
 }
 .price-box .minimal-price-link .label {
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 
 /* -------------------------------------------- *
@@ -1810,12 +1780,12 @@ a.button:hover {
 }
 
 .price-box .old-price .price {
-  color: #A0A0A0;
+  color: #a0a0a0;
   text-decoration: line-through;
 }
 
 .price-box .special-price {
-  color: #3399CC;
+  color: #3399cc;
   padding-left: 1em;
 }
 .price-box .special-price .price-label {
@@ -1915,7 +1885,7 @@ span.weee {
   z-index: 300;
   width: 200px;
   padding: 8px;
-  border: 1px solid #3399CC;
+  border: 1px solid #3399cc;
   background-color: #F6F6F6;
   top: 21px;
   left: -100px;
@@ -1928,7 +1898,7 @@ span.weee {
   display: block;
   border-right: 7px solid transparent;
   border-left: 7px solid transparent;
-  border-bottom: 7px solid #3399CC;
+  border-bottom: 7px solid #3399cc;
   border-top: none;
   left: 97px;
   top: -7px;
@@ -1997,16 +1967,16 @@ span.weee {
 .no-touch .product-img-box .product-image:not(.zoom-available):hover {
   position: relative;
   display: block;
-  border: 1px solid #EDEDED;
+  border: 1px solid #ededed;
 }
 
 @media only screen and (max-width: 770px) {
   body .product-img-box .product-image:hover {
-    border-color: #EDEDED;
+    border-color: #ededed;
   }
 }
 .no-touch .product-image:hover {
-  border-color: #3399CC;
+  border-color: #3399cc;
 }
 
 /* -------------------------------------------- *
@@ -2066,7 +2036,7 @@ span.weee {
 }
 
 .std .note {
-  color: #A0A0A0;
+  color: #a0a0a0;
   font-size: 13px;
 }
 
@@ -2084,9 +2054,9 @@ span.weee {
 .toolbar {
   margin-top: 10px;
   margin-bottom: 15px;
-  border-bottom: 1px solid #CCCCCC;
-  border-top: 1px solid #CCCCCC;
-  background: #F4F4F4;
+  border-bottom: 1px solid #cccccc;
+  border-top: 1px solid #cccccc;
+  background: #f4f4f4;
   padding: 5px 10px 0px 10px;
 }
 .toolbar:after {
@@ -2106,7 +2076,7 @@ span.weee {
 .toolbar,
 .pager {
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
-  color: #000000;
+  color: black;
   line-height: 30px;
   font-size: 12px;
 }
@@ -2239,8 +2209,8 @@ span.weee {
 
 .pages .current,
 .pages .current:hover {
-  color: #000000;
-  border: 1px solid #CCCCCC;
+  color: black;
+  border: 1px solid #cccccc;
   width: 30px;
   background-color: #FFFFFF;
   cursor: default;
@@ -2256,7 +2226,7 @@ span.weee {
 }
 .pages .next:hover,
 .pages .previous:hover {
-  border: 1px solid #3399CC;
+  border: 1px solid #3399cc;
 }
 
 .pages .next:before {
@@ -2394,7 +2364,7 @@ body.customer-account .data-table .summary-collapse:before {
   display: block;
   border-right: 7px solid transparent;
   border-left: 7px solid transparent;
-  border-top: 7px solid #3399CC;
+  border-top: 7px solid #3399cc;
   border-bottom: none;
   position: static;
   display: inline-block;
@@ -2426,7 +2396,7 @@ body.customer-account .data-table .show-details .summary-collapse:before {
   display: block;
   border-right: 7px solid transparent;
   border-left: 7px solid transparent;
-  border-bottom: 7px solid #3399CC;
+  border-bottom: 7px solid #3399cc;
   border-top: none;
   position: static;
   display: inline-block;
@@ -2521,7 +2491,7 @@ body.customer-account .data-table .show-details .summary-collapse:hover:before {
 form .legend {
   margin: 0;
   margin-bottom: 10px;
-  color: #000000;
+  color: black;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
@@ -2531,7 +2501,7 @@ form .legend {
   text-transform: uppercase;
   margin-bottom: 15px;
   padding-bottom: 7px;
-  border-bottom: 1px solid #EDEDED;
+  border-bottom: 1px solid #ededed;
 }
 
 /* -------------------------------------------- *
@@ -2577,7 +2547,7 @@ label {
 label.required:after,
 span.required:after {
   content: ' *';
-  color: #DF280A;
+  color: #df280a;
   font-weight: normal;
   font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 12px;
@@ -2592,7 +2562,7 @@ span.required em {
  * Hints
  */
 .input-hint {
-  color: #A0A0A0;
+  color: #a0a0a0;
   font-size: 12px;
 }
 
@@ -2609,7 +2579,7 @@ select + select {
 
 select[multiple] {
   width: 270px;
-  border: 1px solid #C0C0C0;
+  border: 1px solid silver;
   font-size: 15px;
   padding: 5px;
 }
@@ -2618,8 +2588,8 @@ select[multiple] {
  * Textarea
  */
 textarea {
-  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
   max-width: 450px;
@@ -2630,21 +2600,24 @@ textarea {
  * Inputs
  */
 .input-text {
-  -moz-appearance: none;
   -webkit-appearance: none;
-  -moz-border-radius: 2px;
+  -moz-appearance: none;
+  appearance: none;
   -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
   border-radius: 2px;
-  border: 1px solid #000000;
+  border: 1px solid black;
   background: #FFFFFF;
   font-size: 15px;
 }
 .input-text:focus {
-  border: 1px solid #3399CC;
+  border: 1px solid #3399cc;
 }
 
 .input-text.validation-failed {
-  border-color: #DF280A;
+  border-color: #df280a;
 }
 
 .input-text.validation-failed:focus {
@@ -2702,11 +2675,11 @@ input[type=text].qty {
  * Placeholder
  */
 ::-webkit-input-placeholder {
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 
 input:-moz-placeholder {
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 
 /* -------------------------------------------- *
@@ -2735,7 +2708,7 @@ input:-moz-placeholder {
 p.required,
 .validation-advice {
   margin: 5px 0 0;
-  color: #DF280A;
+  color: #df280a;
   font-size: 13px;
 }
 
@@ -2802,8 +2775,8 @@ p.required,
 #checkout-shipping-method-load .sp-methods dd label,
 #co-shipping-method-form .sp-methods dd label,
 .product-options ul.options-list label {
-  color: #000000;
-  background-color: #F4F4F4;
+  color: black;
+  background-color: #f4f4f4;
   padding: 5px 10px;
   display: inline-block;
   width: auto;
@@ -2869,7 +2842,7 @@ form .form-instructions {
   font-style: italic;
   font-family: Georgia, Times, "Times New Roman", serif;
   font-size: 13px;
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 
 /* ============================================ *
@@ -2893,7 +2866,7 @@ form .form-instructions {
 }
 
 .data-table th {
-  background: #F4F4F4;
+  background: #f4f4f4;
   text-transform: uppercase;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   line-height: 1.4;
@@ -2902,7 +2875,7 @@ form .form-instructions {
 
 .data-table thead th,
 .data-table tbody td {
-  border-bottom: 1px solid #C0C0C0;
+  border-bottom: 1px solid silver;
 }
 
 .data-table tbody td,
@@ -2911,7 +2884,7 @@ form .form-instructions {
 }
 
 .data-table tfoot tr {
-  background: #F4F4F4;
+  background: #f4f4f4;
 }
 
 .data-table tbody td .item-options {
@@ -2926,7 +2899,7 @@ form .form-instructions {
  * Generic Info Table
  * ============================================ */
 .info-box {
-  border: 1px solid #C0C0C0;
+  border: 1px solid silver;
   padding: 12px 15px;
   margin: 0 0 15px;
 }
@@ -2954,19 +2927,19 @@ form .form-instructions {
  * ============================================ */
 .zebra-table tr:first-child,
 .zebra-table th:first-child {
-  border-top: 1px solid #C0C0C0;
+  border-top: 1px solid silver;
 }
 .zebra-table td,
 .zebra-table th {
-  border-bottom: 1px solid #C0C0C0;
+  border-bottom: 1px solid silver;
   padding: 6px;
   background-color: transparent;
 }
 .zebra-table tr {
-  background-color: #EEEDED;
+  background-color: #eeeded;
 }
 .zebra-table tr:nth-child(odd) {
-  background-color: #F8F7F5;
+  background-color: #f8f7f5;
 }
 
 /* ============================================ *
@@ -2993,7 +2966,7 @@ form .form-instructions {
   }
   .linearize-table tbody tr {
     position: relative;
-    border-bottom: 1px solid #CCCCCC;
+    border-bottom: 1px solid #cccccc;
   }
   .linearize-table tbody td {
     padding: 0 10px 4px;
@@ -3076,7 +3049,7 @@ form .form-instructions {
   }
   .linearize-table-large tbody tr {
     position: relative;
-    border-bottom: 1px solid #CCCCCC;
+    border-bottom: 1px solid #cccccc;
   }
   .linearize-table-large tbody td {
     padding: 0 10px 4px;
@@ -3168,7 +3141,7 @@ body {
   background-color: #DF2771;
   color: #fff;
   font-size: 10px;
-  padding: 5px 15px !important;
+  padding: 5px 15px;
 }
 .button:hover, .cart-table .product-cart-actions .button:hover, #co-shipping-method-form .buttons-set .button:hover, .footer .button:hover,
 .cart .buttons-set .button:hover, .cart-table .button:hover, .sidebar .actions .button:hover, .button.button-secondary:hover {
@@ -3204,6 +3177,17 @@ body {
 .link-compare, .link-wishlist {
   color: gray !important;
 }
+
+.new-product:before {
+  display: block !important;
+  content: "";
+  width: 50px;
+  height: 50px;
+  background: transparent url("../images/icon_new_product.png") no-repeat !important;
+  left: 75% !important;
+  top: 1% !important;
+}
+
 .block-title {
   background: #7f717a;
   color: #FFF;
@@ -3257,7 +3241,7 @@ body {
 }
 
 .product-options-bottom .add-to-links {
-  display: block;
+  display: none;
 }
 
 @media (max-width: 770px) {
@@ -3320,12 +3304,11 @@ body {
   background-color: #e58bc7;
   *zoom: 1;
   filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFE58BC7', endColorstr='#FFE596CB');
-  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2U1OGJjNyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2U1OTZjYiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-  background-size: 100%;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e58bc7), color-stop(100%, #e596cb));
-  background-image: -moz-linear-gradient(top, #e58bc7 0%, #e596cb 100%);
   background-image: -webkit-linear-gradient(top, #e58bc7 0%, #e596cb 100%);
-  background-image: linear-gradient(to bottom, #e58bc7 0%, #e596cb 100%);
+  background-image: -moz-linear-gradient(top, #e58bc7 0%, #e596cb 100%);
+  background-image: -o-linear-gradient(top, #e58bc7 0%, #e596cb 100%);
+  background-image: linear-gradient(top, #e58bc7 0%, #e596cb 100%);
 }
 .header-language-background .header-language-container {
   max-width: 1200px;
@@ -3368,7 +3351,7 @@ body {
 }
 .header-language-background,
 .header-language-background a {
-  color: #000000;
+  color: black;
 }
 
 @media only screen and (max-width: 770px) {
@@ -3438,7 +3421,7 @@ body {
   width: 20%;
   height: 44px;
   background: #FFFFFF;
-  color: #000000;
+  color: black;
   line-height: 42px;
   text-align: center;
 }
@@ -3529,9 +3512,9 @@ a.skip-link {
   #header-account li a,
   .nav-primary a.level0 {
     padding: 0 15px 0 25px;
-    border-bottom: 1px solid #CCCCCC;
+    border-bottom: 1px solid #cccccc;
     text-align: left;
-    color: #000000;
+    color: black;
     text-transform: uppercase;
     line-height: 30px;
   }
@@ -3543,7 +3526,7 @@ a.skip-link {
 
   .no-touch #header-account a:hover,
   .no-touch .nav-primary a:hover {
-    background-color: #F4F4F4;
+    background-color: #f4f4f4;
     text-decoration: none;
   }
 }
@@ -3601,7 +3584,7 @@ a.skip-link {
   #header-nav {
     display: block;
     /* Force visibility */
-    border-bottom: 1px solid #EDEDED;
+    border-bottom: 1px solid #ededed;
   }
 }
 /* ============================================ *
@@ -3620,7 +3603,7 @@ a.skip-link {
   text-decoration: none;
   position: relative;
   display: block;
-  color: #000000;
+  color: black;
   line-height: 30px;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 }
@@ -3628,7 +3611,7 @@ a.skip-link {
   position: relative;
 }
 .nav-primary li.level1 a {
-  border-bottom: 1px solid #CCCCCC;
+  border-bottom: 1px solid #cccccc;
 }
 
 .nav-primary .menu-active > ul.level0,
@@ -3647,7 +3630,7 @@ a.skip-link {
 .nav-primary a {
   line-height: normal;
   background-color: #a9dbe9;
-  color: #000000;
+  color: black;
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
@@ -3659,7 +3642,7 @@ a.skip-link {
   background-color: #92cfe0;
 }
 .nav-primary .level0.menu-active a {
-  color: #000000;
+  color: black;
 }
 .nav-primary li.level0 ul {
   display: none;
@@ -3682,7 +3665,7 @@ a.skip-link {
   text-transform: none;
 }
 .nav-primary li.level1 a:hover {
-  color: #3399CC;
+  color: #3399cc;
 }
 .nav-primary li.level1.active a {
   font-weight: bold;
@@ -3695,7 +3678,7 @@ a.skip-link {
   display: block;
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
-  border-left: 5px solid #ccc;
+  border-left: 5px solid #cccccc;
   border-right: none;
   top: 50%;
   left: 5px;
@@ -3711,7 +3694,7 @@ a.skip-link {
   display: block;
   border-right: 5px solid transparent;
   border-left: 5px solid transparent;
-  border-top: 5px solid #ccc;
+  border-top: 5px solid #cccccc;
   border-bottom: none;
   top: 50%;
   left: 3px;
@@ -3720,7 +3703,7 @@ a.skip-link {
 }
 .nav-primary li.menu-active > a,
 .nav-primary li.sub-menu-active > a {
-  color: #3399CC;
+  color: #3399cc;
 }
 
 .nav-primary li.level0 > a:after,
@@ -3910,7 +3893,7 @@ input::-moz-focus-inner {
 
   #header-account.skip-active {
     background: #FBFBFB;
-    border: solid 1px #CCCCCC;
+    border: solid 1px #cccccc;
     display: block;
     position: absolute;
     z-index: 200;
@@ -3922,12 +3905,12 @@ input::-moz-focus-inner {
   #header-account a {
     display: block;
     padding: 5px 10px;
-    color: #000000;
+    color: black;
     line-height: 2;
   }
 
   #header-account a:hover {
-    color: #3399CC;
+    color: #3399cc;
   }
 }
 /* -------------------------------------------- *
@@ -3946,7 +3929,7 @@ input::-moz-focus-inner {
 }
 
 #header-account a:hover {
-  color: #3399CC;
+  color: #3399cc;
 }
 
 /* ============================================ *
@@ -3970,7 +3953,7 @@ input::-moz-focus-inner {
 
   #header-cart.skip-active {
     background: #FBFBFB;
-    border: solid 1px #CCCCCC;
+    border: solid 1px #cccccc;
     display: block;
     position: absolute;
     z-index: 200;
@@ -3984,8 +3967,10 @@ input::-moz-focus-inner {
  * Skip Cart Notifier
  */
 .skip-cart .count {
-  -moz-border-radius: 12px;
   -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
   border-radius: 12px;
   display: inline-block;
   top: -6px;
@@ -4016,15 +4001,17 @@ input::-moz-focus-inner {
 }
 @media only screen and (min-width: 771px) {
   .skip-cart {
-    color: #3399CC;
+    color: #3399cc;
     text-transform: uppercase;
   }
   .skip-cart:hover {
     text-decoration: none;
   }
   .skip-cart .count {
-    -moz-border-radius: 0px;
     -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -o-border-radius: 0px;
     border-radius: 0px;
     position: static;
     background: none;
@@ -4041,7 +4028,7 @@ input::-moz-focus-inner {
 
   .skip-cart .count,
   .skip-link.skip-active .count {
-    color: #3399CC;
+    color: #3399cc;
   }
 }
 .skip-cart .count.empty {
@@ -4091,7 +4078,7 @@ input::-moz-focus-inner {
   position: relative;
   min-height: 90px;
   padding: 15px 15px 15px 90px;
-  border-top: 1px solid #CCCCCC;
+  border-top: 1px solid #cccccc;
   font-size: 13px;
   line-height: 1.35;
 }
@@ -4113,14 +4100,14 @@ input::-moz-focus-inner {
 
 .mini-cart-list .has-options {
   margin-bottom: 0;
-  color: #A0A0A0;
+  color: #a0a0a0;
   font-size: 12px;
 }
 
 /* Too full - additional items will be shown in cart */
 .cart-menu .last-added {
   padding: 10px 15px 15px;
-  border-top: 1px solid #CCCCCC;
+  border-top: 1px solid #cccccc;
   font-size: 13px;
 }
 
@@ -4158,7 +4145,7 @@ input::-moz-focus-inner {
 }
 .footer .block-title,
 .footer address {
-  color: #3399CC;
+  color: #3399cc;
 }
 .footer .links {
   float: left;
@@ -4172,10 +4159,10 @@ input::-moz-focus-inner {
   padding: 4px 0;
 }
 .footer .links a {
-  color: #000000;
+  color: black;
 }
 .footer .links a:hover {
-  color: #3399CC;
+  color: #3399cc;
 }
 .footer .block-subscribe {
   float: right;
@@ -4247,8 +4234,10 @@ input::-moz-focus-inner {
 .footer .block-subscribe .input-text {
   width: 100%;
   border-right: 0;
-  -moz-border-radius: 0;
   -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
   border-radius: 0;
 }
 .footer .block-subscribe .block-content {
@@ -4335,12 +4324,11 @@ input::-moz-focus-inner {
   background-color: #eaeaea;
   *zoom: 1;
   filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFEAEAEA', endColorstr='#FFFFFFFF');
-  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VhZWFlYSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-  background-size: 100%;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eaeaea), color-stop(100%, #ffffff));
-  background-image: -moz-linear-gradient(top, #eaeaea 0%, #ffffff 100%);
   background-image: -webkit-linear-gradient(top, #eaeaea 0%, #ffffff 100%);
-  background-image: linear-gradient(to bottom, #eaeaea 0%, #ffffff 100%);
+  background-image: -moz-linear-gradient(top, #eaeaea 0%, #ffffff 100%);
+  background-image: -o-linear-gradient(top, #eaeaea 0%, #ffffff 100%);
+  background-image: linear-gradient(top, #eaeaea 0%, #ffffff 100%);
   min-height: 250px;
 }
 
@@ -4396,7 +4384,7 @@ input::-moz-focus-inner {
 }
 
 .site-by-wq a {
-  background: url(../images/WQ_logo_Fist_192x192.png?20150212095156) no-repeat scroll right top/30px auto transparent;
+  background: url(../images/WQ_logo_Fist_192x192.png?20150212095156) no-repeat scroll right top/30px auto rgba(0, 0, 0, 0);
   color: #666;
   display: block;
   height: 30px;
@@ -4458,7 +4446,7 @@ h5.product-name,
 p.product-name {
   margin: 0;
   margin-bottom: 0.5em;
-  color: #000000;
+  color: black;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 24px;
   font-weight: 400;
@@ -4476,14 +4464,14 @@ h3.product-name a,
 h4.product-name a,
 h5.product-name a,
 p.product-name a {
-  color: #000000;
+  color: black;
 }
 h2.product-name a:hover,
 h3.product-name a:hover,
 h4.product-name a:hover,
 h5.product-name a:hover,
 p.product-name a:hover {
-  color: #3399CC;
+  color: #3399cc;
   text-decoration: none;
 }
 
@@ -4566,7 +4554,7 @@ p.product-name a:hover {
 }
 
 .products-grid .price-box {
-  color: #A0A0A0;
+  color: #a0a0a0;
   font-size: 13px;
   margin: 0 0 5px;
 }
@@ -4753,7 +4741,7 @@ p.product-name a:hover {
 .products-list > li {
   padding-bottom: 20px;
   margin-bottom: 20px;
-  border-bottom: 1px solid #EDEDED;
+  border-bottom: 1px solid #ededed;
 }
 .products-list > li:after {
   content: '';
@@ -4899,7 +4887,7 @@ p.product-name a:hover {
  * Catalog - List
  * ============================================ */
 .category-image {
-  border: 1px solid #CCCCCC;
+  border: 1px solid #cccccc;
   padding: 10px;
 }
 .category-image img {
@@ -4917,7 +4905,7 @@ p.product-name a:hover {
   display: none;
   margin: 0;
   margin-bottom: 10px;
-  color: #000000;
+  color: black;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 14px;
   font-weight: bold;
@@ -4935,9 +4923,9 @@ p.product-name a:hover {
   padding: 7px 10px 7px 24px;
   border-width: 1px;
   border-style: solid;
-  border-color: #CCCCCC;
+  border-color: #cccccc;
   position: relative;
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
   cursor: pointer;
 }
 .block-layered-nav .block-subtitle--filter:after {
@@ -4948,7 +4936,7 @@ p.product-name a:hover {
   display: block;
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
-  border-top: 4px solid #3399CC;
+  border-top: 4px solid #3399cc;
   border-bottom: none;
   left: 10px;
   top: 50%;
@@ -4964,7 +4952,7 @@ p.product-name a:hover {
 .block-layered-nav .block-content > dl > dt {
   margin: 0;
   margin-bottom: 10px;
-  color: #000000;
+  color: black;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 14px;
   font-weight: bold;
@@ -4982,9 +4970,9 @@ p.product-name a:hover {
   padding: 7px 10px 7px 24px;
   border-width: 1px;
   border-style: solid;
-  border-color: #CCCCCC;
+  border-color: #cccccc;
   position: relative;
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
   display: block;
 }
 .block-layered-nav .block-content > dl > dt:after {
@@ -4995,7 +4983,7 @@ p.product-name a:hover {
   display: block;
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
-  border-top: 4px solid #3399CC;
+  border-top: 4px solid #3399cc;
   border-bottom: none;
   left: 10px;
   top: 50%;
@@ -5009,7 +4997,7 @@ p.product-name a:hover {
   margin: 0;
   border-width: 0 1px;
   border-style: solid;
-  border-color: #CCCCCC;
+  border-color: #cccccc;
 }
 .block-layered-nav .block-content > dl > dd:last-child {
   border-width: 0 1px 1px 1px;
@@ -5024,7 +5012,7 @@ p.product-name a:hover {
   display: block;
 }
 .block-layered-nav dl dd ol > li > a .count {
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 
 @media only screen and (min-width: 771px) {
@@ -5053,7 +5041,7 @@ p.product-name a:hover {
     border-bottom-width: 0;
   }
   .block-layered-nav .block-content > dl > dt:hover {
-    color: #3399CC;
+    color: #3399cc;
   }
   .block-layered-nav .block-content > dl > dt:after {
     content: '';
@@ -5063,7 +5051,7 @@ p.product-name a:hover {
     display: block;
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
-    border-left: 4px solid #3399CC;
+    border-left: 4px solid #3399cc;
     border-right: none;
   }
   .block-layered-nav .block-content > dl > dt.last {
@@ -5083,7 +5071,7 @@ p.product-name a:hover {
     display: block;
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
-    border-top: 4px solid #3399CC;
+    border-top: 4px solid #3399cc;
     border-bottom: none;
     left: 6px;
     top: 50%;
@@ -5094,7 +5082,7 @@ p.product-name a:hover {
   }
 
   .block-layered-nav .block-subtitle--filter {
-    background-color: #3399CC;
+    background-color: #3399cc;
     border: 0;
     margin-bottom: 0;
     display: block;
@@ -5108,7 +5096,7 @@ p.product-name a:hover {
     display: block;
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
-    border-left: 4px solid #FFFFFF;
+    border-left: 4px solid white;
     border-right: none;
     right: 10px;
     top: 50%;
@@ -5126,7 +5114,7 @@ p.product-name a:hover {
     display: block;
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
-    border-top: 4px solid #FFFFFF;
+    border-top: 4px solid white;
     border-bottom: none;
     right: 10px;
     top: 50%;
@@ -5136,7 +5124,7 @@ p.product-name a:hover {
   #narrow-by-list,
   #narrow-by-list2 {
     padding: 10px;
-    border: 1px solid #CCCCCC;
+    border: 1px solid #cccccc;
     border-top: 0;
   }
 
@@ -5147,8 +5135,8 @@ p.product-name a:hover {
   }
 
   .block-layered-nav dl ol > li > a {
-    color: #000000;
-    background-color: #F4F4F4;
+    color: black;
+    background-color: #f4f4f4;
     padding: 5px 10px;
   }
   .block-layered-nav dl ol > li > a:hover {
@@ -5160,7 +5148,7 @@ p.product-name a:hover {
   display: block;
   margin: 0;
   margin-bottom: 10px;
-  color: #000000;
+  color: black;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 14px;
   font-weight: bold;
@@ -5226,7 +5214,7 @@ p.product-name a:hover {
 }
 .product-view .product-shop .product-name .h1,
 .product-view .product-img-box .product-name h1 {
-  color: #3399CC;
+  color: #3399cc;
   margin-bottom: 10px;
   border: 0;
 }
@@ -5280,7 +5268,7 @@ p.product-name a:hover {
 .product-view .product-shop .price-box .regular-price .price,
 .product-view .product-shop .price-box .special-price .price,
 .product-view .product-shop .price-box .full-product-price .price {
-  color: #3399CC;
+  color: #3399cc;
   font-size: 24px;
 }
 .product-view .product-shop .price-box .special-price .price-label {
@@ -5288,7 +5276,7 @@ p.product-name a:hover {
   text-transform: uppercase;
 }
 .product-view .product-shop .price-box .special-price span.weee {
-  color: #000000;
+  color: black;
 }
 .product-view .product-shop .price-box .special-price span.weee span.price {
   font-size: 16px;
@@ -5297,7 +5285,7 @@ p.product-name a:hover {
 .product-view .product-shop .price-box .price-including-tax {
   display: block;
   line-height: 1.2;
-  color: #000000;
+  color: black;
 }
 .product-view .product-shop .price-box .price-excluding-tax .label,
 .product-view .product-shop .price-box .price-including-tax .label {
@@ -5461,7 +5449,7 @@ p.product-name a:hover {
 .product-view .add-to-cart {
   padding-bottom: 3px;
   margin-bottom: 10px;
-  border-bottom: 1px solid #CCCCCC;
+  border-bottom: 1px solid #cccccc;
 }
 .product-view .add-to-cart .qty-wrapper,
 .product-view .product-options-bottom .price-box,
@@ -5569,7 +5557,7 @@ p.product-name a:hover {
 .product-view .add-to-links a {
   padding: 2px 7px 2px 0px;
   margin-left: 7px;
-  border-right: 1px solid #CCCCCC;
+  border-right: 1px solid #cccccc;
 }
 .product-view .add-to-links li:first-child a {
   margin-left: 0px;
@@ -5639,8 +5627,8 @@ p.product-name a:hover {
     display: block;
     width: 100%;
     position: relative;
-    border: 1px solid #CCCCCC;
-    background-color: #F4F4F4;
+    border: 1px solid #cccccc;
+    background-color: #f4f4f4;
   }
   .product-collateral .toggle-tabs li {
     float: left;
@@ -5664,8 +5652,8 @@ p.product-name a:hover {
     bottom: -1px;
   }
   .product-collateral .toggle-tabs li.current {
-    border-right: 1px solid #CCCCCC;
-    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
   }
   .product-collateral .toggle-tabs li.current > span {
     background-color: #FFFFFF;
@@ -5673,7 +5661,7 @@ p.product-name a:hover {
   }
   .product-collateral .toggle-tabs li.current span,
   .product-collateral .toggle-tabs li:hover span {
-    color: #3399CC;
+    color: #3399cc;
   }
   .product-collateral .toggle-tabs li:first-child {
     border-left: none;
@@ -5693,7 +5681,7 @@ p.product-name a:hover {
     width: 100%;
     display: none;
     padding: 15px;
-    border: 1px solid #CCCCCC;
+    border: 1px solid #cccccc;
     border-top: 0;
   }
   .product-collateral > dl > dd.current {
@@ -5707,7 +5695,7 @@ p.product-name a:hover {
   .product-collateral > dl > dt {
     margin: 0;
     margin-bottom: 10px;
-    color: #000000;
+    color: black;
     font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
     font-size: 14px;
     font-weight: bold;
@@ -5725,9 +5713,9 @@ p.product-name a:hover {
     padding: 7px 10px 7px 24px;
     border-width: 1px;
     border-style: solid;
-    border-color: #CCCCCC;
+    border-color: #cccccc;
     position: relative;
-    background-color: #F4F4F4;
+    background-color: #f4f4f4;
     display: block;
   }
   .product-collateral > dl > dt:after {
@@ -5738,7 +5726,7 @@ p.product-name a:hover {
     display: block;
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
-    border-top: 4px solid #3399CC;
+    border-top: 4px solid #3399cc;
     border-bottom: none;
     left: 10px;
     top: 50%;
@@ -5752,7 +5740,7 @@ p.product-name a:hover {
     margin: 0;
     border-width: 0 1px;
     border-style: solid;
-    border-color: #CCCCCC;
+    border-color: #cccccc;
   }
   .product-collateral > dl > dd:last-child {
     border-width: 0 1px 1px 1px;
@@ -5762,7 +5750,7 @@ p.product-name a:hover {
     border-bottom-width: 0;
   }
   .product-collateral > dl > dt:hover {
-    color: #3399CC;
+    color: #3399cc;
   }
   .product-collateral > dl > dt:after {
     content: '';
@@ -5772,7 +5760,7 @@ p.product-name a:hover {
     display: block;
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
-    border-left: 4px solid #3399CC;
+    border-left: 4px solid #3399cc;
     border-right: none;
   }
   .product-collateral > dl > dt.last {
@@ -5792,7 +5780,7 @@ p.product-name a:hover {
     display: block;
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
-    border-top: 4px solid #3399CC;
+    border-top: 4px solid #3399cc;
     border-bottom: none;
     left: 6px;
     top: 50%;
@@ -5840,18 +5828,18 @@ p.product-name a:hover {
 
 #product-attribute-specs-table {
   max-width: 50em;
-  border: 1px solid #C0C0C0;
+  border: 1px solid silver;
 }
 #product-attribute-specs-table th {
-  border-right: 1px solid #C0C0C0;
-  border-bottom: 1px solid #C0C0C0;
+  border-right: 1px solid silver;
+  border-bottom: 1px solid silver;
 }
 
 /* -------------------------------------------- *
  * Catalog - Grouped Product List
  */
 .grouped-items-table-wrapper {
-  border: solid 1px #C0C0C0;
+  border: solid 1px silver;
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
@@ -5866,7 +5854,7 @@ p.product-name a:hover {
 }
 
 .grouped-items-table .name-wrapper {
-  color: #3399CC;
+  color: #3399cc;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 .grouped-items-table .qty-wrapper {
@@ -5893,7 +5881,7 @@ p.product-name a:hover {
   width: 100%;
   margin: 10px 0 0;
   padding: 10px 15px 15px;
-  border: 1px solid #CCCCCC;
+  border: 1px solid #cccccc;
   clear: both;
   position: relative;
 }
@@ -5941,7 +5929,7 @@ p.product-name a:hover {
 .product-options dd {
   padding: 0 0 10px 0;
   margin: 0 0 5px;
-  border-bottom: 1px solid #EDEDED;
+  border-bottom: 1px solid #ededed;
 }
 
 .product-options dl.last dd.last {
@@ -5963,10 +5951,11 @@ p.product-name a:hover {
 }
 
 .product-options dd .time-picker {
+  display: -moz-inline-stack;
   display: inline-block;
   vertical-align: middle;
   *vertical-align: auto;
-  *zoom: 1;
+  zoom: 1;
   *display: inline;
   padding: 2px 0;
   vertical-align: middle;
@@ -6015,9 +6004,9 @@ p.product-name a:hover {
 }
 
 .product-options-bottom {
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
   padding: 15px 20px;
-  border: 1px solid #CCCCCC;
+  border: 1px solid #cccccc;
   border-top: 0;
   margin-bottom: 10px;
 }
@@ -6035,7 +6024,7 @@ p.product-name a:hover {
   padding: 0 0 10px;
   border: 0;
   background: 0;
-  color: #000000;
+  color: black;
 }
 @media only screen and (max-width: 1199px) {
   .product-options-bottom .product-pricing,
@@ -6045,7 +6034,7 @@ p.product-name a:hover {
     text-align: right;
     padding-bottom: 5px;
     margin-bottom: 10px;
-    border-bottom: 1px solid #CCCCCC;
+    border-bottom: 1px solid #cccccc;
   }
 }
 
@@ -6056,7 +6045,7 @@ p.product-name a:hover {
 
 .product-options-bottom .tier-prices .price,
 .product-options-bottom .tier-prices .benefit {
-  color: #000000;
+  color: black;
 }
 
 /* "display: none" should be removed if products on site have a long list of product options and those product options */
@@ -6093,7 +6082,7 @@ p.product-name a:hover {
 .block-related .block-title h2 {
   margin: 0;
   margin-bottom: 0.5em;
-  color: #000000;
+  color: black;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 24px;
   font-weight: 400;
@@ -6180,7 +6169,7 @@ p.product-name a:hover {
 
 .map-popup {
   background: #FFFFFF;
-  border: 5px solid #CCCCCC;
+  border: 5px solid #cccccc;
   margin: 12px 0 0;
   position: absolute;
   text-align: left;
@@ -6233,7 +6222,7 @@ p.product-name a:hover {
   text-align: center;
 }
 .map-popup .map-popup-content {
-  border-top: 1px solid #EDEDED;
+  border-top: 1px solid #ededed;
   padding: 10px;
   margin: 0 10px;
   overflow: hidden;
@@ -6337,7 +6326,7 @@ p.product-name a:hover {
 }
 .map-popup .map-popup-text,
 .map-popup .map-popup-only-text {
-  border-top: 1px solid #EDEDED;
+  border-top: 1px solid #ededed;
 }
 
 /* ============================================ *
@@ -6395,8 +6384,8 @@ p.product-name a:hover {
 .cart-forms .giftcard,
 .cart-forms .shipping {
   padding: 10px;
-  background-color: #F4F4F4;
-  border: 1px solid #CCCCCC;
+  background-color: #f4f4f4;
+  border: 1px solid #cccccc;
 }
 
 .cart-table,
@@ -6487,7 +6476,7 @@ p.product-name a:hover {
  * ============================================ */
 .cart .page-title {
   margin-bottom: 15px;
-  border-bottom: 1px solid #EDEDED;
+  border-bottom: 1px solid #ededed;
 }
 .cart .page-title:after {
   content: '';
@@ -6589,7 +6578,7 @@ p.product-name a:hover {
   vertical-align: top;
 }
 .cart-table h2 {
-  color: #000000;
+  color: black;
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 0;
@@ -6605,7 +6594,7 @@ p.product-name a:hover {
   padding-left: 15px;
 }
 .cart-table tr {
-  border-bottom: 1px solid #C0C0C0;
+  border-bottom: 1px solid silver;
 }
 .cart-table tfoot tr {
   background: none;
@@ -6665,7 +6654,7 @@ p.product-name a:hover {
   display: block;
   border-top: 6px solid transparent;
   border-bottom: 6px solid transparent;
-  border-right: 6px solid #3399CC;
+  border-right: 6px solid #3399cc;
   border-left: none;
   position: absolute;
   top: 3px;
@@ -6679,7 +6668,7 @@ p.product-name a:hover {
   display: block;
   border-right: 6px solid transparent;
   border-left: 6px solid transparent;
-  border-top: 6px solid #3399CC;
+  border-top: 6px solid #3399cc;
   border-bottom: none;
   right: -15px;
   top: 6px;
@@ -6703,7 +6692,7 @@ p.product-name a:hover {
 }
 .cart-table .product-cart-actions .qty {
   height: 30px;
-  border-color: #C0C0C0;
+  border-color: silver;
   border-radius: 0;
   margin-bottom: 10px;
   text-align: center;
@@ -6884,10 +6873,10 @@ p.product-name a:hover {
   max-width: 100%;
   height: 30px;
   display: block;
-  border: 1px solid #C0C0C0;
+  border: 1px solid silver;
 }
 .shipping select.validation-failed {
-  border-color: #DF280A;
+  border-color: #df280a;
 }
 .shipping .shipping-desc {
   display: none;
@@ -6956,7 +6945,7 @@ p.product-name a:hover {
   margin-left: 0;
 }
 .shipping #co-shipping-method-form .sp-methods dd label {
-  border: 1px solid #CCCCCC;
+  border: 1px solid #cccccc;
   background-color: #ececec;
   min-width: 220px;
 }
@@ -7098,7 +7087,7 @@ p.product-name a:hover {
  * Checkout - Cart Cross sell
  * ============================================ */
 .crosssell h2 {
-  color: #3399CC;
+  color: #3399cc;
 }
 .crosssell .item a.product-image {
   width: auto;
@@ -7179,7 +7168,7 @@ p.product-name a:hover {
  */
 .opc .section .step-title {
   width: 100%;
-  border-top: 1px solid #ECECEC;
+  border-top: 1px solid #ececec;
   position: relative;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -7199,11 +7188,11 @@ p.product-name a:hover {
 
 /* Using .no-touch since touch devices emulate hover, thereby making steps look active that are not */
 .no-touch .opc .section.allow:not(.active) .step-title:hover {
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
 }
 
 .opc .section.active .step-title {
-  border-bottom: 1px solid #ECECEC;
+  border-bottom: 1px solid #ececec;
 }
 
 .opc .section .step-title a {
@@ -7230,7 +7219,7 @@ p.product-name a:hover {
   text-align: center;
   color: #FFFFFF;
   line-height: 26px;
-  background-color: #3399CC;
+  background-color: #3399cc;
   display: block;
   position: absolute;
   top: 50%;
@@ -7243,12 +7232,12 @@ p.product-name a:hover {
 }
 
 .opc .section.allow .step-title h2 {
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 
 .opc .section.allow .step-title:hover h2,
 .opc .section.active .step-title h2 {
-  color: #3399CC;
+  color: #3399cc;
 }
 
 .opc .section .step-title h2 {
@@ -7339,24 +7328,27 @@ p.product-name a:hover {
  */
 .opc.opc-firststep-login .section:not(#opc-login) .step-title,
 .opc-block-progress-step-login {
-  -moz-transition: opacity 300ms 0;
-  -o-transition: opacity 300ms 0;
-  -webkit-transition: opacity 300ms 0;
-  transition: opacity 300ms 0;
+  -webkit-transition: opacity 300ms linear;
+  -webkit-transition-delay: 0;
+  -moz-transition: opacity 300ms linear 0;
+  -o-transition: opacity 300ms linear 0;
+  transition: opacity 300ms linear 0;
 }
 
 .opc.opc-firststep-login .section#opc-login .step-title .number {
-  -moz-transition: width 80ms 0;
-  -o-transition: width 80ms 0;
-  -webkit-transition: width 80ms 0;
-  transition: width 80ms 0;
+  -webkit-transition: width 80ms linear;
+  -webkit-transition-delay: 0;
+  -moz-transition: width 80ms linear 0;
+  -o-transition: width 80ms linear 0;
+  transition: width 80ms linear 0;
 }
 
 .opc.opc-firststep-login .section#opc-login .step-title h2 {
-  -moz-transition: margin-left 80ms 0;
-  -o-transition: margin-left 80ms 0;
-  -webkit-transition: margin-left 80ms 0;
-  transition: margin-left 80ms 0;
+  -webkit-transition: margin-left 80ms linear;
+  -webkit-transition-delay: 0;
+  -moz-transition: margin-left 80ms linear 0;
+  -o-transition: margin-left 80ms linear 0;
+  transition: margin-left 80ms linear 0;
 }
 
 /* When a user progresses from the "Checkout Method" to "Billing Information" for the first time, the              */
@@ -7457,7 +7449,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 .block-progress {
   border: 0;
   margin: 0;
-  border-left: 1px solid #CCCCCC;
+  border-left: 1px solid #cccccc;
   padding-left: 20px;
 }
 .block-progress .block-content {
@@ -7467,7 +7459,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   padding-top: 6px;
   margin: 0;
   margin-bottom: 10px;
-  color: #000000;
+  color: black;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 14px;
   font-weight: bold;
@@ -7478,10 +7470,10 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   margin-bottom: 6px;
   text-transform: uppercase;
   font-weight: normal;
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 .block-progress dt.complete {
-  color: #000000;
+  color: black;
 }
 .block-progress dd {
   padding-left: 15px;
@@ -7498,7 +7490,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 .block-progress .payment-info dt {
   padding: 0;
   margin: 0 0 3px 0;
-  color: #000000;
+  color: black;
   font-family: Georgia, Times, "Times New Roman", serif;
   text-transform: none;
   font-style: italic;
@@ -7663,7 +7655,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 .gift-message-form .gift-item {
   padding-bottom: 10px;
   margin-bottom: 10px;
-  border-bottom: solid 1px #ECECEC;
+  border-bottom: solid 1px #ececec;
 }
 .gift-message-form .gift-item:after {
   content: '';
@@ -7734,13 +7726,13 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   border-radius: 3px;
   font-size: 14px;
   text-align: center;
-  color: #000000;
+  color: black;
   text-decoration: none;
   box-sizing: content-box;
 }
 
 .swatch-link {
-  border: 1px solid #CCCCCC;
+  border: 1px solid #cccccc;
   margin: 0 0 3px;
 }
 .swatch-link img {
@@ -7774,7 +7766,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   border: 1px solid #fff;
   margin: 0;
   white-space: nowrap;
-  background: #F4F4F4;
+  background: #f4f4f4;
 }
 
 .configurable-swatch-list {
@@ -7798,7 +7790,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   display: block;
 }
 .configurable-swatch-list .not-available .swatch-link {
-  border-color: #EDEDED;
+  border-color: #ededed;
   position: relative;
 }
 .configurable-swatch-list .not-available .swatch-link.has-image img {
@@ -7830,11 +7822,11 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   line-height: inherit;
 }
 #narrow-by-list dd .swatch-link:hover .swatch-label {
-  border-color: #3399CC;
+  border-color: #3399cc;
 }
 #narrow-by-list dd .swatch-label {
-  background: #F4F4F4;
-  border: 1px solid #CCCCCC;
+  background: #f4f4f4;
+  border: 1px solid #cccccc;
   border-radius: 3px;
   display: block;
   float: left;
@@ -7875,7 +7867,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   margin: 0 0 0 3px;
 }
 .currently .swatch-link:hover {
-  border-color: #CCCCCC;
+  border-color: #cccccc;
   cursor: default;
 }
 
@@ -7883,7 +7875,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 .configurable-swatch-list .hover .swatch-link,
 .configurable-swatch-list .selected .swatch-link,
 .swatch-link:hover {
-  border-color: #3399CC;
+  border-color: #3399cc;
 }
 
 .configurable-swatch-box {
@@ -7894,7 +7886,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 }
 .configurable-swatch-box .validation-advice {
   margin: 0 0 5px;
-  background: #DF280A;
+  background: #df280a;
   padding: 2px 5px !important;
   font-weight: bold;
   color: #fff !important;
@@ -7905,7 +7897,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 
 /* CUSTOM */
 .availability.out-of-stock span {
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 
 .product-view .product-options .swatch-attr {
@@ -7925,7 +7917,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 .product-view .product-options .swatch-attr .select-label {
   display: inline;
   font-weight: normal;
-  color: #3399CC;
+  color: #3399cc;
   padding-left: 5px;
 }
 .product-view .product-options dd .input-box {
@@ -7972,7 +7964,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   }
   .customer-account-login .col2-set .col-2 {
     padding-left: 20px;
-    border-left: 1px solid #EDEDED;
+    border-left: 1px solid #ededed;
   }
 }
 @media only screen and (min-width: 770px) {
@@ -7981,7 +7973,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   }
   .customer-account-login .col2-set .col-2 {
     padding-left: 60px;
-    border-left: 1px solid #EDEDED;
+    border-left: 1px solid #ededed;
   }
 }
 @media only screen and (max-width: 479px) {
@@ -7990,7 +7982,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   }
   .customer-account-login .col2-set .col-2 {
     padding-top: 30px;
-    border-top: 1px solid #EDEDED;
+    border-top: 1px solid #ededed;
   }
 }
 @media only screen and (max-width: 770px) {
@@ -8007,7 +7999,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   font-style: italic;
   font-family: Georgia, Times, "Times New Roman", serif;
   font-size: 13px;
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 
 .remember-me-box a.hide {
@@ -8020,7 +8012,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 
 .remember-me-popup {
   display: none;
-  border: 1px solid #CCCCCC;
+  border: 1px solid #cccccc;
   padding: 10px;
   position: relative;
 }
@@ -8183,7 +8175,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
  * ============================================ */
 .dashboard .box-head {
   margin-top: 30px;
-  border-bottom: 1px solid #CCCCCC;
+  border-bottom: 1px solid #cccccc;
   padding-bottom: 7px;
 }
 .dashboard .box-head h2 {
@@ -8202,7 +8194,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 }
 .dashboard .box-account {
   padding-bottom: 40px;
-  border-bottom: 1px solid #CCCCCC;
+  border-bottom: 1px solid #cccccc;
   margin-bottom: 45px;
 }
 .dashboard .box-account p,
@@ -8237,7 +8229,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 }
 .dashboard .box-reviews li {
   padding: 10px 0;
-  border-top: 1px solid #EDEDED;
+  border-top: 1px solid #ededed;
 }
 .dashboard .box-reviews li:first-child {
   border-top: 0;
@@ -8307,7 +8299,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
  * ============================================ */
 .order-info {
   padding-bottom: 10px;
-  border-bottom: 1px solid #EDEDED;
+  border-bottom: 1px solid #ededed;
   width: 100%;
   margin-bottom: 30px;
 }
@@ -8341,7 +8333,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 }
 .order-info-box + .order-info-box {
   padding-bottom: 40px;
-  border-bottom: 1px solid #EDEDED;
+  border-bottom: 1px solid #ededed;
 }
 .order-info-box .col-1 {
   padding-right: 0;
@@ -8429,7 +8421,7 @@ ol#cart-sidebar-reorder p.product-name {
     margin-right: 10px;
   }
   #my-orders-table tr.bundle {
-    border-color: #EDEDED;
+    border-color: #ededed;
   }
   #my-orders-table tr.bundle.child td[data-rwd-label] {
     padding-left: 60px;
@@ -8588,7 +8580,7 @@ ol#cart-sidebar-reorder p.product-name {
   .order-info-box .col-1,
   .order-info-box .col-2 {
     width: 100%;
-    border-bottom: 1px solid #EDEDED;
+    border-bottom: 1px solid #ededed;
     padding: 15px 0;
   }
   .order-info-box + .order-info-box {
@@ -8611,7 +8603,7 @@ body.newsletter-manage-index .my-account .fieldset h2 {
   display: none;
 }
 body.newsletter-manage-index .my-account .form-list {
-  border-top: 1px solid #EDEDED;
+  border-top: 1px solid #ededed;
   padding-top: 10px;
 }
 
@@ -8648,11 +8640,10 @@ body.newsletter-manage-index .my-account .form-list {
     padding: 0px;
   }
 }
-
 .paypal-review-order .info-set {
   margin-bottom: 10px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #EDEDED;
+  border-bottom: 1px solid #ededed;
 }
 .paypal-review-order .buttons-set {
   margin-top: 0px;
@@ -8777,8 +8768,8 @@ div.paypal-logo span > img {
   float: none;
 }
 #customer-reviews .review-heading {
-  border-top: 1px solid #CCCCCC;
-  border-bottom: 1px solid #CCCCCC;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
   padding: 10px 0 5px;
 }
 #customer-reviews .review-heading:after {
@@ -8807,12 +8798,12 @@ div.paypal-logo span > img {
   display: none;
 }
 #customer-reviews h2 {
-  color: #3399CC;
+  color: #3399cc;
   font-size: 12px;
   text-transform: uppercase;
 }
 #customer-reviews h2 span {
-  color: #000000;
+  color: black;
 }
 #customer-reviews h3 {
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
@@ -8821,14 +8812,14 @@ div.paypal-logo span > img {
   text-transform: uppercase;
 }
 #customer-reviews h3 span {
-  color: #3399CC;
+  color: #3399cc;
 }
 #customer-reviews .fieldset {
   padding-top: 25px;
   width: 470px;
 }
 #customer-reviews .fieldset h4 {
-  border-bottom: 1px solid #CCCCCC;
+  border-bottom: 1px solid #cccccc;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 12px;
   font-weight: normal;
@@ -8856,13 +8847,13 @@ div.paypal-logo span > img {
   font-weight: normal;
 }
 #customer-reviews .fieldset .form-list textarea {
-  border: 1px solid #CCCCCC;
+  border: 1px solid #cccccc;
   border-radius: 0;
   min-width: 100%;
   -webkit-appearance: none;
 }
 #customer-reviews .fieldset .form-list input {
-  border: 1px solid #CCCCCC;
+  border: 1px solid #cccccc;
   border-radius: 0;
 }
 #customer-reviews .fieldset .form-list input[type="text"] {
@@ -8904,7 +8895,7 @@ div.paypal-logo span > img {
   margin: 15px 0;
 }
 #customer-reviews dl dd .review-meta {
-  color: #3399CC;
+  color: #3399cc;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 10px;
   font-weight: normal;
@@ -8912,7 +8903,7 @@ div.paypal-logo span > img {
 }
 
 .review-summary-table {
-  border-bottom: 1px solid #CCCCCC;
+  border-bottom: 1px solid #cccccc;
   margin: 0 0 10px;
 }
 .review-summary-table thead {
@@ -9252,7 +9243,7 @@ div.paypal-logo span > img {
   width: 100%;
 }
 #wishlist-table.clean-table th {
-  border-bottom: 1px solid #C0C0C0;
+  border-bottom: 1px solid silver;
 }
 #wishlist-table.clean-table td {
   padding: 15px;
@@ -9270,7 +9261,7 @@ div.paypal-logo span > img {
   text-transform: uppercase;
 }
 #wishlist-table .product-name a {
-  color: #3399CC;
+  color: #3399cc;
 }
 #wishlist-table .wishlist-sku {
   font-size: 11px;
@@ -9278,7 +9269,7 @@ div.paypal-logo span > img {
   margin: 5px 0;
 }
 #wishlist-table textarea {
-  border: 1px solid #C0C0C0;
+  border: 1px solid silver;
   width: 100%;
   height: 45px;
   font-size: 11px;
@@ -9297,7 +9288,7 @@ div.paypal-logo span > img {
   text-transform: uppercase;
 }
 #wishlist-table textarea:focus {
-  border: 1px solid #3399CC;
+  border: 1px solid #3399cc;
 }
 #wishlist-table .item-manage {
   text-align: right;
@@ -9354,7 +9345,7 @@ div.paypal-logo span > img {
   font-size: 12px;
 }
 #wishlist-table .price-box .price {
-  color: #000000;
+  color: black;
 }
 #wishlist-table .giftregisty-add {
   margin-top: 5px;
@@ -9364,12 +9355,12 @@ div.paypal-logo span > img {
 }
 #wishlist-table .giftregisty-add li {
   cursor: pointer;
-  color: #3399CC;
+  color: #3399cc;
   margin-bottom: 3px;
 }
 #wishlist-table .truncated .details {
   background: none;
-  color: #3399CC;
+  color: #3399cc;
 }
 #wishlist-table td[data-rwd-label]:before {
   font-weight: 600;
@@ -9528,7 +9519,7 @@ div.paypal-logo span > img {
   text-transform: uppercase;
   margin-right: 7px;
   padding-right: 7px;
-  border-right: 1px solid #EDEDED;
+  border-right: 1px solid #ededed;
 }
 
 /* ============================================ *
@@ -9598,7 +9589,7 @@ div.paypal-logo span > img {
   width: 40px;
   float: right;
   display: block;
-  color: #000000;
+  color: black;
   text-decoration: none;
   font-weight: normal;
   font-size: 30px;
@@ -9626,7 +9617,7 @@ div.paypal-logo span > img {
   font-weight: bold;
 }
 .header-minicart .product-details .product-name a {
-  color: #3399CC;
+  color: #3399cc;
 }
 .header-minicart .info-wrapper {
   margin-bottom: 0.5em;
@@ -9636,7 +9627,7 @@ div.paypal-logo span > img {
   padding-right: 10px;
 }
 .header-minicart .info-wrapper td {
-  color: #3399CC;
+  color: #3399cc;
   clear: right;
 }
 .header-minicart .info-wrapper .qty-wrapper td {
@@ -9653,13 +9644,13 @@ div.paypal-logo span > img {
 }
 .header-minicart .info-wrapper .quantity-button {
   opacity: 0;
+  -webkit-transition-property: opacity;
   -moz-transition-property: opacity;
   -o-transition-property: opacity;
-  -webkit-transition-property: opacity;
   transition-property: opacity;
+  -webkit-transition-duration: 100ms;
   -moz-transition-duration: 100ms;
   -o-transition-duration: 100ms;
-  -webkit-transition-duration: 100ms;
   transition-duration: 100ms;
 }
 .header-minicart .info-wrapper .quantity-button[disabled] {
@@ -9678,7 +9669,7 @@ div.paypal-logo span > img {
   text-transform: uppercase;
 }
 .header-minicart .subtotal .price {
-  color: #3399CC;
+  color: #3399cc;
 }
 .header-minicart .minicart-actions {
   padding: 10px;
@@ -9732,7 +9723,7 @@ div.paypal-logo span > img {
 }
 @media only screen and (max-width: 770px) {
   .header-minicart .subtotal .label {
-    color: #000000;
+    color: black;
   }
   .header-minicart .minicart-wrapper:before {
     background-color: #EDEDED;
@@ -9806,11 +9797,13 @@ div.paypal-logo span > img {
   z-index: 200;
 }
 .search-autocomplete ul {
-  -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
   border-radius: 2px;
   background-color: #FFFFFF;
-  border: 1px solid #3399CC;
+  border: 1px solid #3399cc;
   left: 0;
   padding-left: 0;
   position: absolute;
@@ -9818,8 +9811,8 @@ div.paypal-logo span > img {
   width: 100%;
 }
 .search-autocomplete ul li {
-  border-bottom: 1px solid #F4F4F4;
-  color: #3399CC;
+  border-bottom: 1px solid #f4f4f4;
+  color: #3399cc;
   cursor: pointer;
   font-size: 12px;
   padding: 4px 6px;
@@ -9829,7 +9822,7 @@ div.paypal-logo span > img {
   color: #2e8ab8;
 }
 .search-autocomplete ul li.selected {
-  background-color: #3399CC;
+  background-color: #3399cc;
   color: white;
 }
 .search-autocomplete ul li .amount {
@@ -9847,7 +9840,7 @@ div.paypal-logo span > img {
   display: block;
   border-right: 7px solid transparent;
   border-left: 7px solid transparent;
-  border-bottom: 7px solid #3399CC;
+  border-bottom: 7px solid #3399cc;
   border-top: none;
   left: 50%;
   top: -7px;
@@ -9857,12 +9850,12 @@ div.paypal-logo span > img {
  * Search - Advanced
  * ============================================ */
 .advanced-search {
-  background: #F4F4F4;
-  border: 1px solid #EDEDED;
+  background: #f4f4f4;
+  border: 1px solid #ededed;
   padding: 30px;
 }
 .advanced-search select.multiselect option {
-  border-bottom: 1px solid #EDEDED;
+  border-bottom: 1px solid #ededed;
   padding: 2px 5px;
 }
 
@@ -9875,7 +9868,7 @@ div.paypal-logo span > img {
  * Account - Reviews
  * ============================================ */
 .product-review .product-img-box p.label {
-  border-bottom: 1px solid #CCCCCC;
+  border-bottom: 1px solid #cccccc;
   font-size: 16px;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   margin-top: 20px;
@@ -9886,7 +9879,7 @@ div.paypal-logo span > img {
   margin: 15px 0;
 }
 .product-review .product-details h2 {
-  border-bottom: 1px solid #CCCCCC;
+  border-bottom: 1px solid #cccccc;
   color: #3399CC;
   font-size: 16px;
   font-weight: 600;
@@ -9906,7 +9899,7 @@ div.paypal-logo span > img {
   text-transform: uppercase;
 }
 .product-review .ratings-description dt {
-  border-bottom: 1px solid #CCCCCC;
+  border-bottom: 1px solid #cccccc;
   font-size: 16px;
   font-weight: 400;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
@@ -9955,7 +9948,7 @@ div.paypal-logo span > img {
 }
 .cms-page-view .std p,
 .cms-no-route .std p {
-  color: #000000;
+  color: black;
   font-family: Georgia, Times, "Times New Roman", serif;
   font-size: 14px;
   font-style: italic;
@@ -9963,15 +9956,15 @@ div.paypal-logo span > img {
 }
 .cms-page-view .std h1,
 .cms-no-route .std h1 {
-  color: #3399CC;
+  color: #3399cc;
 }
 .cms-page-view .std h2,
 .cms-no-route .std h2 {
-  color: #3399CC;
+  color: #3399cc;
 }
 .cms-page-view .std li,
 .cms-no-route .std li {
-  color: #000000;
+  color: black;
   font-family: Georgia, Times, "Times New Roman", serif;
   font-size: 14px;
   font-style: italic;
@@ -10013,7 +10006,7 @@ div.paypal-logo span > img {
 #accordion > dl > dt {
   margin: 0;
   margin-bottom: 10px;
-  color: #000000;
+  color: black;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 14px;
   font-weight: bold;
@@ -10031,9 +10024,9 @@ div.paypal-logo span > img {
   padding: 7px 10px 7px 24px;
   border-width: 1px;
   border-style: solid;
-  border-color: #CCCCCC;
+  border-color: #cccccc;
   position: relative;
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
   display: block;
 }
 #accordion > dl > dt:after {
@@ -10044,7 +10037,7 @@ div.paypal-logo span > img {
   display: block;
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
-  border-top: 4px solid #3399CC;
+  border-top: 4px solid #3399cc;
   border-bottom: none;
   left: 10px;
   top: 50%;
@@ -10058,7 +10051,7 @@ div.paypal-logo span > img {
   margin: 0;
   border-width: 0 1px;
   border-style: solid;
-  border-color: #CCCCCC;
+  border-color: #cccccc;
 }
 #accordion > dl > dd:last-child {
   border-width: 0 1px 1px 1px;
@@ -10116,7 +10109,7 @@ div.paypal-logo span > img {
  * Pricing Conditions
  * ============================================ */
 .price-box .minimal-price-link .label {
-  color: #CF5050;
+  color: #cf5050;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 12px;
   text-transform: uppercase;
@@ -10213,8 +10206,8 @@ div.paypal-logo span > img {
 }
 
 .product-tags {
-  background-color: #F4F4F4;
-  border: 1px solid #CCCCCC;
+  background-color: #f4f4f4;
+  border: 1px solid #cccccc;
   float: left;
   margin-bottom: 10px;
   padding: 5px 1% 10px;
@@ -10309,7 +10302,7 @@ div.paypal-logo span > img {
 }
 
 .captcha-img {
-  border: 20px solid #bbb;
+  border: 20px solid #bbbbbb;
 }
 
 .captcha-input-container {
@@ -10660,15 +10653,15 @@ body[class*="checkout-multishipping-"] .checkout-progress > li {
   width: 20%;
   text-align: center;
   padding: 8px 1% 6px;
-  background: #F4F4F4;
+  background: #f4f4f4;
   text-transform: uppercase;
-  border-bottom: 1px solid #CCCCCC;
-  border-right: 1px solid #CCCCCC;
+  border-bottom: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
   margin-bottom: 10px;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 body[class*="checkout-multishipping-"] .checkout-progress > li.active {
-  background-color: #DDDDDD;
+  background-color: #dddddd;
 }
 body[class*="checkout-multishipping-"] .checkout-progress > li.last {
   border-right: 0px;
@@ -10758,8 +10751,8 @@ body[class*="checkout-multishipping-"] #review-buttons-container {
 .checkout-multishipping-overview .col-2 .box-title h4 {
   font-weight: normal;
   width: 100%;
-  background: #F4F4F4;
-  border-bottom: 1px solid #CCCCCC;
+  background: #f4f4f4;
+  border-bottom: 1px solid #cccccc;
   padding: 10px;
   font-size: 14px;
 }
@@ -10770,8 +10763,8 @@ body[class*="checkout-multishipping-"] #review-buttons-container {
 .checkout-multishipping-overview .col-2 > h4 {
   font-weight: normal;
   width: 100%;
-  background: #F4F4F4;
-  border-bottom: 1px solid #CCCCCC;
+  background: #f4f4f4;
+  border-bottom: 1px solid #cccccc;
   padding: 10px;
   font-size: 14px;
 }
@@ -10871,9 +10864,4 @@ div.calendar table td.button {
   background: inherit;
   color: inherit;
   text-transform: none;
-}
-
-.links {
-  float: right;
-  margin-left: 50px;
 }

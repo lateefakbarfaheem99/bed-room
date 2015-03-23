@@ -191,7 +191,7 @@ body .promos > li {
 .cms-index-index .products-grid .actions,
 .cms-index-noroute .products-grid .ratings,
 .cms-index-noroute .products-grid .actions {
-    display: none;
+    display: block;
 }
 
 .cms-index-index h2.subtitle {
@@ -298,34 +298,33 @@ body .promos > li {
     .item {
         width: 25%;
     }
-    .product {
-        /* out of view (left) */
-        &-0 {
-            left: -25%;
-            opacity: 0;
-        }
-        /* in view (center) */
-        &-1 {
-            left: 0;
-            opacity: 1;
-        }
-        &-2 {
-            left: 25%;
-            opacity: 1;
-        }
-        &-3 {
-            left: 50%;
-            opacity: 1;
-        }
-        &-4 {
-            left: 75%;
-            opacity: 1;
-        }
-        /* out of view (right) */
-        &-5 {
-            left: 100%;
-            opacity: 0;
-        }
+    
+    /* out of view (left) */
+    .product-0 {
+        left: -25%;
+        opacity: 0;
+    }
+    /* in view (center) */
+    .product-1 {
+        left: 0;
+        opacity: 1;
+    }
+    .product-2 {
+        left: 25%;
+        opacity: 1;
+    }
+    .product-3 {
+        left: 50%;
+        opacity: 1;
+    }
+    .product-4 {
+        left: 75%;
+        opacity: 1;
+    }
+    /* out of view (right) */
+    .product-5 {
+        left: 100%;
+        opacity: 0;
     }
 }
 .widget-brand-logos .item {
@@ -359,31 +358,30 @@ body .promos > li {
         .item {
             width: 50%;
         }
-        .product {
-            /* out of view (left) */
-            &-0 {
-                left: -50%;
-                opacity: 0;
-            }
-            /* in view (center) */
-            &-1 {
-                left: 0;
-                opacity: 1;
-            }
-            &-2 {
-                left: 50%;
-                opacity: 1;
-            }
-            /* out of view (right) */
-            &-3 {
-                left: 100%;
-                opacity: 0;
-            }
-            /* unused */
-            &-4,
-            &-5 {
-                opacity: 0;
-            }
+        
+        /* out of view (left) */
+        .product-0 {
+            left: -50%;
+            opacity: 0;
+        }
+        /* in view (center) */
+        .product-1 {
+            left: 0;
+            opacity: 1;
+        }
+        .product-2 {
+            left: 50%;
+            opacity: 1;
+        }
+        /* out of view (right) */
+        .product-3 {
+            left: 100%;
+            opacity: 0;
+        }
+        /* unused */
+        .product-4,
+        .product-5 {
+            opacity: 0;
         }
     }
 }
@@ -394,28 +392,27 @@ body .promos > li {
         .item {
             width: 100%;
         }
-        .product {
-            /* out of view (left) */
-            &-0 {
-                left: -100%;
-                opacity: 0;
-            }
-            /* in view (center) */
-            &-1 {
-                left: 0;
-                opacity: 1;
-            }
-            /* out of view (right) */
-            &-2 {
-                left: 100%;
-                opacity: 0; 
-            } 
-            /* unused */
-            &-3,
-            &-4,
-            &-5 {
-                opacity: 0;
-            }
+        
+        /* out of view (left) */
+        .product-0 {
+            left: -100%;
+            opacity: 0;
+        }
+        /* in view (center) */
+        .product-1 {
+            left: 0;
+            opacity: 1;
+        }
+        /* out of view (right) */
+        .product-2 {
+            left: 100%;
+            opacity: 0; 
+        } 
+        /* unused */
+        .product-3,
+        .product-4,
+        .product-5 {
+            opacity: 0;
         }
     }
 }
