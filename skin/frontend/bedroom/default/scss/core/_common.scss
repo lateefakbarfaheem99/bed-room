@@ -344,7 +344,7 @@ body:not(.customer-account) .block:first-child .block-title {
 .footer .button {
     background: $c-button;
     display: inline-block;
-    padding: 7px 15px;
+    padding: 7px 15px !important;
     border: 0;
     color: #FFFFFF;
     font-size: $f-size-s;

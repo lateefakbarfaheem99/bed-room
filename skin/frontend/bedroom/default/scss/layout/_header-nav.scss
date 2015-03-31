@@ -285,7 +285,38 @@ $nav-primary-height: 30px;
 	}
 }
 
+.header-language-background {
+	padding-right: 20px;
+}
 
+.header-language-container .links {
+    float: right;
+	line-height: 1;
+}
+
+.header-language-container .links .first a {
+    font-size: 11px;
+	display: inline-block;
+    padding-left: 10px;
+	height: 26px;
+	line-height: 26px;
+	
+	&:before {
+		content: "|";
+		display: inline-block;
+		margin: 0;
+		vertical-align: middle;
+		width: 10px;
+		height: 28px;
+	}
+}
+
+.header-language-container .welcome-msg {
+    font-size: 11px;
+    margin-top: 0;
+	height: 26px;
+	line-height: 26px;
+}
 
 /* Removing The Dotted Outline */
 a {outline: 0;}

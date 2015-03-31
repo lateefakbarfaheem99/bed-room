@@ -62,12 +62,43 @@ body {
 }
 
 .add-to-links {
-	width: 50px;
+	width: 40px;
 	float: right;
+	
 	li {
 		float: right;
+		list-style: none;
+		padding-right: 5px;
+		padding-top: 10px;
 	}
 }
+
+.nav-primary-wrap {
+	padding-bottom: 10px;
+}
+
+.products-grid .actions {
+	position: relative !important;
+}
+
+.products-grid .price-box {
+    min-height: 60px !important;
+}
+
+.products-grid .product-image::before {
+	opacity: 1 !important;
+	left: 70% !important;
+}
+
+.link-wishlist {
+	width: 15px;
+	height: 12px; 
+	display: block;
+	text-indent: -9999px;
+	background: url(../images/ic-carts.png) 0 0;
+}
+
+.product-options-bottom {}
 
 .link-compare {
 	width: 15px;
@@ -140,7 +171,38 @@ body {
 }
 
 .product-options-bottom .add-to-links {
-	display: none;
+	width: auto;
+	
+	
+	 li {
+	padding: 0 !important;
+	
+	.link-compare, .link-wishlist {
+		background: none;
+		text-indent: 0;
+		width: auto;
+		}
+}
+}
+
+.product-view .add-to-links li:first-child {
+	border-right: 1px solid #ccc;
+}
+
+.product-view .add-to-links a {
+	border: none !important;
+}
+
+.box-collateral.box-up-sell h2 {
+    font-family: "Raleway","Helvetica Neue",Verdana,Arial,sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.2;
+    text-rendering: optimizelegibility;
+	color: #009fd6;
+    margin: 20px 0;
+    text-transform: none;
 }
 
 @media (max-width: 770px) {
