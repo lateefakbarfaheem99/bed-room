@@ -29,55 +29,6 @@
 	<div class="footer-container col2-left-layout">
 		<div class="footer">
 			<div class="col-left sidebar"></div>
-			<div class="col-main">
-				<nav class="footer-nav">
-					<div class="footer-nav-column">
-						<ul class="footer-links">
-							<li>
-								<h4>Company</h4>
-							</li>
-							<li><a href="#">About Us</a></li>
-							<li><a href="#">Contact Us</a></li>
-							<li><a href="#">Customer Service</a></li>
-							<li><a href="#">Privacy Policy</a></li>
-							<li><a href="#">Local Services</a></li>
-						</ul>
-					</div>
-					<div class="footer-nav-column">
-						<ul class="footer-links">
-							<li>
-								<h4>Quick Links</h4>
-							</li>
-							<li><a href="#">Site Map</a></li>
-							<li><a href="#">Search Terms</a></li>
-							<li><a href="#">Advanced Search</a></li>
-						</ul>
-					</div>
-					<div class="footer-nav-column">
-						<ul class="footer-links">
-							<li>
-								<h4>Account</h4>
-							</li>
-							<li><a href="#">My Account</a></li>
-							<li><a href="#">Orders & Returns</a></li>
-						</ul>
-					</div>
-					<div class="footer-nav-column">
-						<ul class="footer-links">
-							<li>
-								<h4>Connect With Us</h4>
-							</li>
-							<li><a href="#">Facebook</a></li>
-							<li><a href="#">Twitter</a></li>
-							<li><a href="#">YouTube</a></li>
-							<li><a href="#">Pinterest</a></li>
-							<li><a href="#">RSS</a></li>
-						</ul>
-					</div>
-				</nav>
-				<p class="address">© 2015 The Bedroom 568 Rocky Point Road San Souci NSW 2219 Australia.</p>
-				<span class="site-by-wq"><a href="http://www.webqem.com">Site by <span>webqem</span></a></span>
-			</div>
-		</div>
-	</div>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_links')->toHtml();?>
+        </div>
 </div>
