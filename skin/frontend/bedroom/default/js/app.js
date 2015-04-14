@@ -1115,12 +1115,12 @@ $j(document).ready(function () {
 
                         // Set the bottom-padding to accommodate the height of the .actions element. Note: if .actions
                         // elements are of varying heights, they will not be aligned.
-                        $j(this).find('.product-info').css('padding-bottom', actionHeight + 'px');
+                        //$j(this).find('.product-info').css('padding-bottom', actionHeight + 'px');
                     });
                     // Set the height of all .product-info elements in a row to the tallest height
-                    $j.each(this, function () {
+                    /*$j.each(this, function () {
                         $j(this).find('.product-info').css('min-height', tallestProductInfo);
-                    });
+                    });*/
                 });
             });
         }
