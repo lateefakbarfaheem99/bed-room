@@ -371,6 +371,12 @@
             display: block;
         }
 
+        > a.link-wishlist {
+            background-position: 0 3px;
+            height: 20px;
+            text-indent: 20px;
+        }
+
         &:last-child {
             margin-bottom: 0;
         }
