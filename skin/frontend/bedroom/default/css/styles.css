@@ -9170,7 +9170,7 @@ div.paypal-logo span > img {
   position: relative;
   display: block;
   width: 100%;
-  margin: 10px 0;
+  top: 10px;
   height: 273px;
   overflow: hidden;
 }
