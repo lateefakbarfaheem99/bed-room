@@ -53,17 +53,18 @@
                 <?php if ($_leftContent = $this->getChildHtml('left_first')): ?>
                 <div class="col-left sidebar col-left-first"><?php echo $_leftContent;   ?></div>
                 <?php endif; ?>
-				<div class="col-left sidebar">
+				<div class="col-main">
+                    <?php echo $this->getChildHtml('global_messages') ?>
+                    <?php echo $this->getChildHtml('content') ?>
+                </div>
+                <div class="col-left sidebar">
 				
 					<div class="skip-content" id="header-nav">  	
 						<?php echo $this->getChildHtml('left') ?>
 					</div>
 				
 				</div>
-                <div class="col-main">
-                    <?php echo $this->getChildHtml('global_messages') ?>
-                    <?php echo $this->getChildHtml('content') ?>
-                </div>
+                
               
             </div>
         </div>
