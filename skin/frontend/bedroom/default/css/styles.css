@@ -10189,7 +10189,8 @@ div.paypal-logo span > img {
 }
 
 #contactForm {
-  padding-left: 40px;
+  padding-left: 12px;
+  padding-top: 30px;
 }
 #contactForm h2 {
   display: none;
