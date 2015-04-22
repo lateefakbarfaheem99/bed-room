@@ -3673,6 +3673,9 @@ a.skip-link {
     display: block;
     margin-top: 0;
   }
+  .page-popup.catalog-product-compare-index ol.nav-primary {
+    display: none;
+  }
 }
 /* ============================================ *
  * General Navigation Styles
