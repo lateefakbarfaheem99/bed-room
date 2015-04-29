@@ -167,13 +167,6 @@
         }
     }
 
-    .add-to-cart-wrapper,
-    .block-related {
-        width: 50%;
-        float: right;
-        clear: right;
-    }
-
 }
 
 @include bp(max-width, 850px) {
