@@ -3299,6 +3299,7 @@ body {
   background: none;
   text-indent: 0;
   width: auto;
+  color: #DF2771;
 }
 
 .product-view .add-to-links li:first-child {
@@ -5410,12 +5411,6 @@ p.product-name a:hover {
 .product-view .old-price .price-label {
   display: none;
 }
-.product-view .add-to-cart-wrapper,
-.product-view .block-related {
-  width: 50%;
-  float: right;
-  clear: right;
-}
 
 @media only screen and (max-width: 850px) {
   .product-view .product-shop .price-box .price-excluding-tax .label,
@@ -5616,7 +5611,7 @@ p.product-name a:hover {
   min-height: 40px;
   line-height: 40px;
   font-size: 16px;
-  padding: 0px 30px;
+  padding: 0 !important;
   float: left;
   min-width: 160px;
   width: 100%;
@@ -5989,7 +5984,6 @@ p.product-name a:hover {
   width: 100%;
   margin: 10px 0 0;
   padding: 10px 15px 15px;
-  border: 1px solid #CCCCCC;
   clear: both;
   position: relative;
 }
@@ -6111,9 +6105,7 @@ p.product-name a:hover {
 }
 
 .product-options-bottom {
-  background-color: #F4F4F4;
-  padding: 15px 20px;
-  border: 1px solid #CCCCCC;
+  border-bottom: 1px solid #CCCCCC;
   border-top: 0;
   margin-bottom: 10px;
 }

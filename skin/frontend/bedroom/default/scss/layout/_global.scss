@@ -173,16 +173,16 @@ body {
 .product-options-bottom .add-to-links {
 	width: auto;
 	
+	li {
+		padding: 0 !important;
 	
-	 li {
-	padding: 0 !important;
-	
-	.link-compare, .link-wishlist {
-		background: none;
-		text-indent: 0;
-		width: auto;
+		.link-compare, .link-wishlist {
+			background: none;
+			text-indent: 0;
+			width: auto;
+			color: #DF2771;
 		}
-}
+	}
 }
 
 .product-view .add-to-links li:first-child {
