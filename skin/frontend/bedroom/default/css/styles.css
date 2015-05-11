@@ -647,7 +647,9 @@ h6, .h6 {
   font-weight: 600;
   color: #009FD6 !important;
   border-bottom: 1px solid #EDEDED;
+  padding-top: 3px;
   padding-bottom: 3px;
+  margin-top: 15px;
   margin-bottom: 15px;
   text-transform: uppercase;
 }
