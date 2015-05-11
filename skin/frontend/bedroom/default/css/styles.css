@@ -6786,6 +6786,11 @@ p.product-name a:hover {
 .cart-table .cart-links > li > a {
   display: block;
 }
+.cart-table .cart-links > li > a.link-wishlist {
+  background-position: 0 3px;
+  height: 20px;
+  text-indent: 20px;
+}
 .cart-table .cart-links > li:last-child {
   margin-bottom: 0;
 }
