@@ -10091,6 +10091,7 @@ div.paypal-logo span > img {
 .cms-home .std .messages,
 .cms-no-route .std .messages {
   margin-bottom: 10px;
+  margin-top: 20px;
 }
 .cms-page-view .std .messages ul,
 .cms-home .std .messages ul,
