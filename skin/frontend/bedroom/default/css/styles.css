@@ -5411,6 +5411,12 @@ p.product-name a:hover {
 .product-view .old-price .price-label {
   display: none;
 }
+/*.product-view .add-to-cart-wrapper,
+.product-view .block-related {
+  width: 50%;
+  float: right;
+  clear: right;
+}*/
 
 @media only screen and (max-width: 850px) {
   .product-view .product-shop .price-box .price-excluding-tax .label,

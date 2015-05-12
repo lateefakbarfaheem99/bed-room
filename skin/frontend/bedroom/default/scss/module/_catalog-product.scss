@@ -167,6 +167,13 @@
         }
     }
 
+    /*.add-to-cart-wrapper,
+    .block-related {
+        width: 50%;
+        float: right;
+        clear: right;
+    }*/
+
 }
 
 @include bp(max-width, 850px) {
@@ -772,6 +779,9 @@
 }
 
 .product-options-bottom {
+    /*background-color: $c-module-background;
+    padding: 15px 20px;
+    border: 1px solid $c-fieldset-border;*/
     border-bottom: 1px solid $c-fieldset-border;
     border-top: 0;
     margin-bottom: $box-spacing;
