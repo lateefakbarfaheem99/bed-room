@@ -76,6 +76,7 @@ p.product-name {
     margin-bottom: 5px;
     font-size: 13px;
     font-family: $f-stack-special;
+    /*min-height: 40px;*/
 	
     a {
         font-weight: 500;
@@ -141,6 +142,7 @@ $productsGridActionHeight: 85px;
     padding-top: $box-spacing;
     position: absolute;
     bottom: 0px;
+    /*min-height: $productsGridActionHeight;*/
     width: 100%;
 }
 

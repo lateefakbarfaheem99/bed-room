@@ -3198,6 +3198,10 @@ body {
   padding-bottom: 10px;
 }
 
+/*.products-grid .price-box {
+  min-height: 60px !important;
+}*/
+
 .products-grid .product-image::before {
   opacity: 1 !important;
   left: 70% !important;
@@ -4578,6 +4582,7 @@ p.product-name a:hover {
   margin-bottom: 5px;
   font-size: 13px;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
+  /*min-height: 40px;*/
 }
 .products-grid .product-name a,
 .products-list .product-name a {
@@ -4637,6 +4642,7 @@ p.product-name a:hover {
   padding-top: 10px;
   position: absolute;
   bottom: 0px;
+  /*min-height: 85px;*/
   width: 100%;
 }
 
