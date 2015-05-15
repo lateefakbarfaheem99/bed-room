@@ -87,6 +87,10 @@
     #header-nav {
         display: block; /* Force visibility */
         border-bottom: 1px solid $c-module-border-light;
+
+        nav#nav {
+            margin-bottom: 20px;
+        }
     }
 
 }

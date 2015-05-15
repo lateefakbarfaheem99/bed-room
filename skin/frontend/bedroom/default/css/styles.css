@@ -3663,6 +3663,10 @@ a.skip-link {
     /* Force visibility */
     border-bottom: 1px solid #EDEDED;
   }
+
+  #header-nav nav#nav {
+    margin-bottom: 20px;
+  }
 }
 /* ============================================ *
  * Nav Primary
@@ -4692,10 +4696,18 @@ p.product-name a:hover {
   display: none;
 }
 
+.products-grid .price-box-wrapper {
+  display: table;
+  min-height: 60px;
+  width: 100%;
+}
+
 .products-grid .price-box {
   color: #A0A0A0;
   font-size: 13px;
   margin: 0 0 5px;
+  display: table-cell;
+  vertical-align: bottom;
 }
 
 .products-grid .add-to-links {
@@ -10082,14 +10094,14 @@ div.paypal-logo span > img {
 .cms-no-route .std img {
   max-width: 100%;
 }
-.cms-page-view .std p,
+/*.cms-page-view .std p,
 .cms-no-route .std p {
   color: #000000;
   font-family: Georgia, Times, "Times New Roman", serif;
   font-size: 14px;
   font-style: italic;
   line-height: 24px;
-}
+}*/
 .cms-page-view .std h1,
 .cms-no-route .std h1 {
   color: #3399CC;

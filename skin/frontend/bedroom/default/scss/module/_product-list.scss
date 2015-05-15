@@ -154,10 +154,18 @@ $productsGridActionHeight: 85px;
     display: none;
 }
 
+.products-grid .price-box-wrapper {
+  display: table;
+  min-height: 60px;
+  width: 100%;
+}
+
 .products-grid .price-box {
     color: $c-text-gray;
     font-size: $f-size-s;
     margin: 0 0 5px;
+    display: table-cell;
+    vertical-align: bottom;
 }
 
 .products-grid .add-to-links {
