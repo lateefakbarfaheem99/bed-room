@@ -3662,6 +3662,10 @@ a.skip-link {
     /* Force visibility */
     border-bottom: 1px solid #EDEDED;
   }
+
+  #header-nav nav#nav {
+    margin-bottom: 20px;
+  }
 }
 /* ============================================ *
  * Nav Primary
