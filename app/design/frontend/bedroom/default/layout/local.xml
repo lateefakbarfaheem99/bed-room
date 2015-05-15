@@ -1,5 +1,8 @@
 <layout version="0.1.0">
     <default>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/jquery.browser.min.js</name></action>  
+        </reference>
         <reference name="header">
             <action method="unsetChild"><name>topMenu</name></action>
             <block type="page/template_links" name="top.links1" as="topLinks1"/>
