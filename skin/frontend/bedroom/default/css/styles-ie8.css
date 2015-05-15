@@ -647,8 +647,10 @@ h6, .h6 {
   font-weight: 600;
   color: #009FD6 !important;
   border-bottom: 1px solid #EDEDED;
+  paddding-top: 3px;
   padding-bottom: 3px;
   margin-bottom: 15px;
+  margin-top: 15px;
   text-transform: uppercase;
 }
 
@@ -2695,7 +2697,7 @@ body {
 }
 
 .add-to-links {
-  width: 40px;
+  width: auto;
   float: right;
 }
 .add-to-links li {
@@ -2707,10 +2709,6 @@ body {
 
 .nav-primary-wrap {
   padding-bottom: 10px;
-}
-
-.products-grid .actions {
-  position: relative !important;
 }
 
 .products-grid .price-box {
@@ -3111,6 +3109,10 @@ a.skip-link {
   margin-top: 0;
 }
 
+.page-popup.catalog-product-compare-index ol.nav-primary {
+  display: none;
+}
+
 /* ============================================ *
  * General Navigation Styles
  * ============================================ */
@@ -3129,7 +3131,7 @@ a.skip-link {
   border-bottom: 1px solid #CCCCCC;
 }
 
-.nav-primary .menu-active > ul.level0,
+/*.nav-primary .menu-active > ul.level0,*/
 .nav-primary li.level0 li.sub-menu-active > ul {
   display: block;
 }
@@ -3141,6 +3143,11 @@ a.skip-link {
 /* ============================================ *
  * Small Viewports - Accordion Style Menu
  * ============================================ */
+.nav-primary {
+  /*li.level0 ul {
+      display: none;
+  }*/
+}
 .nav-primary a.level0,
 .nav-primary a {
   line-height: normal;
@@ -3158,9 +3165,6 @@ a.skip-link {
 }
 .nav-primary .level0.menu-active a {
   color: #000000;
-}
-.nav-primary li.level0 ul {
-  display: none;
 }
 .nav-primary li.level0 li {
   padding: 0;
@@ -3234,10 +3238,12 @@ a.skip-link {
   margin-top: 0;
 }
 
-.nav-primary li.menu-active > ul {
-  display: block;
+/*.nav-primary li.menu-active {
+    > ul {
+        display: block;
+    }
 }
-
+*/
 .nav-title {
   line-height: normal;
   background-color: #009fd6;
@@ -3312,6 +3318,33 @@ a.skip-link {
   margin-top: 0;
   height: 26px;
   line-height: 26px;
+}
+
+@media (max-width: 770px) {
+  .page {
+    overflow: hidden;
+  }
+
+  .col-left.sidebar #header-nav {
+    margin: 0 0 0 -15px !important;
+  }
+
+  #header-nav {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+}
+li.level0 ul {
+  transition: max-height 800ms ease;
+  -moz-transition: max-height 800ms ease;
+  max-height: 0;
+  overflow: hidden;
+}
+
+li.menu-active ul {
+  max-height: 500px;
 }
 
 /* Removing The Dotted Outline */
@@ -5729,6 +5762,11 @@ p.product-name a:hover {
 .cart-table .cart-links > li > a {
   display: block;
 }
+.cart-table .cart-links > li > a.link-wishlist {
+  background-position: 0 3px;
+  height: 20px;
+  text-indent: 20px;
+}
 .cart-table .cart-links > li:last-child {
   margin-bottom: 0;
 }
@@ -7499,7 +7537,7 @@ div.paypal-logo span > img {
   position: relative;
   display: block;
   width: 100%;
-  margin: 10px 0;
+  top: 10px;
   height: 273px;
   overflow: hidden;
 }
@@ -8299,7 +8337,8 @@ div.paypal-logo span > img {
 }
 
 #contactForm {
-  padding-left: 40px;
+  padding-left: 12px;
+  padding-top: 30px;
 }
 #contactForm h2 {
   display: none;

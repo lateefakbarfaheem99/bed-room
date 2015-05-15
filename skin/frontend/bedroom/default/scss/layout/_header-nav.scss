@@ -133,7 +133,7 @@ $nav-primary-height: 30px;
 }
 
 // Show sub-menus when JS adds the appropriate classes
-.nav-primary .menu-active > ul.level0,
+/*.nav-primary .menu-active > ul.level0,*/
 .nav-primary li.level0 li.sub-menu-active > ul {
     display: block;
 }
@@ -170,9 +170,9 @@ $nav-primary-height: 30px;
 		}
 
         // Hide all sub-menus
-        li.level0 ul {
+        /*li.level0 ul {
             display: none;
-        }
+        }*/
 
         // Indent sub-menus
         li.level0 li {
@@ -234,12 +234,12 @@ $nav-primary-height: 30px;
 	margin-top: 0;
 }
 
-.nav-primary li.menu-active {
+/*.nav-primary li.menu-active {
     > ul {
         display: block;
     }
 }
-
+*/
 .nav-title {
 	line-height: normal;
 	background-color: #009fd6;
@@ -320,6 +320,36 @@ $nav-primary-height: 30px;
     margin-top: 0;
 	height: 26px;
 	line-height: 26px;
+}
+
+@media (max-width: 770px) {
+
+	.page {
+		overflow: hidden;
+	}
+	
+	.col-left.sidebar #header-nav {
+		margin: 0 0 0 -15px !important;
+	}
+	
+	#header-nav {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 1000;
+	}
+
+}
+
+li.level0 ul { 
+	transition: max-height 800ms ease;
+	-moz-transition: max-height 800ms ease;
+	max-height: 0;
+	overflow: hidden;
+}
+
+li.menu-active ul {
+	max-height: 500px;
 }
 
 /* Removing The Dotted Outline */

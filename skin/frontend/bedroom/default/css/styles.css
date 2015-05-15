@@ -647,10 +647,10 @@ h6, .h6 {
   font-weight: 600;
   color: #009FD6 !important;
   border-bottom: 1px solid #EDEDED;
-  padding-top: 3px;
+  paddding-top: 3px;
   padding-bottom: 3px;
-  margin-top: 15px;
   margin-bottom: 15px;
+  margin-top: 15px;
   text-transform: uppercase;
 }
 
@@ -3671,6 +3671,7 @@ a.skip-link {
     display: block;
     margin-top: 0;
   }
+
   .page-popup.catalog-product-compare-index ol.nav-primary {
     display: none;
   }
@@ -3693,7 +3694,7 @@ a.skip-link {
   border-bottom: 1px solid #CCCCCC;
 }
 
-.nav-primary .menu-active > ul.level0,
+/*.nav-primary .menu-active > ul.level0,*/
 .nav-primary li.level0 li.sub-menu-active > ul {
   display: block;
 }
@@ -3705,6 +3706,11 @@ a.skip-link {
 /* ============================================ *
  * Small Viewports - Accordion Style Menu
  * ============================================ */
+.nav-primary {
+  /*li.level0 ul {
+      display: none;
+  }*/
+}
 .nav-primary a.level0,
 .nav-primary a {
   line-height: normal;
@@ -3722,9 +3728,6 @@ a.skip-link {
 }
 .nav-primary .level0.menu-active a {
   color: #000000;
-}
-.nav-primary li.level0 ul {
-  display: none;
 }
 .nav-primary li.level0 li {
   padding: 0;
@@ -3798,10 +3801,12 @@ a.skip-link {
   margin-top: 0;
 }
 
-.nav-primary li.menu-active > ul {
-  display: block;
+/*.nav-primary li.menu-active {
+    > ul {
+        display: block;
+    }
 }
-
+*/
 .nav-title {
   line-height: normal;
   background-color: #009fd6;
@@ -3876,6 +3881,33 @@ a.skip-link {
   margin-top: 0;
   height: 26px;
   line-height: 26px;
+}
+
+@media (max-width: 770px) {
+  .page {
+    overflow: hidden;
+  }
+
+  .col-left.sidebar #header-nav {
+    margin: 0 0 0 -15px !important;
+  }
+
+  #header-nav {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+}
+li.level0 ul {
+  transition: max-height 800ms ease;
+  -moz-transition: max-height 800ms ease;
+  max-height: 0;
+  overflow: hidden;
+}
+
+li.menu-active ul {
+  max-height: 500px;
 }
 
 /* Removing The Dotted Outline */

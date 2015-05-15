@@ -132,6 +132,7 @@ $nav-primary-height: 30px;
 .nav-primary .menu-active > ul.level0,
 .nav-primary li.level0 li.sub-menu-active > ul {
     display: block;
+	border: 2px solid green;
 }
 
 .nav-primary li.level0 > a {
