@@ -10096,14 +10096,14 @@ div.paypal-logo span > img {
 .cms-no-route .std img {
   max-width: 100%;
 }
-.cms-page-view .std p,
+/*.cms-page-view .std p,
 .cms-no-route .std p {
   color: #000000;
   font-family: Georgia, Times, "Times New Roman", serif;
   font-size: 14px;
   font-style: italic;
   line-height: 24px;
-}
+}*/
 .cms-page-view .std h1,
 .cms-no-route .std h1 {
   color: #3399CC;
