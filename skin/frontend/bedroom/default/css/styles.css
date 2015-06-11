@@ -3740,8 +3740,11 @@ a.skip-link {
 .nav-primary li.level0 li.view-all a {
   padding-top: 5px;
 }
-.nav-primary li.level0 li.last a {
-  padding-bottom: 10px;
+.nav-primary li.menu-active ul {
+  border-bottom: 5px solid #eaf6fa;
+}
+.nav-primary li.menu-active ul ul {
+  border-bottom: 0;
 }
 .nav-primary li.level1 a {
   background-color: #eaf6fa;
@@ -3788,6 +3791,17 @@ a.skip-link {
   right: auto;
   margin-top: -3px;
 }
+
+/*
+.nav-primary li li.parent ul {
+	display: none;
+}
+
+.nav-primary li li.parent.menu-active ul {
+	display: block;
+}
+*/
+
 .nav-primary li.menu-active > a,
 .nav-primary li.sub-menu-active > a {
   color: #3399CC;
@@ -3826,6 +3840,19 @@ a.skip-link {
 .nav-primary-wrap {
   display: table;
   width: 100%;
+}
+
+.nav-primary li li li a {
+	padding-top: 0 !important;
+	padding-left: 25px !important;
+}
+
+.nav-primary li li li ul {
+	display: none;
+}
+
+.nav-primary li li li.parent > a:after {
+	border: none !important;
 }
 
 .col-main .nav-primary {
@@ -3904,16 +3931,21 @@ a.skip-link {
     z-index: 1000;
   }
 }
-li.level0 ul {
+li.level0 ul,
+.nav-primary li li.parent ul {
   transition: max-height 800ms ease;
   -moz-transition: max-height 800ms ease;
   max-height: 0;
   overflow: hidden;
 }
 
-li.menu-active ul {
-  max-height: 500px;
+li.menu-active ul,
+.nav-primary li li.parent.menu-active ul {
+  max-height: 750px;
 }
+
+
+
 
 /* Removing The Dotted Outline */
 a {
