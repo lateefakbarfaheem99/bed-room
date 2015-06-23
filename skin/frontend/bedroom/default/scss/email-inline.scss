@@ -121,8 +121,9 @@ td.logo {
     padding: 15px 0px 10px 5px;
 }
 td.logo a {
-    float: left;
+    float: none;
     display: block;
+    text-align: center !important;
 }
 td.logo img {
     outline: none;
