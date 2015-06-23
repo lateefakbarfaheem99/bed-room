@@ -76,8 +76,8 @@ p.product-name {
     margin-bottom: 5px;
     font-size: 13px;
     font-family: $f-stack-special;
-    /*min-height: 40px;*/
-	
+	min-height: 40px !important;
+
     a {
         font-weight: 500;
     }
