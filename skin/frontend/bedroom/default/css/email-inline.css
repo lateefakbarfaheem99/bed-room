@@ -127,8 +127,9 @@ td.logo {
 }
 
 td.logo a {
-  float: left;
+  float: none;
   display: block;
+  text-align: center !important;
 }
 
 td.logo img {
