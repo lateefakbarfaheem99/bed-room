@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Webqem_FadeMinicart>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Webqem_FadeMinicart>
+    </modules>
+</config>

@@ -1,0 +1,12 @@
+<?php $isAddToCart = Mage::getSingleton('core/session')->getIsAddToCart($isAddToCart); ?>
+<?php if($isAddToCart): ?>
+	<script type="text/javascript">
+		jQuery(window).load(function() {
+			jQuery('.header-minicart > a').addClass('skip-active');
+			jQuery('#header-cart').addClass('skip-active');
+			jQuery('#header-cart').css("opacity", "0");
+			jQuery('#header-cart').animate({opacity: 1}, 1000);
+		});
+	</script>
+	<?php Mage::getSingleton('core/session')->unsIsAddToCart(); ?>
+<?php endif;?>
