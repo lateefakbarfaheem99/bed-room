@@ -7874,6 +7874,15 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
     width: 100%;
   }
 }
+
+@media only screen and (max-width: 865px) {
+  div.onestepcheckout-threecolumns div.onestepcheckout-column-left, 
+  div.onestepcheckout-threecolumns div.onestepcheckout-column-middle,
+  div.onestepcheckout-threecolumns div.onestepcheckout-column-right {
+    width: 100%;
+    background: none;
+  }
+}
 /* ============================================ *
  * Checkout - Success
  * ============================================ */
