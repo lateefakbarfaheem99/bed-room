@@ -6,6 +6,14 @@
 			jQuery('#header-cart').addClass('skip-active');
 			jQuery('#header-cart').css("opacity", "0");
 			jQuery('#header-cart').animate({opacity: 1}, 1000);
+			window.setTimeout(function(){
+					jQuery('#header-cart').animate({opacity: 0}, 1000);
+					window.setTimeout(function(){
+						jQuery('.header-minicart > a').removeClass('skip-active');
+						jQuery('#header-cart').removeClass('skip-active');
+						jQuery('#header-cart').animate({opacity: 1}, 1000);
+					}, 1000);
+				}, 3000);
 		});
 	</script>
 	<?php Mage::getSingleton('core/session')->unsIsAddToCart(); ?>
