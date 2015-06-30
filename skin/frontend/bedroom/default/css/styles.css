@@ -3350,9 +3350,10 @@ body {
   }
 }
 .telephone {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 500;
   background: url(../images/phone-icon.png) no-repeat 0 0;
+  background-size: contain;
   padding-left: 35px;
 }
 
