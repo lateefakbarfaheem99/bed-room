@@ -68,7 +68,10 @@
 
 .header-language-background {
     padding: 8px 10px;
-    
+    background-color: #e58bc7;
+    @include filter-gradient(#e58bc7, #e596cb, vertical);
+    @include background-image(linear-gradient(top,  #e58bc7 0%,#e596cb 100%));
+ 
     .header-language-container {
         max-width: $max-content-width;
         margin-left: auto;
