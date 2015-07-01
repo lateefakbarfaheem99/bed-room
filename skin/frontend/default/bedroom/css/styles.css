@@ -4314,3 +4314,5 @@ html body.checkout-cart-index div.wrapper div.page div.main-container div.main d
 }
 
 html body.catalog-product-view div.wrapper div.page div.main-container div.main div.col-left { margin-top:-24px; }
+/* BED-98 Overlapping on horizontal product display. */
+.add-to-links .link-compare, .add-to-links .link-wishlist { text-align:left; }
