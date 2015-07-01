@@ -11058,3 +11058,13 @@ div.calendar table td.button {
   color: inherit;
   text-transform: none;
 }
+
+
+html body.catalog-product-view div.wrapper div.page div.main-container div.main div.col-left { margin-top:-24px;}
+
+
+/* BED-106 - Expand current active category */
+li.active ul, .nav-primary li li.parent.active ul,
+li.menu-active ul, .nav-primary li li.parent.menu-active ul {
+    max-height: 750px;
+}
