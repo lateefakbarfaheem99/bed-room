@@ -3349,6 +3349,9 @@ body {
     position: relative;
   }
 }
+div.top-phone-number {
+  float: right;
+}
 .telephone {
   font-size: 18px;
   font-weight: 500;
