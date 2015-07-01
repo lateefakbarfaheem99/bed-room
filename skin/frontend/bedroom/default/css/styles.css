@@ -11058,3 +11058,6 @@ div.calendar table td.button {
   color: inherit;
   text-transform: none;
 }
+
+/* BED-98 Overlapping on horizontal product display. */
+.add-to-links .link-compare, .add-to-links .link-wishlist { text-align:left; }
