@@ -3351,6 +3351,7 @@ body {
 }
 div.top-phone-number {
   float: right;
+  padding-right: 10px;
 }
 .telephone {
   font-size: 18px;
