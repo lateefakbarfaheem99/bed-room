@@ -4307,10 +4307,15 @@ html body.checkout-cart-index div.wrapper div.page div.main-container div.main d
     position: relative !important;
     
     width: 230px !important;
-	margin-top:10px !importamt; 
+    margin-top:10px !importamt;
 }
 .cart .totals {
     width: 260px !important;
 }
 
 html body.catalog-product-view div.wrapper div.page div.main-container div.main div.col-left { margin-top:-24px; }
+
+
+/* BED-104 - Product name and Price misaligned. */
+.product-view .product-shop .product-name .h1 { margin-top : 0; }
+product-view div.wrapper div.page div.main-container div.main div.col-left { margin-top:-24px; }
