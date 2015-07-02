@@ -11056,6 +11056,7 @@ body[class*="checkout-multishipping-"] #review-buttons-container {
 div.calendar table {
   border-collapse: separate;
 }
+
 div.calendar table td.button {
   display: table-cell;
   background: inherit;
@@ -11063,11 +11064,14 @@ div.calendar table td.button {
   text-transform: none;
 }
 
-html body.catalog-product-view div.wrapper div.page div.main-container div.main div.col-left { margin-top:-24px; }
+html body.catalog-product-view div.wrapper div.page div.main-container div.main div.col-left { margin-top:-24px;
+}
 
 /* BED-104 - Product name and Price misaligned. */
 .product-view .product-shop .product-name .h1 { margin-top : 0; }
-.product-view div.wrapper div.page div.main-container div.main div.col-left { margin-top:-24px;}
+.product-view div.wrapper div.page div.main-container div.main div.col-left {
+    margin-top:-24px;
+}
 
 /* BED-106 - Expand current active category */
 li.active ul, .nav-primary li li.parent.active ul,
@@ -11075,7 +11079,9 @@ li.menu-active ul, .nav-primary li li.parent.menu-active ul {
     max-height: 750px;
 }
 /* BED-98 Overlapping on horizontal product display. */
-.add-to-links .link-compare, .add-to-links .link-wishlist { text-align:left; }
+.add-to-links .link-compare, .add-to-links .link-wishlist { text-align:left;
+}
+
 @media (min-width>599) {
     body .button.btn-cart {
         float:none;
