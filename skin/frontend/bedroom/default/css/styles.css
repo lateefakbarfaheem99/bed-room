@@ -11061,3 +11061,9 @@ div.calendar table td.button {
 
 /* BED-98 Overlapping on horizontal product display. */
 .add-to-links .link-compare, .add-to-links .link-wishlist { text-align:left; }
+@media (min-width>599) {
+    body .button.btn-cart {
+        float:none;
+        margin-bottom:-10px;
+    }
+}
