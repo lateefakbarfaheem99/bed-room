@@ -11082,9 +11082,9 @@ li.menu-active ul, .nav-primary li li.parent.menu-active ul {
 .add-to-links .link-compare, .add-to-links .link-wishlist { text-align:left;
 }
 
-@media (min-width:599) {
+@media (min-width:599px) {
     body .button.btn-cart {
-        float:none;
-        margin-bottom:-10px;
+        float:none !important;
+        margin-bottom:-10px; !important;
     }
 }
