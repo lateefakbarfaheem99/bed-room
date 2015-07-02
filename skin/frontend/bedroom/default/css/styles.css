@@ -11080,3 +11080,5 @@ li.menu-active ul, .nav-primary li li.parent.menu-active ul {
     body .button.btn-cart { float:none; margin-bottom:-10px; }
 
 }
+product-view div.wrapper div.page div.main-container div.main div.col-left { margin-top:-24px; }
+
