@@ -3759,7 +3759,7 @@ a.skip-link {
   color: #3399CC;
 }
 .nav-primary li.level1.active a {
-  font-weight: bold;
+/*  font-weight: bold; */
 }
 .nav-primary li.parent > a:after {
   content: '';
