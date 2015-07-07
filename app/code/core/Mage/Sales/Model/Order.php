@@ -1311,7 +1311,7 @@ class Mage_Sales_Model_Order extends Mage_Sales_Model_Abstract
             $templateId = Mage::getStoreConfig(self::XML_PATH_EMAIL_TEMPLATE, $storeId);
             $customerName = $this->getCustomerName();
         }
-
+        
         /** @var $mailer Mage_Core_Model_Email_Template_Mailer */
         $mailer = Mage::getModel('core/email_template_mailer');
         /** @var $emailInfo Mage_Core_Model_Email_Info */
@@ -1325,6 +1325,9 @@ class Mage_Sales_Model_Order extends Mage_Sales_Model_Abstract
         }
         $mailer->addEmailInfo($emailInfo);
 
+        Mage::getSingleton('adminhtml/session')->addError('email info <pre>'.print_r($emailInfo, true).'</pre>');
+        
+        
         // Email copies are sent as separated emails if their copy method is 'copy'
         if ($copyTo && $copyMethod == 'copy') {
             foreach ($copyTo as $email) {
@@ -1333,7 +1336,8 @@ class Mage_Sales_Model_Order extends Mage_Sales_Model_Abstract
                 $mailer->addEmailInfo($emailInfo);
             }
         }
-
+        
+        
         // Set all required params and send emails
         $mailer->setSender(Mage::getStoreConfig(self::XML_PATH_EMAIL_IDENTITY, $storeId));
         $mailer->setStoreId($storeId);
@@ -1352,10 +1356,10 @@ class Mage_Sales_Model_Order extends Mage_Sales_Model_Abstract
             ->setIsForceCheck(!$forceMode);
 
         $mailer->setQueue($emailQueue)->send();
-
+        
         $this->setEmailSent(true);
         $this->_getResource()->saveAttribute($this, 'email_sent');
-
+        
         return $this;
     }
 
@@ -1382,7 +1386,7 @@ class Mage_Sales_Model_Order extends Mage_Sales_Model_Abstract
     public function queueOrderUpdateEmail($notifyCustomer = true, $comment = '', $forceMode = false)
     {
         $storeId = $this->getStore()->getId();
-
+        
         if (!Mage::helper('sales')->canSendOrderCommentEmail($storeId)) {
             return $this;
         }
