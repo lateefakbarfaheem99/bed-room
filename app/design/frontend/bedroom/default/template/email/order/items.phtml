@@ -1,0 +1,70 @@
+<?php
+/**
+ * @category    design
+ * @package     bedroom_default
+ * @author      Anying Zhao
+ */
+?>
+
+<?php $_order = $this->getOrder(); ?>
+
+<?php if ($_order): ?>
+    <?php $_items = $_order->getAllItems(); ?>
+    <?php $_itemCount = count($_items); ?>
+    <tr>
+        <td>
+            <table class="items" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+                <thead>
+                    <tr>
+                        <th class="cell-name" align="center" width="70%" bgcolor="#d9e5ee" style="padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em;">
+                            <?php if($_itemCount > 1): ?>
+                                <?php echo $this->__('Items in your order'); ?>
+                            <?php else: ?>
+                                <?php echo $this->__('Item in your order'); ?>
+                            <?php endif; ?>
+                        </th>
+                        <th class="cell-name align-center" align="center" width="10%" bgcolor="#d9e5ee" style="padding:5px 9px 6px 9px; border-top:1px solid #bebcb7; line-height:1em;">
+                            <?php echo $this->__('Qty'); ?>
+                        </th>
+                        <th class="cell-name align-right" align="center" width="20%" bgcolor="#d9e5ee" style="padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em;">
+                            <?php echo $this->__('Price'); ?>
+                        </th>
+                    </tr>
+                </thead>
+            <?php $i=0; foreach ($_order->getAllItems() as $_item): ?>
+            <?php if($_item->getParentItem()) continue; else $i++; ?>
+                <?php echo $this->getItemHtml($_item) ?>
+            <?php endforeach; ?>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <?php echo $this->getChildHtml('order_totals') ?>
+        </td>
+    </tr>
+    <?php if ($this->helper('giftmessage/message')->isMessagesAvailable('order', $_order, $_order->getStore()) && $_order->getGiftMessageId()): ?>
+        <?php $_giftMessage = $this->helper('giftmessage/message')->getGiftMessage($_order->getGiftMessageId()); ?>
+        <?php if ($_giftMessage): ?>
+            <br />
+            <table cellspacing="0" cellpadding="0" border="0" width="100%" style="border:1px solid #EAEAEA;">
+                <thead>
+                    <tr>
+                        <th align="left" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px"><strong><?php echo $this->__('Gift Message for this Order') ?></strong></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td colspan="4" align="left" style="padding:3px 9px">
+                        <strong><?php echo $this->__('From:'); ?></strong> <?php echo $this->escapeHtml($_giftMessage->getSender()) ?>
+                        <br /><strong><?php echo $this->__('To:'); ?></strong> <?php echo $this->escapeHtml($_giftMessage->getRecipient()) ?>
+                        <br /><strong><?php echo $this->__('Message:'); ?></strong><br /> <?php echo $this->escapeHtml($_giftMessage->getMessage()) ?>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endif; ?>
